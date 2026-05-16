@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sommer, Strand & Baby – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1C3A2E;
+    --green-light: #2a5242;
+    --sand: #F5EDD8;
+    --sand-dark: #e8dcbf;
+    --white: #FFFFFF;
+    --text: #1C3A2E;
+    --text-muted: #5a7a6a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--sand);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  header {
+    background-color: var(--green);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--sand);
+    letter-spacing: 0.03em;
+  }
+
+  header .back-link {
+    font-size: 0.78rem;
+    color: var(--sand);
+    text-decoration: none;
+    opacity: 0.75;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    background-color: var(--green);
+    padding: 48px 24px 56px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sand);
+    opacity: 0.65;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    color: var(--sand);
+    opacity: 0.7;
+    max-width: 340px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .wave {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    background-color: var(--sand);
+  }
+
+  .wave svg {
+    display: block;
+    width: 100%;
+  }
+
+  .grid {
+    padding: 8px 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    background-color: var(--sand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-img .placeholder-icon {
+    font-size: 2.5rem;
+    opacity: 0.3;
+  }
+
+  .card-body {
+    padding: 20px 20px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .btn {
+    display: block;
+    background-color: var(--green);
+    color: var(--sand);
+    text-decoration: none;
+    text-align: center;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn:hover {
+    background-color: var(--green-light);
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    padding: 0 24px 40px;
+    opacity: 0.7;
+  }
+
+  footer {
+    background-color: var(--green);
+    padding: 24px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--sand);
+    opacity: 0.8;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 40px 20px 48px; }
+    .grid { grid-template-columns: 1fr; padding: 8px 16px 48px; }
+    .card-img { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Odette von Dubs</span>
+  <a href="https://odettevondubs.github.io" class="back-link">← Zurück</a>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Reisen mit Baby · Sommer</p>
+  <h1>Sommer, Strand<br><em>&amp; Baby</em></h1>
+  <p class="hero-sub">Meine persönlichen Empfehlungen für einen entspannten Strandtag mit Baby – alles was wir wirklich benutzen.</p>
+</div>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="#F5EDD8"/>
+    <rect x="0" y="0" width="1440" height="20" fill="#1C3A2E"/>
+  </svg>
+</div>
+
+<div class="grid">
+
+  <!-- PRODOTTO 1 -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Inserisci immagine: <img src="URL_IMMAGINE" alt="Nome prodotto"> -->
+      <span class="placeholder-icon">☀️</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Sonnenschutz</p>
+      <h2 class="card-title">Nome prodotto 1</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe. Perché lo usi, perché lo consigli.</p>
+      <a href="LINK_AFFILIATO_AWIN_1" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+  <!-- PRODOTTO 2 -->
+  <div class="card">
+    <div class="card-img">
+      <span class="placeholder-icon">🏖️</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Badezubehör</p>
+      <h2 class="card-title">Nome prodotto 2</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe.</p>
+      <a href="LINK_AFFILIATO_AWIN_2" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+  <!-- PRODOTTO 3 -->
+  <div class="card">
+    <div class="card-img">
+      <span class="placeholder-icon">🌊</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Komfort am Strand</p>
+      <h2 class="card-title">Nome prodotto 3</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe.</p>
+      <a href="LINK_AFFILIATO_AWIN_3" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+  <!-- PRODOTTO 4 -->
+  <div class="card">
+    <div class="card-img">
+      <span class="placeholder-icon">👙</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Baby-Outfit</p>
+      <h2 class="card-title">Nome prodotto 4</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe.</p>
+      <a href="LINK_AFFILIATO_AWIN_4" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+  <!-- PRODOTTO 5 -->
+  <div class="card">
+    <div class="card-img">
+      <span class="placeholder-icon">🎒</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Unterwegs</p>
+      <h2 class="card-title">Nome prodotto 5</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe.</p>
+      <a href="LINK_AFFILIATO_AWIN_5" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+  <!-- PRODOTTO 6 — opzionale, elimina se non serve -->
+  <div class="card">
+    <div class="card-img">
+      <span class="placeholder-icon">🧴</span>
+    </div>
+    <div class="card-body">
+      <p class="card-tag">Pflege</p>
+      <h2 class="card-title">Nome prodotto 6</h2>
+      <p class="card-desc">Breve descrizione autentica del prodotto — max 2 righe.</p>
+      <a href="LINK_AFFILIATO_AWIN_6" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
+    </div>
+  </div>
+
+</div>
+
+<p class="disclaimer">Affiliate-Links | Werbung – Alle Empfehlungen basieren auf persönlicher Erfahrung.</p>
+
+<footer>
+  © Odette von Dubs · <a href="https://odettevondubs.github.io" style="color:inherit;">odettevondubs.github.io</a>
+</footer>
+
+</body>
+</html>
