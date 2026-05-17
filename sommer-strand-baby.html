@@ -3,316 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sommer, Strand & Baby – Odette von Dubs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Strand & Sommer mit Baby – Odette von Dubs</title>
 <style>
-  :root {
-    --green: #1C3A2E;
-    --green-light: #2a5242;
-    --sand: #F5EDD8;
-    --sand-dark: #e8dcbf;
-    --white: #FFFFFF;
-    --text: #1C3A2E;
-    --text-muted: #5a7a6a;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background-color: var(--sand);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-  }
-
-  header {
-    background-color: var(--green);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  header .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--sand);
-    letter-spacing: 0.03em;
-  }
-
-  header .back-link {
-    font-size: 0.78rem;
-    color: var(--sand);
-    text-decoration: none;
-    opacity: 0.75;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .hero {
-    background-color: var(--green);
-    padding: 48px 24px 56px;
-    text-align: center;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--sand);
-    opacity: 0.65;
-    margin-bottom: 14px;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 6vw, 3.2rem);
-    font-weight: 400;
-    color: var(--sand);
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-  }
-
-  .hero-sub {
-    font-size: 0.9rem;
-    color: var(--sand);
-    opacity: 0.7;
-    max-width: 340px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  .wave {
-    width: 100%;
-    display: block;
-    line-height: 0;
-    background-color: var(--sand);
-  }
-
-  .wave svg {
-    display: block;
-    width: 100%;
-  }
-
-  .grid {
-    padding: 8px 20px 60px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .card {
-    background: var(--white);
-    border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-img {
-    width: 100%;
-    height: 200px;
-    background-color: var(--sand-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: var(--text-muted);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .card-img .placeholder-icon {
-    font-size: 2.5rem;
-    opacity: 0.3;
-  }
-
-  .card-body {
-    padding: 20px 20px 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-tag {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .card-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.25;
-    margin-bottom: 10px;
-  }
-
-  .card-desc {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-    flex: 1;
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-
-  .btn {
-    display: block;
-    background-color: var(--green);
-    color: var(--sand);
-    text-decoration: none;
-    text-align: center;
-    padding: 13px 20px;
-    border-radius: 10px;
-    font-size: 0.82rem;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-  }
-
-  .btn:hover {
-    background-color: var(--green-light);
-  }
-
-  .disclaimer {
-    text-align: center;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    padding: 0 24px 40px;
-    opacity: 0.7;
-  }
-
-  footer {
-    background-color: var(--green);
-    padding: 24px;
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--sand);
-    opacity: 0.8;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 480px) {
-    .hero { padding: 40px 20px 48px; }
-    .grid { grid-template-columns: 1fr; padding: 8px 16px 48px; }
-    .card-img { height: 180px; }
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 480px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
+  .back-link:hover { color: #1C3A2E; }
+  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
+  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
+  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
+  .category { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+  .category-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .category-header:hover { background: #f9f5ee; }
+  .cat-left { display: flex; align-items: center; gap: 12px; }
+  .cat-emoji { font-size: 20px; width: 28px; text-align: center; }
+  .cat-title { font-size: 14px; font-weight: 600; color: #1C3A2E; }
+  .cat-count { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
+  .chevron { font-size: 18px; color: #6b8c7a; transition: transform 0.2s; line-height: 1; }
+  .chevron.open { transform: rotate(180deg); }
+  .products { display: none; border-top: 1px solid rgba(28,58,46,0.1); background: #fafaf8; }
+  .products.open { display: block; }
+  .product-link { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(28,58,46,0.07); text-decoration: none; transition: background 0.15s; }
+  .product-link:last-child { border-bottom: none; }
+  .product-link:hover { background: #f5f0e8; }
+  .prod-name { font-size: 13px; color: #1C3A2E; font-weight: 500; }
+  .prod-brand { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
+  .ext { font-size: 13px; color: #6b8c7a; flex-shrink: 0; margin-left: 8px; }
+  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
+  .footer a { color: #1C3A2E; }
 </style>
 </head>
 <body>
+<div class="page">
 
-<header>
-  <span class="logo">Odette von Dubs</span>
-  <a href="https://odettevondubs.github.io" class="back-link">← Zurück</a>
-</header>
+  <div class="header">
+    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
+    <div class="avatar"><span>O</span></div>
+    <h1>Strand & Sommer mit Baby 🏖️</h1>
+    <p>Alles was wir für den Strandtag mitnehmen<br>Meine liebsten Produkte für euch</p>
+  </div>
 
-<div class="hero">
-  <p class="hero-eyebrow">Reisen mit Baby · Sommer</p>
-  <h1>Sommer, Strand<br><em>&amp; Baby</em></h1>
-  <p class="hero-sub">Meine persönlichen Empfehlungen für einen entspannten Strandtag mit Baby – alles was wir wirklich benutzen.</p>
+  <div class="divider"></div>
+
+  <!-- CARD 1: STRANDTASCHE CHECKLISTE -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">☀️</span>
+        <div>
+          <div class="cat-title">Strandtasche mit Baby packen</div>
+          <div class="cat-count">Meine Checkliste</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fladival-empfindliche-kinderhaut-sonnenschutz-spray-lsf-50-150-spray-19362740" target="_blank" rel="noopener">
+        <div><div class="prod-name">Ladival Sonnenschutz-Spray LSF 50+</div><div class="prod-brand">Ladival · Aliva Apotheke</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-capri-schwimmleggings-mit-windeleinsatz-und-uv-schutz-dackel-hellblau-8310793%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Capri-Schwimmleggings UV 60</div><div class="prod-brand">Lässig · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-bade-t-shirt-mit-uv-schutz-eis-rosa-gelb-8310971%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Bade-T-Shirt UV 60 Eis</div><div class="prod-brand">Lässig · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbornino-swimwear-2-tlg-schwimmanzug-mit-uv-schutz-rosa-6170366%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Schwimmanzug 2-tlg. UV 50+</div><div class="prod-brand">Bornino · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fwoerner-badeponcho-8327653%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Badeponcho 100% Baumwolle</div><div class="prod-brand">Wörner · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbeaba-strandmuschel-uv-zelt-breezynest-clay-earth-8267138%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Strandmuschel BreezyNest UV 50+</div><div class="prod-brand">Béaba · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fhape-sandspielzeug-strandrucksack-grundausstattung-7977123%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Sandspielzeug Strandrucksack</div><div class="prod-brand">Hape · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fveer-bollerwagen-cruiser-7247958%2F" target="_blank" rel="noopener">
+        <div><div class="prod-name">Bollerwagen Cruiser</div><div class="prod-brand">Veer · Baby Walz</div></div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 2: BORSONE DA SPIAGGIA (placeholder) -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">👜</span>
+        <div>
+          <div class="cat-title">Strandtasche für die Familie</div>
+          <div class="cat-count">Meine Empfehlung</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products">
+      <a class="product-link" href="LINK_BORSONE" target="_blank" rel="noopener">
+        <div><div class="prod-name">Strandtasche / Borsone</div><div class="prod-brand">Marke · Shop</div></div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer">
+    <p>*Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+    <br>
+    <p><a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a></p>
+  </div>
+
 </div>
 
-<div class="wave">
-  <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="#F5EDD8"/>
-    <rect x="0" y="0" width="1440" height="20" fill="#1C3A2E"/>
-  </svg>
-</div>
-
-<div class="grid">
-
-  <!-- PRODOTTO 1 — La Roche-Posay -->
-  <div class="card">
-    <div class="card-img" style="background:#f0ece4;">
-      <span class="placeholder-icon" style="font-size:1rem;opacity:0.5;font-family:'DM Sans',sans-serif;text-align:center;padding:0 20px;">La Roche-Posay<br>Anthelios Babymilch</span>
-    </div>
-    <div class="card-body">
-      <p class="card-tag">Sonnenschutz · LSF 50+</p>
-      <h2 class="card-title">La Roche-Posay Anthelios Babymilch</h2>
-      <p class="card-desc">Die Sonnencreme, die ich für meinen Kleinen am Strand immer dabei habe. LSF 50+, speziell für Babyhaut entwickelt – sanft, wasserfest und dermatologisch getestet. 50 ml.</p>
-      <a href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fla-roche-posay-anthelios-babymilch-lsf-50-50-milch-11028651" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
-    </div>
-  </div>
-
-  <!-- PRODOTTO 2 — Avène -->
-  <div class="card">
-    <div class="card-img" style="background:#eef3f5;">
-      <span class="placeholder-icon" style="font-size:1rem;opacity:0.5;font-family:'DM Sans',sans-serif;text-align:center;padding:0 20px;">Avène<br>Réflexe Solaire</span>
-    </div>
-    <div class="card-body">
-      <p class="card-tag">Sonnenschutz · SPF 50</p>
-      <h2 class="card-title">Avène Réflexe Solaire Emulsion</h2>
-      <p class="card-desc">Leichte Emulsion mit SPF 50 – zieht schnell ein, hinterlässt keinen weißen Film. Ideal für empfindliche Kinderhaut, auch bei Hitze angenehm zu tragen.</p>
-      <a href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Favene-reflexe-solaire-spf-50-30-emulsion-17896791" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
-    </div>
-  </div>
-
-  <!-- PRODOTTO 3 — Lässig Poncho -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://walz-live.cdn.aboutyou.cloud/images/b1a2a9b62f799a01f85cebfb1083a8f8.jpg?quality=90&height=600&width=600" alt="Lässig Wende-Badeponcho Krokodile">
-    </div>
-    <div class="card-body">
-      <p class="card-tag">Badeponcho · UV-Schutz 80</p>
-      <h2 class="card-title">Lässig Wende-Badeponcho Krokodile</h2>
-      <p class="card-desc">Wendbar – eine Seite mit Krokodil-Print, die andere unifarben. Mit Kapuze und UV-Schutz 80. Perfekt für Strand und Pool, trocknet schnell. 39,95 €</p>
-      <a href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-wende-badeponcho-mit-uv-schutz-und-kapuze-krokodile-hellblau-bunt-7987080%2F" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
-    </div>
-  </div>
-
-  <!-- PRODOTTO 4 — Elodie Poncho -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://walz-live.cdn.aboutyou.cloud/images/2e269cc30556f9ae1f6cefc2abd59857.jpg?quality=90&height=600&width=600" alt="Elodie Badeponcho Vanilla White Shell">
-    </div>
-    <div class="card-body">
-      <p class="card-tag">Badeponcho · OEKO-TEX Kl. 1</p>
-      <h2 class="card-title">Elodie Badeponcho Vanilla White Shell</h2>
-      <p class="card-desc">Traumhaft weicher Frottee-Poncho aus 100% Baumwolle, OEKO-TEX zertifiziert. Druckknöpfe für volle Bewegungsfreiheit – für Kinder von 1–3 Jahren. 39,90 €</p>
-      <a href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Felodie-badeponcho-vanilla-white-shell-4181252%2F" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
-    </div>
-  </div>
-
-  <!-- PRODOTTO 5 — Maximo Mütze -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://walz-live.cdn.aboutyou.cloud/images/6619af22e142aa9aebcd79e80f2c4706.jpg?quality=90&height=600&width=600" alt="Maximo Musselin-Schirmmütze beere">
-    </div>
-    <div class="card-body">
-      <p class="card-tag">Sonnenhut · UV 50 · GOTS</p>
-      <h2 class="card-title">Maximo Musselin-Schirmmütze</h2>
-      <p class="card-desc">Aus reiner Bio-Baumwolle (GOTS), mit Nackenschutz und UV 50. Der Musselinstoff ist extra-weich und atmungsaktiv – kein Schwitzen, kein Drücken. 19,99 €</p>
-      <a href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmaximo-musselin-schirmmuetze-mit-nacken-und-uv-schutz-beere-8216185%2F" class="btn" target="_blank" rel="noopener nofollow">→ Zum Angebot</a>
-    </div>
-  </div>
-
-</div>
-
-<p class="disclaimer">Affiliate-Links | Werbung – Alle Empfehlungen basieren auf persönlicher Erfahrung.</p>
-
-<footer>
-  © Odette von Dubs · <a href="https://odettevondubs.github.io" style="color:inherit;">odettevondubs.github.io</a>
-</footer>
-
+<script>
+  function toggle(el) {
+    const products = el.querySelector('.products');
+    const chevron = el.querySelector('.chevron');
+    products.classList.toggle('open');
+    chevron.classList.toggle('open');
+  }
+</script>
 </body>
 </html>
