@@ -4,136 +4,761 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strand & Sommer mit Baby – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 2rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
-  .back-link:hover { color: #1C3A2E; }
-  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
-  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
-  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
-  .category { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
-  .category-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; cursor: pointer; user-select: none; transition: background 0.15s; }
-  .category-header:hover { background: #f9f5ee; }
-  .cat-left { display: flex; align-items: center; gap: 12px; }
-  .cat-emoji { font-size: 20px; width: 28px; text-align: center; }
-  .cat-title { font-size: 14px; font-weight: 600; color: #1C3A2E; }
-  .cat-count { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
-  .chevron { font-size: 18px; color: #6b8c7a; transition: transform 0.2s; line-height: 1; }
-  .chevron.open { transform: rotate(180deg); }
-  .products { display: none; border-top: 1px solid rgba(28,58,46,0.1); background: #fafaf8; }
-  .products.open { display: block; }
-  .product-link { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(28,58,46,0.07); text-decoration: none; transition: background 0.15s; }
-  .product-link:last-child { border-bottom: none; }
-  .product-link:hover { background: #f5f0e8; }
-  .prod-name { font-size: 13px; color: #1C3A2E; font-weight: 500; }
-  .prod-brand { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
-  .ext { font-size: 13px; color: #6b8c7a; flex-shrink: 0; margin-left: 8px; }
-  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
-  .footer a { color: #1C3A2E; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1C3A2E;
+    --green-mid: #254d3d;
+    --sand: #F5EDD8;
+    --sand-dark: #e8dcc3;
+    --white: #ffffff;
+    --text-muted: rgba(245,237,216,0.6);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--sand);
+    color: var(--green);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: var(--green);
+    mix-blend-mode: normal;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--sand);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-back {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sand);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .nav-back:hover { opacity: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green);
+    padding: 9rem 2.5rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(245,237,216,0.15);
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1;
+    color: var(--sand);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-desc {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: 0.5;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ── PRODUCT GRID ── */
+  .products-section {
+    background: var(--sand);
+    padding: 5rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid rgba(28,58,46,0.2);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--green);
+    margin-top: 0.25rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+    background: rgba(28,58,46,0.12);
+    border: 0.5px solid rgba(28,58,46,0.12);
+  }
+
+  .product-card {
+    background: var(--sand);
+    text-decoration: none;
+    display: block;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card:hover { background: var(--sand-dark); }
+
+  .product-img-wrap {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e8dfc8;
+    position: relative;
+  }
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .product-card:hover .product-img-wrap img {
+    transform: scale(1.04);
+  }
+  .product-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ddd5be, #cfc7b0);
+  }
+  .product-img-placeholder svg {
+    opacity: 0.3;
+    width: 48px;
+    height: 48px;
+  }
+
+  .product-body {
+    padding: 1.4rem 1.6rem 1.6rem;
+  }
+  .product-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: 0.5;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--green);
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .product-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--green);
+    opacity: 0.65;
+    margin-bottom: 1rem;
+  }
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product-shop {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: 0.4;
+    font-weight: 400;
+  }
+  .product-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(28,58,46,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .product-card:hover .product-arrow {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .product-arrow svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--green);
+    transition: stroke 0.2s;
+  }
+  .product-card:hover .product-arrow svg {
+    stroke: var(--sand);
+  }
+
+  /* ── MISSING LINK BADGE ── */
+  .badge-missing {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(200,80,60,0.12);
+    color: #a03020;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    border-bottom: 0.5px solid rgba(28,58,46,0.15);
+  }
+
+  /* ── DISCLOSURE ── */
+  .disclosure {
+    background: var(--green);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+  .disclosure p {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--sand);
+    opacity: 0.55;
+    max-width: 480px;
+    margin: 0 auto;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green);
+    border-top: 0.5px solid rgba(245,237,216,0.1);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer a {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sand);
+    text-decoration: none;
+    opacity: 0.45;
+    transition: opacity 0.2s;
+  }
+  footer a:hover { opacity: 0.85; }
+
+  /* ── ENTRANCE ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .product-card {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  .product-card:nth-child(1) { animation-delay: 0.05s; }
+  .product-card:nth-child(2) { animation-delay: 0.12s; }
+  .product-card:nth-child(3) { animation-delay: 0.19s; }
+  .product-card:nth-child(4) { animation-delay: 0.26s; }
+  .product-card:nth-child(5) { animation-delay: 0.33s; }
+  .product-card:nth-child(6) { animation-delay: 0.40s; }
+  .product-card:nth-child(7) { animation-delay: 0.47s; }
+  .product-card:nth-child(8) { animation-delay: 0.54s; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .products-section { padding: 3rem 1.25rem; }
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+    .product-body { padding: 1rem 1rem 1.2rem; }
+    .product-name { font-size: 1.1rem; }
+    footer { padding: 1.25rem 1.5rem; }
+  }
+  @media (max-width: 400px) {
+    .product-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="header">
-    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
-    <div class="avatar"><span>O</span></div>
-    <h1>Strand & Sommer mit Baby 🏖️</h1>
-    <p>Alles was wir für den Strandtag mitnehmen<br>Meine liebsten Produkte für euch</p>
+<nav>
+  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io" class="nav-back">← Zurück</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Strand & Sommer · Baby</p>
+  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Strand-Ausstattung<br><em>mit Baby</em></h1>
+  <p class="hero-desc fade-up" style="animation-delay:0.35s">Meine persönlichen Empfehlungen für einen entspannten Strandtag mit Baby – alles was wir wirklich benutzen.</p>
+</section>
+
+<!-- CHECKLISTE SECTION -->
+<div style="background:var(--sand)">
+  <div class="products-section">
+    <div class="section-header">
+      <p class="section-label">Strandtasche · Checkliste</p>
+      <h2 class="section-title">Was wir immer dabei haben</h2>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- 1. Ladival -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fladival-empfindliche-kinderhaut-sonnenschutz-spray-lsf-50-150-spray-19362740" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Sonnencreme Spray -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- sun rays -->
+            <g stroke="#c8b98a" stroke-width="1.5" opacity="0.5">
+              <line x1="200" y1="48" x2="200" y2="30"/><line x1="200" y1="66" x2="200" y2="84"/>
+              <line x1="182" y1="57" x2="168" y2="48"/><line x1="218" y1="57" x2="232" y2="48"/>
+              <line x1="182" y1="75" x2="168" y2="84"/><line x1="218" y1="75" x2="232" y2="84"/>
+              <line x1="191" y1="57" x2="178" y2="57"/><line x1="209" y1="57" x2="222" y2="57"/>
+            </g>
+            <circle cx="200" cy="66" r="14" fill="none" stroke="#c8b98a" stroke-width="1.5" opacity="0.6"/>
+            <!-- bottle body -->
+            <rect x="108" y="55" width="44" height="110" rx="14" fill="#1C3A2E"/>
+            <!-- pump top -->
+            <rect x="124" y="38" width="12" height="22" rx="4" fill="#1C3A2E"/>
+            <rect x="118" y="34" width="24" height="8" rx="3" fill="#254d3d"/>
+            <!-- nozzle -->
+            <line x1="136" y1="34" x2="156" y2="24" stroke="#1C3A2E" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="158" cy="23" r="3" fill="#1C3A2E"/>
+            <!-- spray mist -->
+            <g opacity="0.25" fill="#1C3A2E">
+              <circle cx="168" cy="16" r="2"/><circle cx="175" cy="13" r="1.5"/><circle cx="172" cy="8" r="1"/>
+              <circle cx="180" cy="18" r="1.5"/><circle cx="178" cy="24" r="1"/>
+            </g>
+            <!-- label area -->
+            <rect x="112" y="78" width="36" height="46" rx="4" fill="#F5EDD8" opacity="0.15"/>
+            <!-- LSF badge -->
+            <circle cx="130" cy="140" r="12" fill="#F5EDD8" opacity="0.2"/>
+            <text x="130" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" font-style="italic">50+</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Sonnenschutz · LSF 50+</p>
+          <h3 class="product-name">Ladival Sonnenschutz-Spray</h3>
+          <p class="product-desc">Extra wasserfest, speziell für empfindliche Kinderhaut – unser treuer Begleiter an jedem Strandtag.</p>
+          <div class="product-footer">
+            <span class="product-shop">Aliva Apotheke</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2. Schwimmleggings -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-capri-schwimmleggings-mit-windeleinsatz-und-uv-schutz-dackel-hellblau-8310793%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Schwimmleggings -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- water waves background -->
+            <path d="M0 150 Q35 138 70 150 Q105 162 140 150 Q175 138 210 150 Q245 162 280 150 L280 210 L0 210Z" fill="#1C3A2E" opacity="0.08"/>
+            <path d="M0 165 Q35 153 70 165 Q105 177 140 165 Q175 153 210 165 Q245 177 280 165 L280 210 L0 210Z" fill="#1C3A2E" opacity="0.06"/>
+            <!-- leggings shape -->
+            <path d="M100 50 L180 50 L175 130 L155 130 L140 90 L125 130 L105 130 Z" fill="#1C3A2E" rx="4"/>
+            <!-- waistband -->
+            <rect x="100" y="48" width="80" height="14" rx="4" fill="#254d3d"/>
+            <!-- UV badge -->
+            <circle cx="140" cy="74" r="16" fill="#F5EDD8" opacity="0.15"/>
+            <text x="140" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8">UV</text>
+            <text x="140" y="81" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" font-weight="bold">60</text>
+            <!-- dachshund motif dots -->
+            <circle cx="115" cy="100" r="3" fill="#F5EDD8" opacity="0.3"/>
+            <circle cx="125" cy="108" r="2" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="158" cy="103" r="2.5" fill="#F5EDD8" opacity="0.3"/>
+            <!-- leg openings -->
+            <ellipse cx="112" cy="130" rx="10" ry="4" fill="#e8dfc8" opacity="0.4"/>
+            <ellipse cx="168" cy="130" rx="10" ry="4" fill="#e8dfc8" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Badebekleidung · UV 60</p>
+          <h3 class="product-name">Capri-Schwimmleggings</h3>
+          <p class="product-desc">Mit integriertem Windeleinsatz und UV-Schutz 60 – praktisch und schön für die Kleinsten am Wasser.</p>
+          <div class="product-footer">
+            <span class="product-shop">Lässig · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3. Bade-T-Shirt -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-bade-t-shirt-mit-uv-schutz-eis-rosa-gelb-8310971%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Bade T-shirt with ice cream motif -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- t-shirt shape -->
+            <path d="M90 55 L110 48 L140 60 L170 48 L190 55 L178 80 L165 72 L165 160 L115 160 L115 72 L102 80 Z" fill="#1C3A2E"/>
+            <!-- collar -->
+            <path d="M122 60 Q140 68 158 60" fill="none" stroke="#254d3d" stroke-width="3"/>
+            <!-- UV badge on sleeve -->
+            <circle cx="175" cy="90" r="11" fill="#F5EDD8" opacity="0.2"/>
+            <text x="175" y="87" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#F5EDD8">UV</text>
+            <text x="175" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8">60</text>
+            <!-- ice cream motif on chest -->
+            <rect x="133" y="85" width="14" height="22" rx="2" fill="#F5EDD8" opacity="0.18"/>
+            <ellipse cx="140" cy="85" rx="9" ry="9" fill="#F5EDD8" opacity="0.22"/>
+            <ellipse cx="140" cy="78" rx="7" ry="7" fill="#F5EDD8" opacity="0.18"/>
+            <!-- sprinkles -->
+            <rect x="125" y="115" width="5" height="2" rx="1" fill="#F5EDD8" opacity="0.2" transform="rotate(-30 125 115)"/>
+            <rect x="148" y="120" width="5" height="2" rx="1" fill="#F5EDD8" opacity="0.2" transform="rotate(20 148 120)"/>
+            <rect x="130" y="130" width="4" height="2" rx="1" fill="#F5EDD8" opacity="0.15" transform="rotate(10 130 130)"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Badebekleidung · UV 60</p>
+          <h3 class="product-name">Bade-T-Shirt Eis</h3>
+          <p class="product-desc">Langärmeliger UV-Schutz in sommerlichen Farben – so müssen wir nicht jede Stunde neu eincremen.</p>
+          <div class="product-footer">
+            <span class="product-shop">Lässig · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. Schwimmanzug -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbornino-swimwear-2-tlg-schwimmanzug-mit-uv-schutz-rosa-6170366%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Schwimmanzug 2-tlg -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- water hint bottom -->
+            <path d="M0 178 Q40 168 80 178 Q120 188 160 178 Q200 168 240 178 Q260 183 280 178 L280 210 L0 210Z" fill="#1C3A2E" opacity="0.07"/>
+            <!-- swim top (bikini top) -->
+            <path d="M112 62 Q140 80 168 62 L162 88 Q140 100 118 88 Z" fill="#1C3A2E"/>
+            <!-- straps -->
+            <line x1="130" y1="62" x2="124" y2="48" stroke="#1C3A2E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="150" y1="62" x2="156" y2="48" stroke="#1C3A2E" stroke-width="3" stroke-linecap="round"/>
+            <!-- swim bottom -->
+            <path d="M112 112 L168 112 L162 155 L150 155 L140 130 L130 155 L118 155 Z" fill="#1C3A2E"/>
+            <!-- waistband -->
+            <rect x="112" y="108" width="56" height="10" rx="3" fill="#254d3d"/>
+            <!-- UV50+ badge -->
+            <circle cx="200" cy="70" r="20" fill="none" stroke="#1C3A2E" stroke-width="1" opacity="0.25"/>
+            <text x="200" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#1C3A2E" opacity="0.4">UV</text>
+            <text x="200" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1C3A2E" opacity="0.4" font-weight="bold">50+</text>
+            <!-- small stars/hearts motif -->
+            <text x="140" y="76" text-anchor="middle" font-size="7" fill="#F5EDD8" opacity="0.4">✦</text>
+            <text x="132" y="82" text-anchor="middle" font-size="5" fill="#F5EDD8" opacity="0.3">✦</text>
+            <text x="148" y="83" text-anchor="middle" font-size="5" fill="#F5EDD8" opacity="0.3">✦</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Badebekleidung · UV 50+</p>
+          <h3 class="product-name">Schwimmanzug 2-tlg.</h3>
+          <p class="product-desc">Zweiteiliger Set mit UV-Schutz 50+ – süßes Design und zuverlässiger Schutz für den ganzen Tag am Strand.</p>
+          <div class="product-footer">
+            <span class="product-shop">Bornino · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5. Badeponcho -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fwoerner-badeponcho-8327653%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Badeponcho -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- poncho shape - big triangle/cape -->
+            <path d="M140 45 L210 155 L70 155 Z" fill="#1C3A2E"/>
+            <!-- hood on top -->
+            <ellipse cx="140" cy="50" rx="26" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="140" cy="46" rx="18" ry="16" fill="#254d3d"/>
+            <!-- face opening -->
+            <ellipse cx="140" cy="50" rx="11" ry="10" fill="#e8dfc8"/>
+            <!-- terry texture lines on poncho -->
+            <line x1="115" y1="80" x2="165" y2="80" stroke="#F5EDD8" stroke-width="0.8" opacity="0.12"/>
+            <line x1="105" y1="95" x2="175" y2="95" stroke="#F5EDD8" stroke-width="0.8" opacity="0.12"/>
+            <line x1="98" y1="110" x2="182" y2="110" stroke="#F5EDD8" stroke-width="0.8" opacity="0.12"/>
+            <line x1="92" y1="125" x2="188" y2="125" stroke="#F5EDD8" stroke-width="0.8" opacity="0.12"/>
+            <line x1="86" y1="140" x2="194" y2="140" stroke="#F5EDD8" stroke-width="0.8" opacity="0.12"/>
+            <!-- small star motif -->
+            <text x="140" y="118" text-anchor="middle" font-size="12" fill="#F5EDD8" opacity="0.2">★</text>
+            <!-- 100% cotton badge -->
+            <rect x="88" y="158" width="104" height="18" rx="3" fill="#1C3A2E" opacity="0.15"/>
+            <text x="140" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#1C3A2E" opacity="0.45" letter-spacing="1">100% Baumwolle</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Nach dem Baden</p>
+          <h3 class="product-name">Badeponcho 100% Baumwolle</h3>
+          <p class="product-desc">Weich, saugfähig und schnell über den Kopf – für das Anziehen nach dem Plantschen ohne Drama.</p>
+          <div class="product-footer">
+            <span class="product-shop">Wörner · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 6. Strandmuschel -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbeaba-strandmuschel-uv-zelt-breezynest-clay-earth-8267138%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Strandmuschel / beach tent -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- sand ground -->
+            <ellipse cx="140" cy="175" rx="110" ry="14" fill="#c8b98a" opacity="0.35"/>
+            <!-- tent main body - dome shape -->
+            <path d="M58 148 Q60 90 140 72 Q220 90 222 148 Z" fill="#1C3A2E"/>
+            <!-- tent opening -->
+            <path d="M100 148 Q100 105 140 95 Q180 105 180 148 Z" fill="#e8dfc8" opacity="0.85"/>
+            <!-- inner shadow -->
+            <path d="M108 148 Q108 112 140 103 Q172 112 172 148 Z" fill="#d4c9a8" opacity="0.5"/>
+            <!-- tent poles hint -->
+            <line x1="140" y1="72" x2="140" y2="148" stroke="#F5EDD8" stroke-width="1" opacity="0.15"/>
+            <!-- UV label on tent -->
+            <circle cx="140" cy="108" r="16" fill="#1C3A2E" opacity="0.15"/>
+            <text x="140" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#1C3A2E" opacity="0.6">UV</text>
+            <text x="140" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#1C3A2E" opacity="0.6" font-weight="bold">50+</text>
+            <!-- sun top right -->
+            <circle cx="225" cy="55" r="12" fill="none" stroke="#c8b98a" stroke-width="1.2" opacity="0.5"/>
+            <circle cx="225" cy="55" r="5" fill="#c8b98a" opacity="0.35"/>
+            <!-- ventilation lines on tent -->
+            <path d="M80 120 Q90 115 100 120" fill="none" stroke="#F5EDD8" stroke-width="1" opacity="0.2"/>
+            <path d="M180 120 Q190 115 200 120" fill="none" stroke="#F5EDD8" stroke-width="1" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Schatten & Schutz · UV 50+</p>
+          <h3 class="product-name">Strandmuschel BreezyNest</h3>
+          <p class="product-desc">Unser Schattenplatz am Strand – leicht aufzubauen, belüftet und mit UV-Schutz 50+ für ruhige Mittagsstunden.</p>
+          <div class="product-footer">
+            <span class="product-shop">Béaba · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 7. Sandspielzeug -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fhape-sandspielzeug-strandrucksack-grundausstattung-7977123%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Sandspielzeug - rucksack + tools -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- sand texture bottom -->
+            <rect x="0" y="168" width="280" height="42" fill="#c8b98a" opacity="0.3"/>
+            <!-- small bucket -->
+            <path d="M72 100 L88 100 L92 145 L68 145 Z" fill="#1C3A2E"/>
+            <rect x="68" y="95" width="26" height="8" rx="2" fill="#254d3d"/>
+            <!-- bucket handle -->
+            <path d="M72 96 Q81 82 90 96" fill="none" stroke="#1C3A2E" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- shovel -->
+            <line x1="175" y1="60" x2="175" y2="145" stroke="#1C3A2E" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M161 115 Q175 108 189 115 Q189 138 175 145 Q161 138 161 115 Z" fill="#1C3A2E"/>
+            <!-- backpack -->
+            <rect x="108" y="68" width="52" height="68" rx="8" fill="#1C3A2E"/>
+            <!-- backpack flap -->
+            <rect x="108" y="68" width="52" height="22" rx="8" fill="#254d3d"/>
+            <!-- backpack strap details -->
+            <rect x="116" y="136" width="8" height="20" rx="3" fill="#1C3A2E"/>
+            <rect x="136" y="136" width="8" height="20" rx="3" fill="#1C3A2E"/>
+            <!-- clasp -->
+            <rect x="127" y="84" width="6" height="8" rx="2" fill="#F5EDD8" opacity="0.4"/>
+            <!-- star/Hape logo hint -->
+            <text x="134" y="115" text-anchor="middle" font-size="10" fill="#F5EDD8" opacity="0.2">★</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Spielzeug · Sand & Wasser</p>
+          <h3 class="product-name">Sandspielzeug Strandrucksack</h3>
+          <p class="product-desc">Alles praktisch verpackt im kleinen Rucksack – Eimer, Schaufeln und Formen für stundenlangen Sandkastenspaß.</p>
+          <div class="product-footer">
+            <span class="product-shop">Hape · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8. Bollerwagen -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fveer-bollerwagen-cruiser-7247958%2F" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Bollerwagen / wagon -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- ground line -->
+            <line x1="40" y1="168" x2="240" y2="168" stroke="#c8b98a" stroke-width="1.5" opacity="0.5"/>
+            <!-- handle -->
+            <line x1="68" y1="90" x2="50" y2="130" stroke="#1C3A2E" stroke-width="4" stroke-linecap="round"/>
+            <line x1="50" y1="130" x2="75" y2="130" stroke="#1C3A2E" stroke-width="4" stroke-linecap="round"/>
+            <!-- wagon body -->
+            <rect x="75" y="105" width="140" height="65" rx="10" fill="#1C3A2E"/>
+            <!-- wagon interior hint -->
+            <rect x="84" y="113" width="122" height="50" rx="6" fill="#254d3d"/>
+            <!-- load inside: beach bag silhouette -->
+            <ellipse cx="135" cy="113" rx="22" ry="8" fill="#1C3A2E"/>
+            <rect x="113" y="113" width="44" height="30" rx="4" fill="#1C3A2E"/>
+            <!-- star on bag -->
+            <text x="135" y="132" text-anchor="middle" font-size="10" fill="#F5EDD8" opacity="0.2">✦</text>
+            <!-- left wheel -->
+            <circle cx="105" cy="165" r="20" fill="#1C3A2E"/>
+            <circle cx="105" cy="165" r="12" fill="#254d3d"/>
+            <circle cx="105" cy="165" r="4" fill="#1C3A2E"/>
+            <!-- spokes -->
+            <line x1="105" y1="153" x2="105" y2="177" stroke="#1C3A2E" stroke-width="2" opacity="0.5"/>
+            <line x1="93" y1="165" x2="117" y2="165" stroke="#1C3A2E" stroke-width="2" opacity="0.5"/>
+            <!-- right wheel -->
+            <circle cx="185" cy="165" r="20" fill="#1C3A2E"/>
+            <circle cx="185" cy="165" r="12" fill="#254d3d"/>
+            <circle cx="185" cy="165" r="4" fill="#1C3A2E"/>
+            <line x1="185" y1="153" x2="185" y2="177" stroke="#1C3A2E" stroke-width="2" opacity="0.5"/>
+            <line x1="173" y1="165" x2="197" y2="165" stroke="#1C3A2E" stroke-width="2" opacity="0.5"/>
+            <!-- veer logo text hint -->
+            <text x="200" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#F5EDD8" opacity="0.25" letter-spacing="1">VEER</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <p class="product-category">Transport · Strand & Outdoor</p>
+          <h3 class="product-name">Bollerwagen Cruiser</h3>
+          <p class="product-desc">Mit dem Veer rollen wir alles auf einmal zum Strand – Kind, Tasche, Strandmuschel. Ein echter Gamechanger.</p>
+          <div class="product-footer">
+            <span class="product-shop">Veer · Baby Walz</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- CARD 1: STRANDTASCHE CHECKLISTE -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">☀️</span>
-        <div>
-          <div class="cat-title">Strandtasche mit Baby packen</div>
-          <div class="cat-count">Meine Checkliste</div>
+  <!-- STRANDTASCHE SECTION -->
+  <div class="products-section" style="padding-top:4rem">
+    <div class="section-header">
+      <p class="section-label">Für die ganze Familie</p>
+      <h2 class="section-title">Unsere Strandtasche</h2>
+    </div>
+
+    <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))">
+      <a class="product-card" href="https://odettevondubs.github.io/LINK_BORSONE" target="_blank" rel="sponsored">
+        <div class="product-img-wrap">
+          <!-- Strandtasche -->
+          <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="280" height="210" fill="#e8dfc8"/>
+            <!-- bag body -->
+            <rect x="78" y="88" width="124" height="90" rx="10" fill="#1C3A2E"/>
+            <!-- bag top opening -->
+            <rect x="78" y="88" width="124" height="18" rx="10" fill="#254d3d"/>
+            <!-- handles -->
+            <path d="M108 88 Q108 52 128 52 Q148 52 148 88" fill="none" stroke="#1C3A2E" stroke-width="7" stroke-linecap="round"/>
+            <path d="M132 88 Q132 52 152 52 Q172 52 172 88" fill="none" stroke="#1C3A2E" stroke-width="7" stroke-linecap="round"/>
+            <!-- front pocket -->
+            <rect x="96" y="120" width="88" height="42" rx="6" fill="#254d3d"/>
+            <!-- zipper line -->
+            <line x1="96" y1="132" x2="184" y2="132" stroke="#1C3A2E" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- zipper pull -->
+            <circle cx="140" cy="132" r="4" fill="#1C3A2E"/>
+            <!-- weave texture hint -->
+            <line x1="96" y1="145" x2="184" y2="145" stroke="#F5EDD8" stroke-width="0.7" opacity="0.1"/>
+            <line x1="96" y1="155" x2="184" y2="155" stroke="#F5EDD8" stroke-width="0.7" opacity="0.1"/>
+            <!-- coming soon label -->
+            <rect x="90" y="183" width="100" height="16" rx="3" fill="#1C3A2E" opacity="0.12"/>
+            <text x="140" y="194" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#1C3A2E" opacity="0.4" letter-spacing="1.5">coming soon</text>
+          </svg>
         </div>
-      </div>
-      <span class="chevron">▾</span>
-    </div>
-    <div class="products">
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fladival-empfindliche-kinderhaut-sonnenschutz-spray-lsf-50-150-spray-19362740" target="_blank" rel="noopener">
-        <div><div class="prod-name">Ladival Sonnenschutz-Spray LSF 50+</div><div class="prod-brand">Ladival · Aliva Apotheke</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-capri-schwimmleggings-mit-windeleinsatz-und-uv-schutz-dackel-hellblau-8310793%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Capri-Schwimmleggings UV 60</div><div class="prod-brand">Lässig · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Flaessig-bade-t-shirt-mit-uv-schutz-eis-rosa-gelb-8310971%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Bade-T-Shirt UV 60 Eis</div><div class="prod-brand">Lässig · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbornino-swimwear-2-tlg-schwimmanzug-mit-uv-schutz-rosa-6170366%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Schwimmanzug 2-tlg. UV 50+</div><div class="prod-brand">Bornino · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fwoerner-badeponcho-8327653%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Badeponcho 100% Baumwolle</div><div class="prod-brand">Wörner · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbeaba-strandmuschel-uv-zelt-breezynest-clay-earth-8267138%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Strandmuschel BreezyNest UV 50+</div><div class="prod-brand">Béaba · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fhape-sandspielzeug-strandrucksack-grundausstattung-7977123%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Sandspielzeug Strandrucksack</div><div class="prod-brand">Hape · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fveer-bollerwagen-cruiser-7247958%2F" target="_blank" rel="noopener">
-        <div><div class="prod-name">Bollerwagen Cruiser</div><div class="prod-brand">Veer · Baby Walz</div></div>
-        <span class="ext">↗</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- CARD 2: BORSONE DA SPIAGGIA (placeholder) -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">👜</span>
-        <div>
-          <div class="cat-title">Strandtasche für die Familie</div>
-          <div class="cat-count">Meine Empfehlung</div>
+        <div class="product-body">
+          <span class="badge-missing">Link bald verfügbar</span>
+          <p class="product-category">Strandtasche · Familie</p>
+          <h3 class="product-name">Strandtasche / Borsone</h3>
+          <p class="product-desc">Meine Empfehlung für die perfekte Familientasche – groß genug für alle, trotzdem stylish.</p>
+          <div class="product-footer">
+            <span class="product-shop">Coming soon</span>
+            <span class="product-arrow"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
         </div>
-      </div>
-      <span class="chevron">▾</span>
-    </div>
-    <div class="products">
-      <a class="product-link" href="LINK_BORSONE" target="_blank" rel="noopener">
-        <div><div class="prod-name">Strandtasche / Borsone</div><div class="prod-brand">Marke · Shop</div></div>
-        <span class="ext">↗</span>
       </a>
     </div>
   </div>
-
-  <div class="divider"></div>
-
-  <div class="footer">
-    <p>*Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
-    <br>
-    <p><a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a></p>
-  </div>
-
 </div>
 
-<script>
-  function toggle(el) {
-    const products = el.querySelector('.products');
-    const chevron = el.querySelector('.chevron');
-    products.classList.toggle('open');
-    chevron.classList.toggle('open');
-  }
-</script>
+<!-- DISCLOSURE -->
+<div class="disclosure">
+  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+
+<footer>
+  <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
+  <span style="font-size:0.7rem;letter-spacing:0.08em;color:var(--sand);opacity:0.3;font-weight:300">Odette von Dubs</span>
+</footer>
+
 </body>
 </html>
