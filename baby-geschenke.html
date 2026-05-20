@@ -3,39 +3,556 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baby Geschenke 🎁 – Odette von Dubs</title>
+<title>Baby Geschenke – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 2rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
-  .back-link:hover { color: #1C3A2E; }
-  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
-  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
-  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
-  .coming-soon { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; padding: 2rem; text-align: center; }
-  .coming-soon p { font-size: 13px; color: #6b8c7a; line-height: 1.6; }
-  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
-  .footer a { color: #1C3A2E; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1C3A2E;
+    --green-mid: #254d3d;
+    --sand: #F5EDD8;
+    --sand-dark: #e8dcc3;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--sand); color: var(--green); -webkit-font-smoothing: antialiased; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem; background: var(--green);
+  }
+  .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--sand); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-back { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  .nav-back:hover { opacity: 1; }
+
+  .hero { background: var(--green); padding: 9rem 2.5rem 6rem; text-align: center; }
+  .hero-eyebrow { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 1.5rem; }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; color: var(--sand); margin-bottom: 1.75rem; }
+  .hero-title em { font-style: italic; }
+  .hero-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(245,237,216,0.6); max-width: 420px; margin: 0 auto; }
+
+  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem 2rem; }
+  .section-header { margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid rgba(28,58,46,0.18); }
+  .section-eye { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); opacity: 0.45; margin-bottom: 0.3rem; }
+  .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--green); margin-top: 0.2rem; }
+  .section-desc { font-family: var(--sans); font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--green); opacity: 0.6; margin-top: 0.75rem; max-width: 520px; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: rgba(28,58,46,0.1); }
+
+  .product-card { background: var(--sand); text-decoration: none; display: block; transition: background 0.22s; opacity: 0; transform: translateY(10px); animation: fadeUp 0.45s ease forwards; }
+  .product-card:hover { background: var(--sand-dark); }
+  .product-card:nth-child(1){ animation-delay: 0.05s; }
+  .product-card:nth-child(2){ animation-delay: 0.12s; }
+
+  .card-img { width: 100%; aspect-ratio: 1; overflow: hidden; }
+  .card-img svg { width: 100%; height: 100%; display: block; }
+
+  .card-body { padding: 1.25rem 1.4rem 1.5rem; }
+  .card-cat { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); opacity: 0.42; margin-bottom: 0.4rem; }
+  .card-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--green); line-height: 1.2; margin-bottom: 0.5rem; }
+  .card-desc { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; line-height: 1.65; color: var(--green); opacity: 0.6; margin-bottom: 1rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .card-shop { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); opacity: 0.35; }
+  .card-arrow { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid rgba(28,58,46,0.22); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+  .card-arrow svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 1.5; transition: stroke 0.2s; }
+  .product-card:hover .card-arrow { background: var(--green); }
+  .product-card:hover .card-arrow svg { stroke: var(--sand); }
+
+  .subsection-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); opacity: 0.4; margin: 2rem 0 0.75rem; }
+  .section-divider { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; border-bottom: 0.5px solid rgba(28,58,46,0.12); }
+  .coming-soon-card { background: rgba(28,58,46,0.04); border: 1px dashed rgba(28,58,46,0.18); border-radius: 4px; padding: 2.5rem 2rem; text-align: center; }
+  .coming-soon-card p { font-family: var(--serif); font-size: 1.2rem; color: var(--green); opacity: 0.4; font-style: italic; }
+  .coming-soon-card span { display: block; font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); opacity: 0.3; margin-top: 0.5rem; }
+  .avocado-badge { display: inline-block; font-family: var(--sans); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(28,58,46,0.1); color: var(--green); padding: 1px 6px; border-radius: 2px; margin-bottom: 0.25rem; opacity: 0.6; }
+  .disclosure { background: var(--green); padding: 3rem 2.5rem; text-align: center; margin-top: 4rem; }
+  .disclosure p { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; line-height: 1.8; color: var(--sand); opacity: 0.5; max-width: 480px; margin: 0 auto; }
+
+  footer { background: var(--green); border-top: 0.5px solid rgba(245,237,216,0.1); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
+  footer a:hover { opacity: 0.85; }
+  footer span { font-size: 0.7rem; color: var(--sand); opacity: 0.25; font-weight: 300; }
+
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.65s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media(max-width:640px){
+    nav { padding: 1rem 1.25rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .section { padding: 3rem 1.25rem 1.5rem; }
+    .product-grid { grid-template-columns: 1fr; }
+    .card-body { padding: 1rem 1rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="header">
-    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
-    <div class="avatar"><span>O</span></div>
-    <h1>Baby Geschenke 🎁</h1>
-    <p>Herzliche Geschenkideen zur Geburt & danach</p>
+
+<nav>
+  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io" class="nav-back">← Zurück</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Baby Geschenke</p>
+  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Geschenke die<br><em>wirklich bleiben</em></h1>
+  <p class="hero-desc fade-up" style="animation-delay:0.35s">Meine liebsten Geschenkideen zur Geburt — ausgewählt mit Herz, für die schönsten ersten Momente.</p>
+</section>
+
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Neugeboren · Baby Girl</p>
+      <h2 class="section-title">Für ein kleines Mädchen</h2>
+      <p class="section-desc">Wenn eine kleine Mädchen auf die Welt kommt — hier sind meine liebsten Geschenke, die wirklich etwas bedeuten.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Organic Zoo Midnight Three Piece Set -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fmidnight-three-piece-set" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+
+            <!-- background botanical hint -->
+            <path d="M268 40 Q280 60 268 80 Q260 60 268 40Z" fill="#c8b98a" opacity="0.2"/>
+            <path d="M278 48 Q286 62 278 76" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.18"/>
+            <path d="M44 240 Q36 260 44 280 Q52 260 44 240Z" fill="#c8b98a" opacity="0.18"/>
+
+            <!-- ONESIE / tuta charcoal-midnight -->
+            <path d="M110 90 L130 80 L160 96 L190 80 L210 90 L196 118 L180 108 L180 220 L140 220 L140 108 L124 118 Z" fill="#1C3A2E"/>
+            <!-- collar -->
+            <path d="M146 96 Q160 108 174 96" fill="#254d3d" stroke="none"/>
+            <!-- snap buttons bottom -->
+            <circle cx="150" cy="210" r="3" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="160" cy="210" r="3" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="170" cy="210" r="3" fill="#F5EDD8" opacity="0.25"/>
+            <!-- subtle texture lines -->
+            <line x1="143" y1="130" x2="177" y2="130" stroke="#F5EDD8" stroke-width="0.7" opacity="0.1"/>
+            <line x1="143" y1="145" x2="177" y2="145" stroke="#F5EDD8" stroke-width="0.7" opacity="0.1"/>
+            <line x1="143" y1="160" x2="177" y2="160" stroke="#F5EDD8" stroke-width="0.7" opacity="0.1"/>
+
+            <!-- HAT with tassel — oatmeal tone, top right area -->
+            <ellipse cx="240" cy="115" rx="34" ry="26" fill="#c8b98a" opacity="0.55"/>
+            <ellipse cx="240" cy="108" rx="28" ry="22" fill="#d4c9a8" opacity="0.6"/>
+            <!-- contrast brim -->
+            <ellipse cx="240" cy="130" rx="34" ry="9" fill="#1C3A2E" opacity="0.35"/>
+            <!-- tassel -->
+            <line x1="240" y1="86" x2="240" y2="68" stroke="#c8b98a" stroke-width="2" opacity="0.6"/>
+            <line x1="238" y1="68" x2="234" y2="58" stroke="#c8b98a" stroke-width="1.5" opacity="0.5"/>
+            <line x1="240" y1="68" x2="240" y2="56" stroke="#c8b98a" stroke-width="1.5" opacity="0.5"/>
+            <line x1="242" y1="68" x2="246" y2="58" stroke="#c8b98a" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="240" cy="68" r="3" fill="#c8b98a" opacity="0.55"/>
+
+            <!-- TEDDY BEAR — bottom left -->
+            <ellipse cx="82" cy="230" rx="28" ry="22" fill="#d4c9a8" opacity="0.65"/>
+            <circle cx="82" cy="206" rx="20" r="20" fill="#d4c9a8" opacity="0.65"/>
+            <!-- ears -->
+            <circle cx="66" cy="190" r="10" fill="#d4c9a8" opacity="0.6"/>
+            <circle cx="98" cy="190" r="10" fill="#d4c9a8" opacity="0.6"/>
+            <circle cx="66" cy="190" r="6" fill="#c8b98a" opacity="0.4"/>
+            <circle cx="98" cy="190" r="6" fill="#c8b98a" opacity="0.4"/>
+            <!-- face -->
+            <circle cx="76" cy="202" r="3" fill="#1C3A2E" opacity="0.3"/>
+            <circle cx="88" cy="202" r="3" fill="#1C3A2E" opacity="0.3"/>
+            <ellipse cx="82" cy="210" rx="5" ry="3" fill="#1C3A2E" opacity="0.2"/>
+            <!-- teddy tummy -->
+            <ellipse cx="82" cy="226" rx="16" ry="12" fill="#c8b98a" opacity="0.35"/>
+
+            <!-- brand label -->
+            <text x="160" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="2">ORGANIC ZOO</text>
+            <!-- Bio badge -->
+            <rect x="126" y="238" width="68" height="16" rx="3" fill="#1C3A2E" opacity="0.08"/>
+            <text x="160" y="250" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.35" letter-spacing="1">Bio-Baumwolle</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Geschenkset · Neugeboren · 3-teilig</p>
+          <h3 class="card-name">Midnight Three Piece Set</h3>
+          <p class="card-desc">Tuta charcoal, cappellino oatmeal con nappe e teddy soft — tutto in Bio-Baumwolle. Zeitlos, weich und zum Verlieben.</p>
+          <div class="card-footer">
+            <span class="card-shop">Organic Zoo</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Framily An diesem Tag -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14129&awinaffid=2708356&ued=https%3A%2F%2Fwww.framily.de%2Fproducts%2Fan-diesem-tag" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+
+            <!-- soft background stars -->
+            <circle cx="56" cy="60" r="2.5" fill="#c8b98a" opacity="0.35"/>
+            <circle cx="72" cy="44" r="1.8" fill="#c8b98a" opacity="0.28"/>
+            <circle cx="264" cy="260" r="2.5" fill="#c8b98a" opacity="0.32"/>
+            <circle cx="278" cy="244" r="1.5" fill="#c8b98a" opacity="0.25"/>
+            <circle cx="48" cy="270" r="1.8" fill="#c8b98a" opacity="0.25"/>
+
+            <!-- book spine -->
+            <rect x="72" y="58" width="18" height="210" rx="4" fill="#254d3d"/>
+            <!-- book cover -->
+            <rect x="88" y="52" width="152" height="218" rx="6" fill="#1C3A2E"/>
+            <!-- book pages right side -->
+            <rect x="236" y="58" width="10" height="206" rx="2" fill="#F5EDD8" opacity="0.35"/>
+            <!-- inner page lines -->
+            <line x1="238" y1="72" x2="244" y2="72" stroke="#F5EDD8" stroke-width="0.8" opacity="0.4"/>
+            <line x1="238" y1="80" x2="244" y2="80" stroke="#F5EDD8" stroke-width="0.8" opacity="0.4"/>
+            <line x1="238" y1="88" x2="244" y2="88" stroke="#F5EDD8" stroke-width="0.8" opacity="0.4"/>
+            <line x1="238" y1="96" x2="244" y2="96" stroke="#F5EDD8" stroke-width="0.8" opacity="0.4"/>
+
+            <!-- cover illustration: moon + stars -->
+            <circle cx="164" cy="120" r="30" fill="none" stroke="#F5EDD8" stroke-width="0.8" opacity="0.15"/>
+            <path d="M150 106 Q170 116 160 140 Q140 130 150 106Z" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="188" cy="98" r="3" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="196" cy="114" r="2" fill="#F5EDD8" opacity="0.2"/>
+            <circle cx="178" cy="88" r="2.5" fill="#F5EDD8" opacity="0.22"/>
+            <circle cx="140" cy="92" r="2" fill="#F5EDD8" opacity="0.18"/>
+
+            <!-- title text on cover -->
+            <text x="164" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#F5EDD8" opacity="0.5" letter-spacing="0.5">An diesem</text>
+            <text x="164" y="194" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#F5EDD8" opacity="0.5" letter-spacing="0.5">Tag</text>
+
+            <!-- personalisation hint -->
+            <rect x="110" y="208" width="108" height="36" rx="4" fill="#F5EDD8" opacity="0.07"/>
+            <text x="164" y="224" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#F5EDD8" opacity="0.35" letter-spacing="0.5">Name &amp; Geburtstag</text>
+            <text x="164" y="236" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.25" letter-spacing="0.5">personalisiert</text>
+
+            <!-- framily label -->
+            <text x="164" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="2">FRAMILY</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Geburtsbuch · Personalisiert</p>
+          <h3 class="card-name">Geburtsbuch „An diesem Tag"</h3>
+          <p class="card-desc">Ein Buch über den Tag, an dem alles begann — personalisiert mit Name und Geburtsdatum. Ein Geschenk für immer.</p>
+          <div class="card-footer">
+            <span class="card-shop">Framily</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
-  <div class="divider"></div>
-  <div class="coming-soon">
-    <p>✨ Meine Empfehlungen kommen bald!<br>Schau bald wieder vorbei.</p>
-  </div>
-  <div class="divider"></div>
-  <div class="footer"><p><a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a></p></div>
 </div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════
+     GEBURT · BABY BOY
+════════════════════════════════ -->
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Neugeboren · Baby Boy</p>
+      <h2 class="section-title">Für einen kleinen Jungen</h2>
+      <p class="section-desc">Die schönsten Geschenke zur Geburt eines Jungen — wird bald vervollständigt.</p>
+    </div>
+    <div class="coming-soon-card">
+      <p>Meine Empfehlungen kommen bald</p>
+      <span>Arrivano presto · stay tuned 🌿</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════
+     GESCHENKE GENERISCH
+════════════════════════════════ -->
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Für Mädchen & Jungen</p>
+      <h2 class="section-title">Geschenke für alle</h2>
+      <p class="section-desc">Schöne Geschenke zur Geburt — für jedes Baby, unabhängig vom Geschlecht.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Fehn Schmusetuch Otter Theo -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Ffehn-schmusetuch-otter-theo-7980159%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <!-- cloth background soft -->
+            <rect x="36" y="140" width="248" height="148" rx="6" fill="#1C3A2E" opacity="0.1"/>
+            <rect x="44" y="148" width="232" height="132" rx="4" fill="#1C3A2E" opacity="0.07"/>
+            <!-- otter head -->
+            <ellipse cx="160" cy="130" rx="56" ry="50" fill="#1C3A2E"/>
+            <!-- ears -->
+            <ellipse cx="114" cy="96" rx="22" ry="28" fill="#1C3A2E"/>
+            <ellipse cx="206" cy="96" rx="22" ry="28" fill="#1C3A2E"/>
+            <ellipse cx="114" cy="96" rx="14" ry="18" fill="#254d3d"/>
+            <ellipse cx="206" cy="96" rx="14" ry="18" fill="#254d3d"/>
+            <!-- face -->
+            <ellipse cx="160" cy="124" rx="36" ry="32" fill="#254d3d"/>
+            <!-- eyes -->
+            <circle cx="146" cy="114" r="7" fill="#1C3A2E"/>
+            <circle cx="174" cy="114" r="7" fill="#1C3A2E"/>
+            <circle cx="148" cy="112" r="3" fill="#F5EDD8" opacity="0.4"/>
+            <circle cx="176" cy="112" r="3" fill="#F5EDD8" opacity="0.4"/>
+            <!-- nose -->
+            <ellipse cx="160" cy="126" rx="8" ry="5" fill="#1C3A2E"/>
+            <ellipse cx="160" cy="125" rx="5" ry="3" fill="#F5EDD8" opacity="0.25"/>
+            <!-- whiskers -->
+            <line x1="130" y1="130" x2="148" y2="128" stroke="#F5EDD8" stroke-width="1" opacity="0.25"/>
+            <line x1="130" y1="136" x2="148" y2="132" stroke="#F5EDD8" stroke-width="1" opacity="0.25"/>
+            <line x1="190" y1="130" x2="172" y2="128" stroke="#F5EDD8" stroke-width="1" opacity="0.25"/>
+            <line x1="190" y1="136" x2="172" y2="132" stroke="#F5EDD8" stroke-width="1" opacity="0.25"/>
+            <text x="160" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="1">FEHN · Theo</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Schmusetuch · Otter</p>
+          <h3 class="card-name">Schmusetuch Otter Theo</h3>
+          <p class="card-desc">Der kleine Otter Theo wird zum treuen Begleiter — weich, kuschelig und mit dem süßesten Gesicht.</p>
+          <div class="card-footer">
+            <span class="card-shop">Fehn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Fehn Holz-Mobile Faultier -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Ffehn-holz-mobile-faultier-22cm-8295328%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <!-- ceiling bar -->
+            <rect x="80" y="60" width="160" height="8" rx="4" fill="#1C3A2E"/>
+            <!-- hanging threads -->
+            <line x1="160" y1="68" x2="160" y2="100" stroke="#1C3A2E" stroke-width="1.5" opacity="0.5"/>
+            <line x1="110" y1="68" x2="110" y2="120" stroke="#1C3A2E" stroke-width="1.2" opacity="0.4"/>
+            <line x1="210" y1="68" x2="210" y2="120" stroke="#1C3A2E" stroke-width="1.2" opacity="0.4"/>
+            <line x1="85" y1="68" x2="85" y2="148" stroke="#1C3A2E" stroke-width="1" opacity="0.3"/>
+            <line x1="235" y1="68" x2="235" y2="148" stroke="#1C3A2E" stroke-width="1" opacity="0.3"/>
+            <!-- main sloth body center -->
+            <ellipse cx="160" cy="128" rx="28" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="144" cy="108" rx="14" ry="18" fill="#1C3A2E"/>
+            <ellipse cx="176" cy="108" rx="14" ry="18" fill="#1C3A2E"/>
+            <ellipse cx="160" cy="120" rx="18" ry="16" fill="#254d3d"/>
+            <circle cx="153" cy="114" r="4" fill="#1C3A2E"/>
+            <circle cx="167" cy="114" r="4" fill="#1C3A2E"/>
+            <circle cx="154" cy="113" r="2" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="168" cy="113" r="2" fill="#F5EDD8" opacity="0.35"/>
+            <!-- sloth long arms hanging -->
+            <path d="M136 118 Q110 130 100 128" fill="none" stroke="#1C3A2E" stroke-width="5" stroke-linecap="round"/>
+            <path d="M184 118 Q210 130 220 128" fill="none" stroke="#1C3A2E" stroke-width="5" stroke-linecap="round"/>
+            <!-- small leaves hanging left -->
+            <path d="M85 156 Q78 168 85 180 Q92 168 85 156Z" fill="#1C3A2E" opacity="0.5"/>
+            <path d="M80 162 Q72 172 80 182 Q87 172 80 162Z" fill="#254d3d" opacity="0.4"/>
+            <!-- small star hanging right -->
+            <circle cx="235" cy="162" r="10" fill="#1C3A2E" opacity="0.4"/>
+            <circle cx="235" cy="162" r="6" fill="#254d3d" opacity="0.5"/>
+            <!-- small cloud center bottom -->
+            <ellipse cx="160" cy="185" rx="18" ry="12" fill="#1C3A2E" opacity="0.35"/>
+            <ellipse cx="148" cy="183" rx="12" ry="10" fill="#1C3A2E" opacity="0.3"/>
+            <ellipse cx="172" cy="183" rx="12" ry="10" fill="#1C3A2E" opacity="0.3"/>
+            <text x="160" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="1">FEHN · Holz Mobile</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Mobile · Holz · Faultier</p>
+          <h3 class="card-name">Holz-Mobile Faultier</h3>
+          <p class="card-desc">Ein traumhaftes Holz-Mobile mit Faultier — dreht sich sanft über dem Bettchen und verzaubert von Anfang an.</p>
+          <div class="card-footer">
+            <span class="card-shop">Fehn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Nonikids Greifling -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F160656-greifling-beissring-holz-stern-elefant-stern-bio-baumwolle-nonikids-berlin%3Fvariant_id%3D1272482%26asqid%3D02761dc8646ba9a6e83f91d560e9aabc" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <!-- wooden ring -->
+            <circle cx="160" cy="148" r="72" fill="none" stroke="#1C3A2E" stroke-width="16"/>
+            <circle cx="160" cy="148" r="72" fill="none" stroke="#254d3d" stroke-width="8"/>
+            <!-- star shape in center -->
+            <path d="M160 96 L168 132 L206 132 L176 154 L188 190 L160 168 L132 190 L144 154 L114 132 L152 132 Z" fill="#1C3A2E" opacity="0.7"/>
+            <!-- fabric ribbon on ring -->
+            <path d="M120 88 Q160 76 200 88" fill="none" stroke="#c8b98a" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+            <!-- small elephant motif beside -->
+            <ellipse cx="252" cy="200" rx="20" ry="15" fill="#1C3A2E" opacity="0.3"/>
+            <ellipse cx="252" cy="188" rx="14" ry="12" fill="#1C3A2E" opacity="0.3"/>
+            <ellipse cx="244" cy="178" rx="7" ry="9" fill="#1C3A2E" opacity="0.25"/>
+            <ellipse cx="260" cy="178" rx="7" ry="9" fill="#1C3A2E" opacity="0.25"/>
+            <text x="160" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="1">NONIKIDS · Bio</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">Greifling · Beißring · Holz</p>
+          <h3 class="card-name">Greifling Beißring Stern Elefant</h3>
+          <p class="card-desc">Holzring mit Bio-Baumwoll-Stoff — perfect zum Greifen, Kauen und Entdecken in den ersten Monaten.</p>
+          <div class="card-footer">
+            <span class="card-shop">Nonikids · Avocado Store</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Bio Schlafsack Musselin -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F449220-bio-schlafsack-aus-musselin-sense-organics-und-friends-in-cooperation-with-gary-mash%3Fvariant_id%3D4704410%26asqid%3D3f616c4681d61676140914f15e2848cb" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <!-- sleeping bag shape -->
+            <path d="M110 72 L210 72 Q230 72 230 92 L230 240 Q230 268 200 268 L120 268 Q90 268 90 240 L90 92 Q90 72 110 72Z" fill="#1C3A2E"/>
+            <!-- shoulder openings -->
+            <rect x="90" y="72" width="48" height="18" rx="4" fill="#e4d9c0"/>
+            <rect x="182" y="72" width="48" height="18" rx="4" fill="#e4d9c0"/>
+            <!-- neckline -->
+            <path d="M138 72 Q160 90 182 72" fill="#254d3d"/>
+            <!-- musselin texture hint - subtle grid -->
+            <line x1="90" y1="110" x2="230" y2="110" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="90" y1="140" x2="230" y2="140" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="90" y1="170" x2="230" y2="170" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="90" y1="200" x2="230" y2="200" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="130" y1="72" x2="130" y2="268" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="160" y1="72" x2="160" y2="268" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <line x1="190" y1="72" x2="190" y2="268" stroke="#F5EDD8" stroke-width="0.6" opacity="0.1"/>
+            <!-- zip bottom -->
+            <line x1="160" y1="220" x2="160" y2="260" stroke="#F5EDD8" stroke-width="2" opacity="0.2" stroke-dasharray="4,3"/>
+            <circle cx="160" cy="220" r="5" fill="#254d3d"/>
+            <!-- label -->
+            <rect x="126" y="148" width="68" height="30" rx="3" fill="#F5EDD8" opacity="0.08"/>
+            <text x="160" y="164" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#F5EDD8" opacity="0.4">Bio Musselin</text>
+            <text x="160" y="174" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#F5EDD8" opacity="0.28">Sense Organics</text>
+            <text x="160" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="1">SENSE ORGANICS</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">Schlafsack · Bio-Musselin</p>
+          <h3 class="card-name">Bio-Schlafsack Musselin</h3>
+          <p class="card-desc">Federleicht und atmungsaktiv — der Bio-Musselin-Schlafsack von Sense Organics für sanfte Nächte von Anfang an.</p>
+          <div class="card-footer">
+            <span class="card-shop">Sense Organics · Avocado Store</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Framily An diesem Tag -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14129&awinaffid=2708356&ued=https%3A%2F%2Fwww.framily.de%2Fproducts%2Fan-diesem-tag" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <circle cx="56" cy="60" r="2.5" fill="#c8b98a" opacity="0.35"/>
+            <circle cx="72" cy="44" r="1.8" fill="#c8b98a" opacity="0.28"/>
+            <circle cx="264" cy="260" r="2.5" fill="#c8b98a" opacity="0.32"/>
+            <rect x="72" y="58" width="18" height="210" rx="4" fill="#254d3d"/>
+            <rect x="88" y="52" width="152" height="218" rx="6" fill="#1C3A2E"/>
+            <rect x="236" y="58" width="10" height="206" rx="2" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="164" cy="120" r="30" fill="none" stroke="#F5EDD8" stroke-width="0.8" opacity="0.15"/>
+            <path d="M150 106 Q170 116 160 140 Q140 130 150 106Z" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="188" cy="98" r="3" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="178" cy="88" r="2.5" fill="#F5EDD8" opacity="0.22"/>
+            <text x="164" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#F5EDD8" opacity="0.5" letter-spacing="0.5">An diesem</text>
+            <text x="164" y="194" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#F5EDD8" opacity="0.5" letter-spacing="0.5">Tag</text>
+            <rect x="110" y="208" width="108" height="36" rx="4" fill="#F5EDD8" opacity="0.07"/>
+            <text x="164" y="224" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#F5EDD8" opacity="0.35" letter-spacing="0.5">Name &amp; Geburtstag</text>
+            <text x="164" y="236" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.25" letter-spacing="0.5">personalisiert</text>
+            <text x="164" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="2">FRAMILY</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Geburtsbuch · Personalisiert</p>
+          <h3 class="card-name">Geburtsbuch „An diesem Tag"</h3>
+          <p class="card-desc">Mit Name und Geburtsdatum personalisiert — ein Buch über den schönsten Tag, für immer.</p>
+          <div class="card-footer">
+            <span class="card-shop">Framily</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════
+     BESONDERE ANLÄSSE
+════════════════════════════════ -->
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Feste & Feiern</p>
+      <h2 class="section-title">Besondere Anlässe</h2>
+      <p class="section-desc">Personalisierte Geschenke für die schönsten Momente im ersten Lebensjahr.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Framily Osterwimmelbuch -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14129&awinaffid=2708356&ued=https%3A%2F%2Fwww.framily.de%2Fproducts%2Fdein-osterwimmelbuch-mit-foto-cover" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="320" fill="#e4d9c0"/>
+            <!-- Easter decorative elements -->
+            <circle cx="58" cy="62" r="12" fill="none" stroke="#c8b98a" stroke-width="1.2" opacity="0.35"/>
+            <path d="M58 50 Q64 56 58 62 Q52 56 58 50Z" fill="#c8b98a" opacity="0.25"/>
+            <circle cx="262" cy="258" r="10" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.3"/>
+            <!-- book -->
+            <rect x="72" y="58" width="18" height="210" rx="4" fill="#254d3d"/>
+            <rect x="88" y="52" width="152" height="218" rx="6" fill="#1C3A2E"/>
+            <rect x="236" y="58" width="10" height="206" rx="2" fill="#F5EDD8" opacity="0.35"/>
+            <!-- Easter egg on cover -->
+            <ellipse cx="164" cy="118" rx="30" ry="38" fill="#254d3d"/>
+            <ellipse cx="164" cy="118" rx="22" ry="30" fill="#1C3A2E" opacity="0.6"/>
+            <!-- egg stripes -->
+            <path d="M134 110 Q164 106 194 110" fill="none" stroke="#F5EDD8" stroke-width="2" opacity="0.2"/>
+            <path d="M134 120 Q164 116 194 120" fill="none" stroke="#F5EDD8" stroke-width="2" opacity="0.2"/>
+            <path d="M138 130 Q164 126 190 130" fill="none" stroke="#F5EDD8" stroke-width="2" opacity="0.18"/>
+            <!-- small bunny ears top -->
+            <ellipse cx="152" cy="72" rx="8" ry="14" fill="#254d3d"/>
+            <ellipse cx="176" cy="72" rx="8" ry="14" fill="#254d3d"/>
+            <ellipse cx="152" cy="72" rx="4" ry="9" fill="#1C3A2E" opacity="0.5"/>
+            <ellipse cx="176" cy="72" rx="4" ry="9" fill="#1C3A2E" opacity="0.5"/>
+            <!-- title -->
+            <text x="164" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#F5EDD8" opacity="0.45">Dein Oster</text>
+            <text x="164" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#F5EDD8" opacity="0.45">wimmelbuch</text>
+            <!-- photo cover hint -->
+            <rect x="110" y="208" width="108" height="32" rx="3" fill="#F5EDD8" opacity="0.07"/>
+            <text x="164" y="222" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.32" letter-spacing="0.5">mit Foto-Cover</text>
+            <text x="164" y="232" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#F5EDD8" opacity="0.22">personalisiert</text>
+            <text x="164" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1C3A2E" opacity="0.22" letter-spacing="2">FRAMILY</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Ostern · Personalisiert · Bilderbuch</p>
+          <h3 class="card-name">Dein Osterwimmelbuch</h3>
+          <p class="card-desc">Ein Wimmelbuch zu Ostern mit persönlichem Foto-Cover — das schönste Ostergeschenk für das erste Jahr.</p>
+          <div class="card-footer">
+            <span class="card-shop">Framily</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="disclosure">
+  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+
+<footer>
+  <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
+  <span>Odette von Dubs</span>
+</footer>
+
 </body>
 </html>
