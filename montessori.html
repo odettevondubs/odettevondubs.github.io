@@ -4,38 +4,803 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Montessori Baby – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 2rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
-  .back-link:hover { color: #1C3A2E; }
-  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
-  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
-  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
-  .coming-soon { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; padding: 2rem; text-align: center; }
-  .coming-soon p { font-size: 13px; color: #6b8c7a; line-height: 1.6; }
-  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
-  .footer a { color: #1C3A2E; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1C3A2E;
+    --green-mid: #254d3d;
+    --sand: #F5EDD8;
+    --sand-dark: #e8dcc3;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--sand); color: var(--green); -webkit-font-smoothing: antialiased; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem; background: var(--green);
+  }
+  .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--sand); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-back { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  .nav-back:hover { opacity: 1; }
+
+  .hero { background: var(--green); padding: 9rem 2.5rem 6rem; text-align: center; }
+  .hero-eyebrow { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 1.5rem; }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; color: var(--sand); margin-bottom: 1.75rem; }
+  .hero-title em { font-style: italic; }
+  .hero-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(245,237,216,0.6); max-width: 420px; margin: 0 auto; }
+
+  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem 2rem; }
+  .section-header { margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid rgba(28,58,46,0.18); }
+  .section-eye { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); opacity: 0.45; margin-bottom: 0.3rem; }
+  .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--green); margin-top: 0.2rem; }
+
+  .subsection-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); opacity: 0.4; margin: 2rem 0 0.75rem; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 2px; background: rgba(28,58,46,0.1); }
+
+  .product-card { background: var(--sand); text-decoration: none; display: block; transition: background 0.22s; }
+  .product-card:hover { background: var(--sand-dark); }
+
+  .card-img { width: 100%; aspect-ratio: 1; overflow: hidden; }
+  .card-img svg { width: 100%; height: 100%; display: block; }
+
+  .card-body { padding: 1rem 1.1rem 1.2rem; }
+  .card-cat { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); opacity: 0.4; margin-bottom: 0.35rem; }
+  .card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--green); line-height: 1.25; margin-bottom: 0.6rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .card-shop { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); opacity: 0.32; }
+  .card-arrow { width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid rgba(28,58,46,0.22); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+  .card-arrow svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 1.5; transition: stroke 0.2s; }
+  .product-card:hover .card-arrow { background: var(--green); }
+  .product-card:hover .card-arrow svg { stroke: var(--sand); }
+
+  .avocado-badge { display: inline-block; font-family: var(--sans); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(28,58,46,0.1); color: var(--green); padding: 1px 6px; border-radius: 2px; margin-bottom: 0.25rem; opacity: 0.6; }
+
+  .section-divider { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; border-bottom: 0.5px solid rgba(28,58,46,0.12); }
+
+  .disclosure { background: var(--green); padding: 3rem 2.5rem; text-align: center; }
+  .disclosure p { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; line-height: 1.8; color: var(--sand); opacity: 0.5; max-width: 480px; margin: 0 auto; letter-spacing: 0.03em; }
+
+  footer { background: var(--green); border-top: 0.5px solid rgba(245,237,216,0.1); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
+  footer a:hover { opacity: 0.85; }
+  footer span { font-size: 0.7rem; color: var(--sand); opacity: 0.25; font-weight: 300; letter-spacing: 0.08em; }
+
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.65s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .product-card { opacity: 0; transform: translateY(10px); animation: fadeUp 0.45s ease forwards; }
+  .product-card:nth-child(1){animation-delay:0.04s} .product-card:nth-child(2){animation-delay:0.08s}
+  .product-card:nth-child(3){animation-delay:0.12s} .product-card:nth-child(4){animation-delay:0.16s}
+  .product-card:nth-child(5){animation-delay:0.20s} .product-card:nth-child(6){animation-delay:0.24s}
+
+  @media(max-width:640px){
+    nav { padding: 1rem 1.25rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .section { padding: 3rem 1.25rem 1.5rem; }
+    .product-grid { grid-template-columns: 1fr 1fr; }
+    .card-body { padding: 0.8rem 0.8rem 1rem; }
+    .card-name { font-size: 0.95rem; }
+  }
+  @media(max-width:360px){ .product-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="header">
-    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
-    <div class="avatar"><span>O</span></div>
-    <h1>Montessori Baby 🧸</h1>
-    <p>Spielzeug & Materialien nach Montessori-Prinzip</p>
+
+<nav>
+  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io" class="nav-back">← Zurück</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Montessori Baby</p>
+  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Spielzeug das<br><em>wirklich begeistert</em></h1>
+  <p class="hero-desc fade-up" style="animation-delay:0.35s">Meine liebsten Montessori-Spielsachen — drinnen und draußen, für jede Entwicklungsphase ausgewählt.</p>
+</section>
+
+<!-- ═══════════════════════════════
+     DRINNEN SPIELEN
+════════════════════════════════ -->
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Zuhause spielen</p>
+      <h2 class="section-title">Drinnen spielen</h2>
+    </div>
+
+    <p class="subsection-label">Motorik & Greifen</p>
+    <div class="product-grid">
+
+      <!-- Eichhorn Box mit Kugeln -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-box-mit-kugeln-8283885%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="38" y="90" width="144" height="100" rx="10" fill="#1C3A2E"/>
+            <rect x="38" y="90" width="144" height="20" rx="8" fill="#254d3d"/>
+            <circle cx="110" cy="72" r="24" fill="#1C3A2E"/>
+            <circle cx="110" cy="72" r="16" fill="#254d3d"/>
+            <circle cx="103" cy="66" r="5" fill="#F5EDD8" opacity="0.3"/>
+            <circle cx="72" cy="128" r="12" fill="#F5EDD8" opacity="0.15"/>
+            <circle cx="110" cy="132" r="12" fill="#F5EDD8" opacity="0.15"/>
+            <circle cx="148" cy="128" r="12" fill="#F5EDD8" opacity="0.15"/>
+            <circle cx="90" cy="158" r="11" fill="#F5EDD8" opacity="0.12"/>
+            <circle cx="130" cy="158" r="11" fill="#F5EDD8" opacity="0.12"/>
+            <text x="110" y="195" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.25" letter-spacing="1">Eichhorn</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Motorik · Holz</p>
+          <h3 class="card-name">Montessori Box mit Kugeln</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Eichhorn Sortierkugeln -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-sortierkugeln-8349754%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="32" y="88" width="156" height="96" rx="10" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="88" rx="78" ry="20" fill="#254d3d"/>
+            <circle cx="72" cy="122" r="16" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="110" cy="116" r="16" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="148" cy="122" r="16" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="90" cy="152" r="15" fill="#F5EDD8" opacity="0.14"/>
+            <circle cx="130" cy="152" r="15" fill="#F5EDD8" opacity="0.14"/>
+            <text x="110" y="75" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.3">Sortierkugeln</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Sortieren · Holz</p>
+          <h3 class="card-name">Montessori Sortierkugeln</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Eichhorn Fühlbrett -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-fuehlbrett-8283877%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="28" y="52" width="164" height="120" rx="10" fill="#1C3A2E"/>
+            <rect x="40" y="64" width="66" height="48" rx="5" fill="#254d3d"/>
+            <rect x="114" y="64" width="66" height="48" rx="5" fill="#254d3d"/>
+            <rect x="40" y="120" width="66" height="36" rx="5" fill="#254d3d"/>
+            <rect x="114" y="120" width="66" height="36" rx="5" fill="#254d3d"/>
+            <circle cx="73" cy="88" r="12" fill="#F5EDD8" opacity="0.2"/>
+            <rect x="120" y="76" width="48" height="6" rx="2" fill="#F5EDD8" opacity="0.18"/>
+            <rect x="120" y="88" width="36" height="6" rx="2" fill="#F5EDD8" opacity="0.14"/>
+            <rect x="120" y="100" width="42" height="6" rx="2" fill="#F5EDD8" opacity="0.12"/>
+            <circle cx="73" cy="138" r="9" fill="#F5EDD8" opacity="0.18"/>
+            <rect x="120" y="130" width="40" height="6" rx="2" fill="#F5EDD8" opacity="0.14"/>
+            <rect x="120" y="142" width="30" height="6" rx="2" fill="#F5EDD8" opacity="0.1"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Tasten · Fühlen</p>
+          <h3 class="card-name">Montessori Fühlbrett</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Eichhorn Fensterbausteine -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-fensterbausteine-8283869%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="50" y="118" width="52" height="52" rx="6" fill="#1C3A2E"/>
+            <rect x="118" y="118" width="52" height="52" rx="6" fill="#1C3A2E"/>
+            <rect x="50" y="52" width="52" height="52" rx="6" fill="#1C3A2E"/>
+            <rect x="118" y="52" width="52" height="52" rx="6" fill="#1C3A2E"/>
+            <rect x="56" y="124" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/>
+            <rect x="124" y="124" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/>
+            <rect x="56" y="58" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/>
+            <rect x="124" y="58" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/>
+            <circle cx="76" cy="78" r="10" fill="#F5EDD8" opacity="0.25"/>
+            <circle cx="144" cy="78" r="8" fill="#F5EDD8" opacity="0.2"/>
+            <circle cx="76" cy="144" r="8" fill="#F5EDD8" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Bauen · Licht</p>
+          <h3 class="card-name">Montessori Fensterbausteine</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Eichhorn Formenpuzzle -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-formenpuzzle-8283893%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="28" y="58" width="164" height="114" rx="10" fill="#1C3A2E"/>
+            <circle cx="84" cy="115" rx="26" r="26" fill="#254d3d"/>
+            <rect x="118" y="89" width="52" height="52" rx="5" fill="#254d3d"/>
+            <circle cx="84" cy="115" r="17" fill="#F5EDD8" opacity="0.18"/>
+            <rect x="124" y="95" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.18"/>
+            <path d="M48 80 L48 68" stroke="#F5EDD8" stroke-width="1" opacity="0.15"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Formen · Puzzle</p>
+          <h3 class="card-name">Montessori Formenpuzzle</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Eichhorn Lernpuzzle -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-lernpuzzle-formen-8349738%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="28" y="58" width="164" height="114" rx="10" fill="#1C3A2E"/>
+            <circle cx="74" cy="100" r="20" fill="#254d3d"/>
+            <rect x="98" y="80" width="38" height="38" rx="4" fill="#254d3d"/>
+            <path d="M148 80 L166 115 L130 115 Z" fill="#254d3d"/>
+            <circle cx="74" cy="100" r="13" fill="#F5EDD8" opacity="0.2"/>
+            <rect x="102" y="84" width="30" height="30" rx="2" fill="#F5EDD8" opacity="0.18"/>
+            <path d="M150 84 L164 111 L136 111 Z" fill="#F5EDD8" opacity="0.18"/>
+            <text x="110" y="155" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.25">Lernpuzzle Formen</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Lernpuzzle · Formen</p>
+          <h3 class="card-name">Montessori Lernpuzzle</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="subsection-label">Puzzle & Kreativ</p>
+    <div class="product-grid">
+
+      <!-- Petikids 3D Puzzle Elefant -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F549891-montessori-lernspielzeug-aus-silikon-3d-puzzle-elefantenmutter-und-ihre-jungen-petikids%3Fvariant_id%3D5976316%26asqid%3D2004f550ea7366ea4a41cb1f73535efc" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <!-- big elephant -->
+            <ellipse cx="110" cy="128" rx="46" ry="32" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="102" rx="32" ry="28" fill="#1C3A2E"/>
+            <ellipse cx="90" cy="80" rx="15" ry="20" fill="#1C3A2E"/>
+            <ellipse cx="130" cy="80" rx="15" ry="20" fill="#1C3A2E"/>
+            <circle cx="102" cy="96" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="118" cy="96" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <path d="M106" d="M106 115 Q106 135 100 145" fill="none" stroke="#1C3A2E" stroke-width="6" stroke-linecap="round"/>
+            <path d="M106 115 Q106 135 100 145" fill="none" stroke="#1C3A2E" stroke-width="6" stroke-linecap="round"/>
+            <line x1="106" y1="115" x2="100" y2="148" stroke="#254d3d" stroke-width="5" stroke-linecap="round"/>
+            <!-- baby elephant -->
+            <ellipse cx="68" cy="150" rx="20" ry="14" fill="#254d3d"/>
+            <ellipse cx="68" cy="136" rx="14" ry="12" fill="#254d3d"/>
+            <ellipse cx="60" cy="126" rx="7" ry="9" fill="#254d3d"/>
+            <ellipse cx="76" cy="126" rx="7" ry="9" fill="#254d3d"/>
+            <circle cx="64" cy="132" r="2.5" fill="#F5EDD8" opacity="0.3"/>
+            <text x="110" y="195" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.3">Silikon · Petikids</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">3D Puzzle · Silikon</p>
+          <h3 class="card-name">3D Puzzle Elefantenmutter</h3>
+          <div class="card-footer">
+            <span class="card-shop">Petikids</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Petikids oranges Puzzle -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F553394-montessori-lernspielzeug-das-orangefarbene-puzzle-lernspielzeug-petikids%3Fvariant_id%3D0%26asqid%3D5996da1a9307f908e3e058c5ad446726" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="36" y="54" width="148" height="118" rx="10" fill="#1C3A2E"/>
+            <rect x="46" y="64" width="60" height="60" rx="5" fill="#254d3d"/>
+            <rect x="114" y="64" width="60" height="60" rx="5" fill="#254d3d"/>
+            <rect x="46" y="132" width="60" height="32" rx="5" fill="#254d3d"/>
+            <rect x="114" y="132" width="60" height="32" rx="5" fill="#254d3d"/>
+            <path d="M76 76 L92 94 L76 112 L60 94 Z" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="144" cy="94" r="18" fill="#F5EDD8" opacity="0.18"/>
+            <text x="110" y="190" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.3">Petikids · Avocado</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">Lernpuzzle · Motorik</p>
+          <h3 class="card-name">Das orangefarbene Puzzle</h3>
+          <div class="card-footer">
+            <span class="card-shop">Petikids</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Stapelstein Rainbow -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fstapelstein-stapelstein-rainbow-set-spring-special-pastel-8364524%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <ellipse cx="110" cy="185" rx="64" ry="14" fill="#1C3A2E" opacity="0.12"/>
+            <path d="M58 172 Q58 146 110 146 Q162 146 162 172 Z" fill="#1C3A2E"/>
+            <path d="M66 146 Q66 122 110 122 Q154 122 154 146 Z" fill="#254d3d"/>
+            <path d="M74 122 Q74 100 110 100 Q146 100 146 122 Z" fill="#1C3A2E" opacity="0.75"/>
+            <path d="M82 100 Q82 80 110 80 Q138 80 138 100 Z" fill="#254d3d" opacity="0.8"/>
+            <path d="M90 80 Q90 62 110 62 Q130 62 130 80 Z" fill="#1C3A2E" opacity="0.6"/>
+            <path d="M98 62 Q98 48 110 48 Q122 48 122 62 Z" fill="#254d3d" opacity="0.55"/>
+            <text x="110" y="205" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.3">Pastel Rainbow</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Stapeln · Balance</p>
+          <h3 class="card-name">Stapelstein Rainbow Pastel</h3>
+          <div class="card-footer">
+            <span class="card-shop">Stapelstein · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="subsection-label">Spielbogen & Früherziehung</p>
+    <div class="product-grid">
+
+      <!-- Fehn Spielbogen -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Ffehn-spielbogen-mit-3-d-activity-decke-teddy-rainbow-6288111%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="24" y="160" width="172" height="16" rx="5" fill="#1C3A2E" opacity="0.2"/>
+            <path d="M46 168 Q46 66 110 66 Q174 66 174 168" fill="none" stroke="#1C3A2E" stroke-width="7" stroke-linecap="round"/>
+            <path d="M68 168 Q68 88 110 88 Q152 88 152 168" fill="none" stroke="#254d3d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="76" cy="98" r="12" fill="#1C3A2E"/>
+            <circle cx="110" cy="70" r="12" fill="#1C3A2E"/>
+            <circle cx="144" cy="98" r="12" fill="#1C3A2E"/>
+            <circle cx="76" cy="98" r="7" fill="#F5EDD8" opacity="0.3"/>
+            <circle cx="110" cy="70" r="7" fill="#F5EDD8" opacity="0.3"/>
+            <circle cx="144" cy="98" r="7" fill="#F5EDD8" opacity="0.3"/>
+            <text x="110" y="200" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.3">Teddy Rainbow</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Spielbogen · Activity-Decke</p>
+          <h3 class="card-name">Spielbogen 3D Activity-Decke</h3>
+          <div class="card-footer">
+            <span class="card-shop">Fehn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- VTech Lernkugel -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fvtech-disney-winnie-puuh-musikspielzeug-bunte-lernkugel-124430%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <circle cx="110" cy="110" r="60" fill="#1C3A2E"/>
+            <circle cx="110" cy="110" r="50" fill="#254d3d"/>
+            <circle cx="86" cy="94" r="14" fill="#1C3A2E"/>
+            <circle cx="134" cy="94" r="14" fill="#1C3A2E"/>
+            <rect x="88" y="116" width="44" height="14" rx="4" fill="#1C3A2E"/>
+            <circle cx="86" cy="94" r="9" fill="#F5EDD8" opacity="0.22"/>
+            <circle cx="134" cy="94" r="9" fill="#F5EDD8" opacity="0.22"/>
+            <rect x="90" y="118" width="40" height="10" rx="3" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="110" cy="68" r="7" fill="#F5EDD8" opacity="0.2"/>
+            <text x="110" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.25">Winnie Puuh</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Musik · Lernen</p>
+          <h3 class="card-name">Winnie Puuh Lernkugel</h3>
+          <div class="card-footer">
+            <span class="card-shop">VTech · Disney · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Ravensburger Tiergeräusche -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fravensburger-kennst-du-diese-tiergeraeusche-8294135%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="36" y="40" width="148" height="124" rx="8" fill="#1C3A2E"/>
+            <rect x="46" y="50" width="128" height="104" rx="5" fill="#254d3d"/>
+            <circle cx="84" cy="100" r="22" fill="#1C3A2E"/>
+            <circle cx="136" cy="100" r="22" fill="#1C3A2E"/>
+            <circle cx="84" cy="100" r="14" fill="#F5EDD8" opacity="0.2"/>
+            <circle cx="136" cy="100" r="14" fill="#F5EDD8" opacity="0.2"/>
+            <path d="M75 90 Q84 80 93 90" fill="none" stroke="#F5EDD8" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+            <path d="M127 90 Q136 80 145 90" fill="none" stroke="#F5EDD8" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+            <text x="110" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.28">Tiergeräusche</text>
+            <text x="110" y="185" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Ravensburger</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Soundbuch · Tiere</p>
+          <h3 class="card-name">Kennst du diese Tiergeräusche?</h3>
+          <div class="card-footer">
+            <span class="card-shop">Ravensburger · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Wimmelbuch Bauernhof -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fthienemann-esslinger-mein-allererstes-wimmelbuch-auf-dem-bauernhof-8342229%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="48" y="36" width="124" height="152" rx="7" fill="#1C3A2E"/>
+            <rect x="48" y="36" width="12" height="152" rx="4" fill="#254d3d"/>
+            <rect x="60" y="46" width="104" height="132" rx="3" fill="#254d3d"/>
+            <rect x="68" y="60" width="88" height="42" rx="3" fill="#1C3A2E" opacity="0.4"/>
+            <rect x="68" y="110" width="40" height="40" rx="3" fill="#1C3A2E" opacity="0.4"/>
+            <rect x="116" y="110" width="40" height="40" rx="3" fill="#1C3A2E" opacity="0.4"/>
+            <text x="112" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#F5EDD8" opacity="0.28">Wimmelbuch</text>
+            <text x="112" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.22">Bauernhof</text>
+            <text x="110" y="195" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Thienemann</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Bilderbuch · Wimmel</p>
+          <h3 class="card-name">Erstes Wimmelbuch Bauernhof</h3>
+          <div class="card-footer">
+            <span class="card-shop">Thienemann · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="subsection-label">Kuscheln & Schmusen</p>
+    <div class="product-grid">
+
+      <!-- Steiff Schmusetuch Gilda -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fsteiff-schmusetuch-gilda-gans-8355835%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="28" y="108" width="164" height="80" rx="7" fill="#1C3A2E" opacity="0.14"/>
+            <rect x="34" y="114" width="152" height="68" rx="5" fill="#1C3A2E" opacity="0.1"/>
+            <ellipse cx="110" cy="104" rx="40" ry="34" fill="#1C3A2E"/>
+            <ellipse cx="80" cy="76" rx="18" ry="24" fill="#1C3A2E"/>
+            <ellipse cx="140" cy="76" rx="18" ry="24" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="98" rx="26" ry="22" fill="#254d3d"/>
+            <circle cx="100" cy="90" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="120" cy="90" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <ellipse cx="110" cy="102" rx="7" ry="4" fill="#F5EDD8" opacity="0.2"/>
+            <text x="110" y="185" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Steiff · Gilda Gans</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Schmusetuch · Gans</p>
+          <h3 class="card-name">Schmusetuch Gilda Gans</h3>
+          <div class="card-footer">
+            <span class="card-shop">Steiff · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Mababu Schmusetuch Ente -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F431095-schmusetuch-ente-100-prozent-gots-bio-baumwolle-geschenke-zur-geburt-schnuffeltuch-mababu%3Fvariant_id%3D3983420%26asqid%3D031e6c118a0710557a84f15615f1eccd" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="30" y="112" width="160" height="72" rx="5" fill="#1C3A2E" opacity="0.12"/>
+            <ellipse cx="110" cy="104" rx="38" ry="32" fill="#1C3A2E"/>
+            <ellipse cx="86" cy="78" rx="15" ry="20" fill="#1C3A2E"/>
+            <ellipse cx="134" cy="78" rx="15" ry="20" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="98" rx="24" ry="20" fill="#254d3d"/>
+            <circle cx="102" cy="90" r="4" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="118" cy="90" r="4" fill="#F5EDD8" opacity="0.35"/>
+            <path d="M104 105 Q110 110 116 105" fill="#1C3A2E" opacity="0.5"/>
+            <text x="110" y="180" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#1C3A2E" opacity="0.28">GOTS · Bio-Baumwolle</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">Schmusetuch · GOTS Bio</p>
+          <h3 class="card-name">Schmusetuch Ente</h3>
+          <div class="card-footer">
+            <span class="card-shop">Mababu</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Schnuffeltuch Papate -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F569013-bio-baumwolle-schnuffeltuch-papate%3Fvariant_id%3D6161729%26asqid%3D754a7ff3098b89daa8f7db9a97c7d99e" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="32" y="114" width="156" height="68" rx="5" fill="#1C3A2E" opacity="0.1"/>
+            <ellipse cx="110" cy="106" rx="36" ry="30" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="100" rx="22" ry="20" fill="#254d3d"/>
+            <circle cx="102" cy="92" r="4" fill="#F5EDD8" opacity="0.3"/>
+            <circle cx="118" cy="92" r="4" fill="#F5EDD8" opacity="0.3"/>
+            <ellipse cx="110" cy="104" rx="7" ry="4" fill="#F5EDD8" opacity="0.2"/>
+            <path d="M82 118 Q110 138 138 118" fill="none" stroke="#1C3A2E" stroke-width="2" opacity="0.25"/>
+            <text x="110" y="180" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#1C3A2E" opacity="0.28">Bio-Baumwolle</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="avocado-badge">Avocado Store</span>
+          <p class="card-cat">Schnuffeltuch · Bio</p>
+          <h3 class="card-name">Schnuffeltuch Papate</h3>
+          <div class="card-footer">
+            <span class="card-shop">Avocado Store</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Solini Stoffwürfel -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fsolini-6er-pack-stoffwuerfel-160984%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="50" y="76" width="54" height="54" rx="7" fill="#1C3A2E"/>
+            <rect x="116" y="76" width="54" height="54" rx="7" fill="#1C3A2E"/>
+            <rect x="50" y="138" width="54" height="42" rx="7" fill="#254d3d"/>
+            <rect x="116" y="138" width="54" height="42" rx="7" fill="#254d3d"/>
+            <rect x="56" y="42" width="38" height="38" rx="5" fill="#254d3d"/>
+            <rect x="126" y="42" width="38" height="38" rx="5" fill="#254d3d"/>
+            <circle cx="77" cy="103" r="9" fill="#F5EDD8" opacity="0.22"/>
+            <circle cx="143" cy="103" r="9" fill="#F5EDD8" opacity="0.22"/>
+            <circle cx="75" cy="61" r="7" fill="#F5EDD8" opacity="0.18"/>
+            <circle cx="145" cy="61" r="7" fill="#F5EDD8" opacity="0.18"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Stoffwürfel · 6er-Pack</p>
+          <h3 class="card-name">Stoffwürfel 6er-Pack</h3>
+          <div class="card-footer">
+            <span class="card-shop">Solini · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Bieco Lauflernwagen -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fbieco-lauflernwagen-holz-mit-aktivitaeten-weiss-4158908%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="38" y="62" width="144" height="90" rx="8" fill="#1C3A2E"/>
+            <rect x="46" y="70" width="128" height="74" rx="4" fill="#254d3d"/>
+            <line x1="110" y1="70" x2="110" y2="144" stroke="#1C3A2E" stroke-width="3"/>
+            <line x1="46" y1="107" x2="174" y2="107" stroke="#1C3A2E" stroke-width="3"/>
+            <circle cx="78" cy="88" r="13" fill="#1C3A2E"/>
+            <circle cx="142" cy="88" r="13" fill="#1C3A2E"/>
+            <circle cx="78" cy="126" r="11" fill="#1C3A2E" opacity="0.6"/>
+            <circle cx="142" cy="126" r="11" fill="#1C3A2E" opacity="0.6"/>
+            <circle cx="60" cy="168" r="16" fill="#1C3A2E"/>
+            <circle cx="160" cy="168" r="16" fill="#1C3A2E"/>
+            <circle cx="60" cy="168" r="10" fill="#254d3d"/>
+            <circle cx="160" cy="168" r="10" fill="#254d3d"/>
+            <circle cx="60" cy="168" r="4" fill="#1C3A2E"/>
+            <circle cx="160" cy="168" r="4" fill="#1C3A2E"/>
+            <line x1="60" y1="152" x2="160" y2="152" stroke="#1C3A2E" stroke-width="4"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Lauflernwagen · Holz</p>
+          <h3 class="card-name">Lauflernwagen mit Aktivitäten</h3>
+          <div class="card-footer">
+            <span class="card-shop">Bieco · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
-  <div class="divider"></div>
-  <div class="coming-soon">
-    <p>✨ Meine Empfehlungen kommen bald!<br>Schau bald wieder vorbei.</p>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════
+       DRAUSSEN SPIELEN
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Im Freien spielen</p>
+      <h2 class="section-title">Draußen spielen</h2>
+    </div>
+
+    <p class="subsection-label">Laufen lernen</p>
+    <div class="product-grid">
+
+      <!-- Kinderkraft Minibi -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fkinderkraft-mini-laufrad-minibi-leaf-green-7874120%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <line x1="110" y1="52" x2="110" y2="128" stroke="#1C3A2E" stroke-width="6" stroke-linecap="round"/>
+            <rect x="82" y="50" width="56" height="14" rx="6" fill="#1C3A2E"/>
+            <rect x="90" y="36" width="12" height="18" rx="4" fill="#254d3d"/>
+            <rect x="118" y="36" width="12" height="18" rx="4" fill="#254d3d"/>
+            <line x1="64" y1="128" x2="156" y2="128" stroke="#1C3A2E" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="64" cy="152" r="24" fill="#1C3A2E"/>
+            <circle cx="156" cy="152" r="24" fill="#1C3A2E"/>
+            <circle cx="64" cy="152" r="15" fill="#254d3d"/>
+            <circle cx="156" cy="152" r="15" fill="#254d3d"/>
+            <circle cx="64" cy="152" r="6" fill="#1C3A2E"/>
+            <circle cx="156" cy="152" r="6" fill="#1C3A2E"/>
+            <text x="110" y="200" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Minibi · Leaf Green</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Laufrad · Mini</p>
+          <h3 class="card-name">Laufrad Minibi Leaf Green</h3>
+          <div class="card-footer">
+            <span class="card-shop">Kinderkraft · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Pinolino Laufrad Lino -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fpinolino-laufrad-lino-4162159%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <line x1="110" y1="48" x2="110" y2="128" stroke="#1C3A2E" stroke-width="6" stroke-linecap="round"/>
+            <rect x="80" y="46" width="60" height="14" rx="6" fill="#1C3A2E"/>
+            <rect x="88" y="32" width="14" height="18" rx="5" fill="#254d3d"/>
+            <rect x="118" y="32" width="14" height="18" rx="5" fill="#254d3d"/>
+            <line x1="60" y1="128" x2="160" y2="128" stroke="#1C3A2E" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="60" cy="154" r="26" fill="#1C3A2E"/>
+            <circle cx="160" cy="154" r="26" fill="#1C3A2E"/>
+            <circle cx="60" cy="154" r="17" fill="#254d3d"/>
+            <circle cx="160" cy="154" r="17" fill="#254d3d"/>
+            <circle cx="60" cy="154" r="6" fill="#1C3A2E"/>
+            <circle cx="160" cy="154" r="6" fill="#1C3A2E"/>
+            <text x="110" y="200" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Lino · Holz · Pinolino</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Laufrad · Holz</p>
+          <h3 class="card-name">Laufrad Lino</h3>
+          <div class="card-footer">
+            <span class="card-shop">Pinolino · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- woom Laufrad GO -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fwoom-laufrad-go-1-12-woom-red-8375046%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <line x1="110" y1="44" x2="110" y2="128" stroke="#1C3A2E" stroke-width="7" stroke-linecap="round"/>
+            <rect x="76" y="42" width="68" height="15" rx="7" fill="#1C3A2E"/>
+            <rect x="84" y="28" width="16" height="18" rx="5" fill="#254d3d"/>
+            <rect x="120" y="28" width="16" height="18" rx="5" fill="#254d3d"/>
+            <line x1="56" y1="128" x2="164" y2="128" stroke="#1C3A2E" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="56" cy="156" r="28" fill="#1C3A2E"/>
+            <circle cx="164" cy="156" r="28" fill="#1C3A2E"/>
+            <circle cx="56" cy="156" r="18" fill="#254d3d"/>
+            <circle cx="164" cy="156" r="18" fill="#254d3d"/>
+            <circle cx="56" cy="156" r="7" fill="#1C3A2E"/>
+            <circle cx="164" cy="156" r="7" fill="#1C3A2E"/>
+            <text x="110" y="204" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">woom GO 1 · Premium</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Laufrad · Premium</p>
+          <h3 class="card-name">woom Laufrad GO 1</h3>
+          <div class="card-footer">
+            <span class="card-shop">woom · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="subsection-label">Bewegung & Spaß</p>
+    <div class="product-grid">
+
+      <!-- Gymnic Rody -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fgymnic-sitz-und-huepfpferdchen-rody-rot-127795%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <ellipse cx="110" cy="148" rx="56" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="122" rx="46" ry="34" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="96" rx="32" ry="28" fill="#1C3A2E"/>
+            <ellipse cx="88" cy="74" rx="16" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="132" cy="74" rx="16" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="90" rx="20" ry="18" fill="#254d3d"/>
+            <circle cx="102" cy="82" r="4" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="118" cy="82" r="4" fill="#F5EDD8" opacity="0.35"/>
+            <ellipse cx="110" cy="96" rx="6" ry="4" fill="#F5EDD8" opacity="0.2"/>
+            <rect x="102" y="44" width="16" height="30" rx="7" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="44" rx="13" ry="9" fill="#254d3d"/>
+            <circle cx="110" cy="36" r="12" fill="#1C3A2E"/>
+            <circle cx="110" cy="34" r="8" fill="#254d3d"/>
+            <text x="110" y="190" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#F5EDD8" opacity="0.25">Rody · Gymnic</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Hüpfen · Sitzen</p>
+          <h3 class="card-name">Rody Sitz- & Hüpfpferdchen</h3>
+          <div class="card-footer">
+            <span class="card-shop">Gymnic · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Pinolino Schaukelpferd -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fpinolino-schaukelpferd-1749875%2F" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <path d="M36 170 Q110 142 184 170" fill="none" stroke="#1C3A2E" stroke-width="10" stroke-linecap="round"/>
+            <line x1="72" y1="158" x2="72" y2="118" stroke="#1C3A2E" stroke-width="5" stroke-linecap="round"/>
+            <line x1="148" y1="158" x2="148" y2="118" stroke="#1C3A2E" stroke-width="5" stroke-linecap="round"/>
+            <rect x="62" y="112" width="96" height="20" rx="6" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="100" rx="40" ry="30" fill="#1C3A2E"/>
+            <ellipse cx="86" cy="74" rx="16" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="134" cy="74" rx="16" ry="22" fill="#1C3A2E"/>
+            <ellipse cx="110" cy="94" rx="26" ry="22" fill="#254d3d"/>
+            <circle cx="100" cy="86" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <circle cx="120" cy="86" r="5" fill="#F5EDD8" opacity="0.35"/>
+            <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1C3A2E" opacity="0.28">Holz · Pinolino</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Schaukelpferd · Holz</p>
+          <h3 class="card-name">Schaukelpferd</h3>
+          <div class="card-footer">
+            <span class="card-shop">Pinolino · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
-  <div class="divider"></div>
-  <div class="footer"><p><a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a></p></div>
 </div>
+
+<div class="disclosure">
+  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+
+<footer>
+  <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
+  <span>Odette von Dubs</span>
+</footer>
+
 </body>
 </html>
