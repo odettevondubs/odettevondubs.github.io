@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urlaub im Norden mit Baby – Odette von Dubs</title>
+  <meta name="description" content="Was wirklich ins Gepäck kommt – meine Empfehlungen für Urlaub in Skandinavien mit Baby: Merino, Regenschutz, GORE-TEX." />
+  <style>
+    :root {
+      --green: #1C3A2E;
+      --sand: #F5EDD8;
+      --white: #ffffff;
+      --muted: #6b7c74;
+      --border: rgba(28,58,46,0.12);
+      --tag-bg: #e8f0eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--sand);
+      color: var(--green);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--white);
+    }
+    .topnav a { color: var(--green); text-decoration: none; font-size: 14px; }
+    .topnav a:hover { text-decoration: underline; }
+    .topnav .brand { font-weight: 500; font-size: 15px; }
+    .topnav .back { font-size: 13px; color: var(--muted); }
+
+    /* HERO */
+    .hero {
+      padding: 2rem 1.25rem 1.5rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      max-width: 640px;
+      margin: 2rem auto 0.75rem;
+      padding: 1.5rem 1.25rem 0;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* PRODUCT */
+    .product {
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      padding: 0 1.25rem;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .product-inner {
+      background: var(--white);
+      border-radius: 16px;
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      transition: box-shadow 0.15s;
+    }
+    .product-inner:hover { box-shadow: 0 2px 12px rgba(28,58,46,0.1); }
+
+    .product-img-wrap {
+      width: 120px;
+      min-width: 120px;
+      background: #f8f5ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      display: block;
+    }
+    .product-body {
+      flex: 1;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+    .product-brand {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .product-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--green);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--tag-bg);
+      color: var(--green);
+      font-weight: 500;
+    }
+    .product-cta {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 500;
+    }
+    .product-cta::after { content: " →"; }
+
+    /* FOOTER */
+    .footer {
+      max-width: 640px;
+      margin: 3rem auto 0;
+      padding: 1.5rem 1.25rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .footer a { color: var(--green); text-decoration: none; font-size: 13px; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="topnav">
+    <a href="https://odettevondubs.github.io" class="brand">Odette von Dubs</a>
+    <a href="https://odettevondubs.github.io" class="back">← Zurück</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Reisen mit Baby · Skandinavien</div>
+    <h1>Urlaub im Norden <em>mit Baby</em></h1>
+    <p class="hero-desc">Wir leben in Schweden – und ich weiß: Selbst im Sommer kann es hier plötzlich kühl und nass werden. Das steckt bei uns immer im Gepäck.</p>
+  </div>
+
+  <!-- SECTION: Basisschicht -->
+  <div class="section-label">Basisschicht · Wolle</div>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fjoha-woll-body-langarm-rippqualitaet-beige-7923317%2F" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/cb5fa143da1f4c52b01d6b0d8e98cd7b.jpg?quality=85&width=400&height=400" alt="Joha Woll-Body Langarm beige" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Joha</div>
+          <div class="product-name">Woll-Body Langarm Rippqualität</div>
+          <div class="product-desc">Der perfekte erste Wärmelayer direkt auf der Haut. Die Rippqualität schmiegt sich sanft an – kein Kratzen, kein Drücken.</div>
+          <div class="product-tags">
+            <span class="tag">100% Wolle</span>
+            <span class="tag">Basisschicht</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmaximo-woll-muetze-altrosa-8270279%2F" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/3d2a1b4c9e8f0a1d2b3c4e5f6a7b8c9d.jpg?quality=85&width=400&height=400" alt="Maximo Woll-Mütze altrosa"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🧢</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Maximo</div>
+          <div class="product-name">Woll-Mütze altrosa</div>
+          <div class="product-desc">Mit Ohrenklappen und Bindebändern – hält den Kopf warm, ohne zu rutschen. Futter aus weichem Baumwoll-Mix.</div>
+          <div class="product-tags">
+            <span class="tag">Wolle</span>
+            <span class="tag">Ohrenklappen</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SECTION: Mittellage -->
+  <div class="section-label">Mittellage · Merino & Bio-Baumwolle</div>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F47357-gestrickte-leggings-uni-mit-strickbuendchen-reiff%3Fasqid%3D459684617e1a514bbe7ad8fac09ce166%26variant_id%3D639533" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/reiff-leggings-placeholder.jpg?quality=85&width=400&height=400" alt="Reiff Merino-Leggings"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🩱</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Reiff</div>
+          <div class="product-name">Gestrickte Leggings Merino kbT</div>
+          <div class="product-desc">100% Merinoschurwolle aus kontrolliert biologischer Tierhaltung. Das umgeschlagene Bündchen wächst mit – geniales Detail. Hergestellt am Fuße der Schwäbischen Alb.</div>
+          <div class="product-tags">
+            <span class="tag">Merino kbT</span>
+            <span class="tag">Made in Germany</span>
+            <span class="tag">IVN Mitglied</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F503520-wollfrottee-jacke-aus-reiner-bio-merinowolle-hessnatur%3Fasqid%3D2e5ca3ef84f016dbcb75182c5beb2470%26variant_id%3D5309512" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/hessnatur-wollfrottee-placeholder.jpg?quality=85&width=400&height=400" alt="hessnatur Wollfrottee-Jacke Merino"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🧥</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">hessnatur</div>
+          <div class="product-name">Wollfrottee-Jacke Bio-Merinowolle</div>
+          <div class="product-desc">Außen flauschig, innen glatt auf der Haut. Wärmt ohne zu überhitzen – ideal für den Kinderwagen und die Trage. GOTS zertifiziert, keine Kunstfasern.</div>
+          <div class="product-tags">
+            <span class="tag">GOTS</span>
+            <span class="tag">100% Merino</span>
+            <span class="tag">no plastics</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F541592-fleece-jacke-reiner-bio-baumwolle-hessnatur%3Fvariant_id%3D6262154%26asqid%3D727e68dcb0cbc0998e7264950fd17bcc" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/hessnatur-fleece-placeholder.jpg?quality=85&width=400&height=400" alt="hessnatur Fleece-Jacke Bio-Baumwolle"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🌸</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">hessnatur</div>
+          <div class="product-name">Fleece-Jacke Bio-Baumwolle</div>
+          <div class="product-desc">Softes Teddy-Fleece aus 100% Bio-Baumwolle – kein Polyester, kein Mikroplastik. Mit Kapuze, Zipper und Kinnschutz. GOTS zertifiziert.</div>
+          <div class="product-tags">
+            <span class="tag">GOTS</span>
+            <span class="tag">100% Bio-Baumwolle</span>
+            <span class="tag">no plastics</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SECTION: Socken -->
+  <div class="section-label">Füße warm halten · Wollsocken</div>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F564277-hirsch-natur-baby-kinder-vollpluesch-ringel-socke-kbt-wolle-hirsch-natur%3Fvariant_id%3D6127019%26asqid%3D38f93c058b9f95ca52a5be943f983385" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/hirschnatur-socken-placeholder.jpg?quality=85&width=400&height=400" alt="Hirsch Natur Vollplüsch Ringel-Socke"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🧦</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Hirsch Natur</div>
+          <div class="product-name">Vollplüsch Ringel-Socke kbT Wolle</div>
+          <div class="product-desc">Innen kuschelig weicher Vollplüsch – extra warm für kleine Füße. 100% Schurwolle aus kontrolliert biologischer Tierhaltung. Temperaturausgleichend, atmungsaktiv.</div>
+          <div class="product-tags">
+            <span class="tag">Schurwolle kbT</span>
+            <span class="tag">Vollplüsch</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SECTION: Regenschutz -->
+  <div class="section-label">Regenschutz · Weil Regen dazugehört</div>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fkilltec-regenanzug-colorblock-rosa-oliv-marine-8217750%2F" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/killtec-regenanzug-placeholder.jpg?quality=85&width=400&height=400" alt="Killtec Regenanzug Colorblock"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:38px;text-align:center;\'>🌧️</div>'" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Killtec</div>
+          <div class="product-name">Regenanzug Colorblock</div>
+          <div class="product-desc">Wasser- und winddicht mit Wassersäule 10.000 mm – hält auch bei echtem Nordwetter trocken. Kapuze mit elastischem Einsatz, Hosensäume mit Steg.</div>
+          <div class="product-tags">
+            <span class="tag">10.000 mm Wassersäule</span>
+            <span class="tag">Winddicht</span>
+            <span class="tag">Kapuze</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SECTION: Schuhe -->
+  <div class="section-label">Schuhe · GORE-TEX für trockene Füßchen</div>
+
+  <a class="product" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fvado-stiefelette-nut-4186862%2F" target="_blank" rel="noopener">
+    <div class="product-inner">
+      <div class="product-img-wrap">
+        <img src="https://walz-live.cdn.aboutyou.cloud/images/cb5fa143da1f4c52b01d6b0d8e98cd7b.jpg?quality=85&width=400&height=400" alt="Vado Stiefelette GORE-TEX Nut" />
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="product-brand">Vado</div>
+          <div class="product-name">Stiefelette FLAKE GORE-TEX · Nut</div>
+          <div class="product-desc">Wasserdicht und atmungsaktiv dank GORE-TEX Membran – trockene Füße garantiert. Doppel-Klett für schnelles An- und Ausziehen, Reflektoren an Ferse und Seite. Mitwachssohle.</div>
+          <div class="product-tags">
+            <span class="tag">GORE-TEX</span>
+            <span class="tag">Warmfutter</span>
+            <span class="tag">Flex-Sohle</span>
+          </div>
+        </div>
+        <div class="product-cta">Zum Angebot</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>*Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+    <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
+    <p style="margin-top:1rem;">Odette von Dubs</p>
+  </div>
+
+</body>
+</html>
