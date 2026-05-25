@@ -3,39 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Babyerstausstattung 👶 – Odette von Dubs</title>
+<title>Babyerstausstattung – Odette von Dubs</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 2rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
-  .back-link:hover { color: #1C3A2E; }
-  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
-  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
-  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
-  .coming-soon { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; padding: 2rem; text-align: center; }
-  .coming-soon p { font-size: 13px; color: #6b8c7a; line-height: 1.6; }
-  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
-  .footer a { color: #1C3A2E; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #F5EDD8;
+    color: #1C3A2E;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #1C3A2E;
+    color: #F5EDD8;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em { font-style: italic; }
+  .hero p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ── BACK LINK ── */
+  .back-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #1C3A2E;
+    opacity: 0.6;
+  }
+  .back-bar a { color: inherit; text-decoration: none; }
+  .back-bar a:hover { opacity: 1; }
+
+  /* ── CONTENT ── */
+  .content { max-width: 960px; margin: 0 auto; padding: 0 1.2rem 4rem; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1C3A2E;
+    opacity: 0.55;
+    padding: 2.5rem 0 1rem;
+    border-top: 1px solid rgba(28,58,46,0.15);
+    margin-top: 2rem;
+  }
+  .section-label:first-of-type { margin-top: 0; border-top: none; padding-top: 1.5rem; }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #1C3A2E;
+    border: 1px solid rgba(28,58,46,0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 6px 24px rgba(28,58,46,0.12);
+    transform: translateY(-2px);
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background: #fafafa;
+    padding: 1.2rem;
+  }
+  .card-body { padding: 1rem 1.1rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+  .card-tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1C3A2E;
+    opacity: 0.5;
+    margin-bottom: 0.35rem;
+  }
+  .card-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+  .card-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #4a6b5a;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(28,58,46,0.08);
+    padding-top: 0.8rem;
+    margin-top: auto;
+  }
+  .card-brand {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1C3A2E;
+    opacity: 0.5;
+  }
+  .card-arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(28,58,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #1C3A2E;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center;
+    padding: 2rem 1.5rem 3rem;
+    font-size: 11px;
+    color: #6b8c7a;
+    line-height: 1.7;
+    border-top: 1px solid rgba(28,58,46,0.12);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .page-footer a { color: #1C3A2E; }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="header">
-    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
-    <div class="avatar"><span>O</span></div>
-    <h1>Babyerstausstattung 👶</h1>
-    <p>Alles was du wirklich brauchst</p>
-  </div>
-  <div class="divider"></div>
-  <div class="coming-soon">
-    <p>✨ Meine Empfehlungen kommen bald!<br>Schau bald wieder vorbei.</p>
-  </div>
-  <div class="divider"></div>
-  <div class="footer"><p><a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a></p></div>
+
+<div class="back-bar">
+  <a href="https://odettevondubs.github.io">← Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io">← ZURÜCK</a>
 </div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Baby Erstausstattung · Was wirklich zählt</div>
+  <h1>Alles fürs erste Jahr –<br><em>was ich wirklich empfehle</em></h1>
+  <p>Von Anfang an das Richtige. Hier sind die Produkte, die uns täglich begleiten – ehrlich ausgewählt, nachhaltig gedacht.</p>
+</div>
+
+<div class="content">
+
+  <!-- SECTION: LERNTURM -->
+  <div class="section-label">Lernturm · Mitwachsend</div>
+  <div class="grid">
+
+    <a class="card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fpinolino-lernturm-fino-natur-unbehandelt-7337515%2F" target="_blank" rel="noopener">
+      <img class="card-img" src="https://walz-live.cdn.aboutyou.cloud/images/8cba5880caadd48136ebe0ab9138170d.jpg?quality=85&width=600&height=600" alt="Pinolino Lernturm Fino natur" onerror="this.style.background='#f0ebe0';this.removeAttribute('src')">
+      <div class="card-body">
+        <div class="card-tag">Lernturm · Unbehandelt · Buchenholz</div>
+        <div class="card-title">Pinolino Lernturm Fino natur</div>
+        <div class="card-desc">Unbehandeltes Buchenholz, höhenverstellbar, stabil – perfekt damit die Kleinen beim Kochen und Backen mitmachen können.</div>
+        <div class="card-footer">
+          <span class="card-brand">Pinolino</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+  <!-- Fine section Lernturm -->
+
+</div>
+
+<div class="page-footer">
+  <p>*Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+
 </body>
 </html>
