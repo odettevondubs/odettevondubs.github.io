@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motorik & Greifen – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1C3A2E; --green-mid: #254d3d;
+    --sand: #F5EDD8; --sand-dark: #e8dcc3;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--sand); color: var(--green); -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; background: var(--green); }
+  .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--sand); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-back { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  .nav-back:hover { opacity: 1; }
+  .hero { background: var(--green); padding: 9rem 2.5rem 6rem; text-align: center; }
+  .hero-eyebrow { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 1.5rem; }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; color: var(--sand); margin-bottom: 1.75rem; }
+  .hero-title em { font-style: italic; }
+  .hero-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(245,237,216,0.6); max-width: 420px; margin: 0 auto; }
+  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem 4rem; }
+  .section-header { margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid rgba(28,58,46,0.18); }
+  .section-eye { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); opacity: 0.45; margin-bottom: 0.3rem; }
+  .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--green); margin-top: 0.2rem; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 2px; background: rgba(28,58,46,0.1); }
+  .product-card { background: var(--sand); text-decoration: none; display: block; transition: background 0.22s; }
+  .product-card:hover { background: var(--sand-dark); }
+  .card-img { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--sand-dark); display: flex; align-items: center; justify-content: center; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-img svg { width: 100%; height: 100%; display: block; }
+  .card-body { padding: 1rem 1.1rem 1.2rem; }
+  .card-cat { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); opacity: 0.4; margin-bottom: 0.35rem; }
+  .card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--green); line-height: 1.25; margin-bottom: 0.6rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .card-shop { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); opacity: 0.32; }
+  .card-arrow { width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid rgba(28,58,46,0.22); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+  .card-arrow svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 1.5; }
+  .product-card:hover .card-arrow { background: var(--green); }
+  .product-card:hover .card-arrow svg { stroke: var(--sand); }
+  .avocado-badge { display: inline-block; font-family: var(--sans); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(28,58,46,0.1); color: var(--green); padding: 1px 6px; border-radius: 2px; margin-bottom: 0.25rem; opacity: 0.6; }
+  .disclosure { background: var(--green); padding: 3rem 2.5rem; text-align: center; }
+  .disclosure p { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; line-height: 1.8; color: var(--sand); opacity: 0.5; max-width: 480px; margin: 0 auto; letter-spacing: 0.03em; }
+  footer { background: var(--green); border-top: 0.5px solid rgba(245,237,216,0.1); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
+  footer a:hover { opacity: 0.85; }
+  footer span { font-size: 0.7rem; color: var(--sand); opacity: 0.25; font-weight: 300; letter-spacing: 0.08em; }
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.65s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .product-card { opacity: 0; transform: translateY(10px); animation: fadeUp 0.45s ease forwards; }
+  .product-card:nth-child(1){animation-delay:0.04s} .product-card:nth-child(2){animation-delay:0.08s}
+  .product-card:nth-child(3){animation-delay:0.12s} .product-card:nth-child(4){animation-delay:0.16s}
+  .product-card:nth-child(5){animation-delay:0.20s} .product-card:nth-child(6){animation-delay:0.24s}
+  @media(max-width:640px){ nav { padding: 1rem 1.25rem; } .hero { padding: 7rem 1.5rem 4rem; } .section { padding: 3rem 1.25rem 1.5rem; } .product-grid { grid-template-columns: 1fr 1fr; } .card-body { padding: 0.8rem 0.8rem 1rem; } .card-name { font-size: 0.95rem; } }
+  @media(max-width:360px){ .product-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io" class="nav-back">← Montessori Baby</a>
+</nav>
+<section class="hero">
+  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Montessori Baby</p>
+  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Greifen,<br><em>entdecken, lernen</em></h1>
+  <p class="hero-desc fade-up" style="animation-delay:0.35s">Holzspielzeug das die Feinmotorik fördert — ausgewählt für die ersten Entwicklungsschritte.</p>
+</section>
+<div style="background:var(--sand)">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eye">Motorik & Greifen</p>
+      <h2 class="section-title">Montessori Motorik</h2>
+    </div>
+    <div class="product-grid">
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-box-mit-kugeln-8283885%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="38" y="90" width="144" height="100" rx="10" fill="#1C3A2E"/><rect x="38" y="90" width="144" height="20" rx="8" fill="#254d3d"/><circle cx="110" cy="72" r="24" fill="#1C3A2E"/><circle cx="110" cy="72" r="16" fill="#254d3d"/><circle cx="103" cy="66" r="5" fill="#F5EDD8" opacity="0.3"/><circle cx="72" cy="128" r="12" fill="#F5EDD8" opacity="0.15"/><circle cx="110" cy="132" r="12" fill="#F5EDD8" opacity="0.15"/><circle cx="148" cy="128" r="12" fill="#F5EDD8" opacity="0.15"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Motorik · Holz</p>
+          <h3 class="card-name">Montessori Box mit Kugeln</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-sortierkugeln-8349754%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="32" y="88" width="156" height="96" rx="10" fill="#1C3A2E"/><ellipse cx="110" cy="88" rx="78" ry="20" fill="#254d3d"/><circle cx="72" cy="122" r="16" fill="#F5EDD8" opacity="0.18"/><circle cx="110" cy="116" r="16" fill="#F5EDD8" opacity="0.18"/><circle cx="148" cy="122" r="16" fill="#F5EDD8" opacity="0.18"/><circle cx="90" cy="152" r="15" fill="#F5EDD8" opacity="0.14"/><circle cx="130" cy="152" r="15" fill="#F5EDD8" opacity="0.14"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Sortieren · Holz</p>
+          <h3 class="card-name">Montessori Sortierkugeln</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-fuehlbrett-8283877%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="28" y="52" width="164" height="120" rx="10" fill="#1C3A2E"/><rect x="40" y="64" width="66" height="48" rx="5" fill="#254d3d"/><rect x="114" y="64" width="66" height="48" rx="5" fill="#254d3d"/><rect x="40" y="120" width="66" height="36" rx="5" fill="#254d3d"/><rect x="114" y="120" width="66" height="36" rx="5" fill="#254d3d"/><circle cx="73" cy="88" r="12" fill="#F5EDD8" opacity="0.2"/><rect x="120" y="76" width="48" height="6" rx="2" fill="#F5EDD8" opacity="0.18"/><rect x="120" y="88" width="36" height="6" rx="2" fill="#F5EDD8" opacity="0.14"/><rect x="120" y="100" width="42" height="6" rx="2" fill="#F5EDD8" opacity="0.12"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Tasten · Fühlen</p>
+          <h3 class="card-name">Montessori Fühlbrett</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-fensterbausteine-8283869%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="50" y="118" width="52" height="52" rx="6" fill="#1C3A2E"/><rect x="118" y="118" width="52" height="52" rx="6" fill="#1C3A2E"/><rect x="50" y="52" width="52" height="52" rx="6" fill="#1C3A2E"/><rect x="118" y="52" width="52" height="52" rx="6" fill="#1C3A2E"/><rect x="56" y="124" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/><rect x="124" y="124" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/><rect x="56" y="58" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/><rect x="124" y="58" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.14"/><circle cx="76" cy="78" r="10" fill="#F5EDD8" opacity="0.25"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Bauen · Licht</p>
+          <h3 class="card-name">Montessori Fensterbausteine</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-formenpuzzle-8283893%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="28" y="58" width="164" height="114" rx="10" fill="#1C3A2E"/><circle cx="84" cy="115" r="26" fill="#254d3d"/><rect x="118" y="89" width="52" height="52" rx="5" fill="#254d3d"/><circle cx="84" cy="115" r="17" fill="#F5EDD8" opacity="0.18"/><rect x="124" y="95" width="40" height="40" rx="3" fill="#F5EDD8" opacity="0.18"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Formen · Puzzle</p>
+          <h3 class="card-name">Montessori Formenpuzzle</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Feichhorn-montessori-lernpuzzle-formen-8349738%2F" target="_blank" rel="sponsored">
+        <div class="card-img"><svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="220" fill="#e4d9c0"/><rect x="28" y="58" width="164" height="114" rx="10" fill="#1C3A2E"/><circle cx="74" cy="100" r="20" fill="#254d3d"/><rect x="98" y="80" width="38" height="38" rx="4" fill="#254d3d"/><path d="M148 80 L166 115 L130 115 Z" fill="#254d3d"/><circle cx="74" cy="100" r="13" fill="#F5EDD8" opacity="0.2"/><rect x="102" y="84" width="30" height="30" rx="2" fill="#F5EDD8" opacity="0.18"/></svg></div>
+        <div class="card-body">
+          <p class="card-cat">Lernpuzzle · Formen</p>
+          <h3 class="card-name">Montessori Lernpuzzle</h3>
+          <div class="card-footer">
+            <span class="card-shop">Eichhorn · Baby Walz</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="disclosure">
+  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+<footer>
+  <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
+  <span>Odette von Dubs</span>
+</footer>
+</body>
+</html>
