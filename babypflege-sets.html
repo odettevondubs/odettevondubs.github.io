@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sets & Bundles – Natürliche Babypflege – Odette von Dubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --green: #1C3A2E; --green-mid: #254d3d; --sand: #F5EDD8; --sand-dark: #e8dcc3; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--sand); color: var(--green); -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; background: var(--green); }
+  .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--sand); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-back { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  .nav-back:hover { opacity: 1; }
+  .hero { background: var(--green); padding: 9rem 2.5rem 6rem; text-align: center; }
+  .hero-eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 1.5rem; }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; color: var(--sand); margin-bottom: 1.75rem; }
+  .hero-title em { font-style: italic; }
+  .hero-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(245,237,216,0.6); max-width: 420px; margin: 0 auto; }
+  .section-wrap { background: var(--sand); }
+  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem 4rem; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px; background: rgba(28,58,46,0.1); }
+  .product-card { background: var(--sand); text-decoration: none; display: block; transition: background 0.22s; opacity: 0; transform: translateY(10px); animation: fadeUp 0.45s ease forwards; }
+  .product-card:hover { background: var(--sand-dark); }
+  .product-card:nth-child(1){animation-delay:0.05s}
+  .card-img { width: 100%; aspect-ratio: 1; overflow: hidden; }
+  .card-img svg { width: 100%; height: 100%; display: block; }
+  .card-body { padding: 1.1rem 1.25rem 1.3rem; }
+  .card-cat { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); opacity: 0.42; margin-bottom: 0.4rem; }
+  .card-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--green); line-height: 1.25; margin-bottom: 0.75rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .card-shop { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); opacity: 0.35; }
+  .card-arrow { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid rgba(28,58,46,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+  .card-arrow svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 1.5; transition: stroke 0.2s; }
+  .product-card:hover .card-arrow { background: var(--green); border-color: var(--green); }
+  .product-card:hover .card-arrow svg { stroke: var(--sand); }
+  .disclosure { background: var(--green); padding: 3rem 2.5rem; text-align: center; }
+  .disclosure p { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; line-height: 1.8; color: var(--sand); opacity: 0.5; max-width: 480px; margin: 0 auto; letter-spacing: 0.03em; }
+  footer { background: var(--green); border-top: 0.5px solid rgba(245,237,216,0.1); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
+  footer a:hover { opacity: 0.85; }
+  footer span { font-size: 0.7rem; color: var(--sand); opacity: 0.25; font-weight: 300; letter-spacing: 0.08em; }
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.65s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @media(max-width:640px){ nav { padding: 1rem 1.25rem; } .hero { padding: 7rem 1.5rem 4rem; } .section { padding: 3rem 1.25rem 2rem; } .product-grid { grid-template-columns: 1fr 1fr; } .card-body { padding: 0.85rem 0.85rem 1rem; } .card-name { font-size: 1rem; } }
+  @media(max-width:360px){ .product-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
+  <a href="https://odettevondubs.github.io/babypflege.html" class="nav-back">← Zurück</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Natürliche Babypflege · Sets</p>
+  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Sets &<br><em>Bundles</em></h1>
+  <p class="hero-desc fade-up" style="animation-delay:0.35s">Praktische Sparsets für den Einstieg — alles was man für die tägliche Babypflege braucht in einem.</p>
+</section>
+
+<div class="section-wrap">
+  <div class="section">
+    <div class="product-grid">
+
+      <!-- Babypflege Set -->
+      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fbabypflege-set-1-sparset-81935008" target="_blank" rel="sponsored">
+        <div class="card-img">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#e4d9c0"/>
+            <rect x="46" y="88" width="36" height="90" rx="10" fill="#1C3A2E"/>
+            <rect x="46" y="88" width="36" height="14" rx="6" fill="#254d3d"/>
+            <rect x="54" y="72" width="20" height="18" rx="4" fill="#1C3A2E"/>
+            <rect x="92" y="66" width="36" height="112" rx="12" fill="#1C3A2E"/>
+            <rect x="92" y="66" width="36" height="18" rx="8" fill="#254d3d"/>
+            <rect x="100" y="48" width="20" height="20" rx="5" fill="#1C3A2E"/>
+            <rect x="104" y="40" width="12" height="12" rx="3" fill="#254d3d"/>
+            <rect x="138" y="95" width="36" height="83" rx="10" fill="#1C3A2E"/>
+            <ellipse cx="156" cy="95" rx="18" ry="8" fill="#254d3d"/>
+            <ellipse cx="156" cy="87" rx="12" ry="5" fill="#1C3A2E"/>
+            <rect x="54" y="165" width="112" height="16" rx="3" fill="#1C3A2E" opacity="0.12"/>
+            <text x="110" y="176" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#1C3A2E" opacity="0.38" letter-spacing="1.5">S P A R S E T</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Pflegeset · Sparset</p>
+          <h3 class="card-name">Babypflege-Set</h3>
+          <div class="card-footer">
+            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
+            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="disclosure">
+  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
+</div>
+<footer>
+  <a href="https://odettevondubs.github.io/babypflege.html">← Zurück zur Babypflege</a>
+  <span>Odette von Dubs</span>
+</footer>
+</body>
+</html>
