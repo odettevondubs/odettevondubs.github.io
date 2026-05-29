@@ -187,13 +187,58 @@
     </div>
   </a>
 
-  <a class="category" href="https://odettevondubs.github.io/babypflege.html">
+  <!-- NATÜRLICHE BABYPFLEGE — accordion con sottocategorie -->
+  <div class="category accordion" id="babypflege-accordion">
     <div class="category-header">
       <div class="cat-left"><span class="cat-emoji">🌿</span>
-        <div><div class="cat-title">Natürliche Babypflege</div><div class="cat-count">Meine Empfehlungen →</div></div>
-      </div><span class="chevron">↗</span>
+        <div><div class="cat-title">Natürliche Babypflege</div><div class="cat-count">Meine Empfehlungen</div></div>
+      </div><span class="chevron">›</span>
     </div>
-  </a>
+    <div class="subcats">
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-reinigung.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">🛁</span>
+            <div><div class="cat-title">Reinigung & Bad</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-creme.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">🌸</span>
+            <div><div class="cat-title">Creme & Lotion</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-windelbereich.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">🩹</span>
+            <div><div class="cat-title">Windelbereich</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-oele.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">🫧</span>
+            <div><div class="cat-title">Körperöle & Massage</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-schlaf.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">😴</span>
+            <div><div class="cat-title">Schlaf & Beruhigung</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+      <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-sets.html">
+        <div class="category-header">
+          <div class="cat-left"><span class="cat-emoji">🎀</span>
+            <div><div class="cat-title">Sets & Bundles</div><div class="cat-count">Meine Empfehlungen →</div></div>
+          </div><span class="chevron">↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
 
   <a class="category" href="https://odettevondubs.github.io/stillmode.html">
     <div class="category-header">
@@ -247,6 +292,10 @@
     this.classList.toggle('open');
   });
   document.getElementById('montessori-accordion').addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.classList.toggle('open');
+  });
+  document.getElementById('babypflege-accordion').addEventListener('click', function(e) {
     if (e.target.closest('a')) return;
     this.classList.toggle('open');
   });
