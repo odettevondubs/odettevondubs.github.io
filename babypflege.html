@@ -4,672 +4,116 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natürliche Babypflege – Odette von Dubs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --green: #1C3A2E;
-    --green-mid: #254d3d;
-    --sand: #F5EDD8;
-    --sand-dark: #e8dcc3;
-    --sand-deeper: #e0d3b0;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Jost', sans-serif;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 480px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
+  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
+  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
+  .section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b8c7a; margin-bottom: 12px; padding-left: 4px; }
+  .category {
+    background: #fff;
+    border: 1px solid rgba(28,58,46,0.15);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: background 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    display: block;
+    color: #1C3A2E;
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--sand); color: var(--green); -webkit-font-smoothing: antialiased; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem 2.5rem; background: var(--green);
+  .category:hover { background: #f9f5ee; box-shadow: 0 2px 8px rgba(28,58,46,0.08); }
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 16px;
   }
-  .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--sand); text-decoration: none; letter-spacing: 0.02em; }
-  .nav-back { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
-  .nav-back:hover { opacity: 1; }
-
-  /* HERO */
-  .hero { background: var(--green); padding: 9rem 2.5rem 6rem; text-align: center; }
-  .hero-eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 1.5rem; }
-  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; color: var(--sand); margin-bottom: 1.75rem; }
-  .hero-title em { font-style: italic; }
-  .hero-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(245,237,216,0.6); max-width: 420px; margin: 0 auto; }
-
-  /* SECTIONS */
-  .section-wrap { background: var(--sand); }
-  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem 2rem; }
-  .section-header { margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid rgba(28,58,46,0.18); }
-  .section-eye { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); opacity: 0.45; margin-bottom: 0.3rem; }
-  .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--green); margin-top: 0.2rem; }
-
-  .subsection-label {
-    font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--green); opacity: 0.4;
-    margin: 2rem 0 0.75rem; padding-left: 1px;
+  .cat-left { display: flex; align-items: center; gap: 12px; }
+  .cat-emoji { font-size: 20px; width: 28px; text-align: center; }
+  .cat-title { font-size: 14px; font-weight: 600; color: #1C3A2E; }
+  .cat-count { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
+  .chevron { font-size: 18px; color: #6b8c7a; line-height: 1; }
+  .back-link {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: #6b8c7a; text-decoration: none;
+    margin-bottom: 1.5rem; padding-left: 2px;
+    transition: color 0.15s;
   }
-
-  /* GRID */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 2px;
-    background: rgba(28,58,46,0.1);
-  }
-
-  /* CARD */
-  .product-card { background: var(--sand); text-decoration: none; display: block; transition: background 0.22s; }
-  .product-card:hover { background: var(--sand-dark); }
-
-  .card-img { width: 100%; aspect-ratio: 1; overflow: hidden; }
-  .card-img svg { width: 100%; height: 100%; display: block; }
-
-  .card-body { padding: 1.1rem 1.25rem 1.3rem; }
-  .card-cat { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); opacity: 0.42; margin-bottom: 0.4rem; }
-  .card-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--green); line-height: 1.25; margin-bottom: 0.75rem; }
-  .card-footer { display: flex; align-items: center; justify-content: space-between; }
-  .card-shop { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); opacity: 0.35; }
-  .card-arrow { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid rgba(28,58,46,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
-  .card-arrow svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 1.5; transition: stroke 0.2s; }
-  .product-card:hover .card-arrow { background: var(--green); border-color: var(--green); }
-  .product-card:hover .card-arrow svg { stroke: var(--sand); }
-
-  /* DIVIDER */
-  .section-divider { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; border-bottom: 0.5px solid rgba(28,58,46,0.12); }
-
-  /* DISCLOSURE + FOOTER */
-  .disclosure { background: var(--green); padding: 3rem 2.5rem; text-align: center; }
-  .disclosure p { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; line-height: 1.8; color: var(--sand); opacity: 0.5; max-width: 480px; margin: 0 auto; letter-spacing: 0.03em; }
-  footer { background: var(--green); border-top: 0.5px solid rgba(245,237,216,0.1); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
-  footer a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
-  footer a:hover { opacity: 0.85; }
-  footer span { font-size: 0.7rem; color: var(--sand); opacity: 0.25; font-weight: 300; letter-spacing: 0.08em; }
-
-  /* ANIMATIONS */
-  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.65s ease forwards; }
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  .product-card { opacity: 0; transform: translateY(10px); animation: fadeUp 0.45s ease forwards; }
-  .product-card:nth-child(1){animation-delay:0.05s} .product-card:nth-child(2){animation-delay:0.1s}
-  .product-card:nth-child(3){animation-delay:0.15s} .product-card:nth-child(4){animation-delay:0.2s}
-  .product-card:nth-child(5){animation-delay:0.25s} .product-card:nth-child(6){animation-delay:0.3s}
-
-  @media(max-width:640px){
-    nav { padding: 1rem 1.25rem; }
-    .hero { padding: 7rem 1.5rem 4rem; }
-    .section { padding: 3rem 1.25rem 1.5rem; }
-    .product-grid { grid-template-columns: 1fr 1fr; }
-    .card-body { padding: 0.85rem 0.85rem 1rem; }
-    .card-name { font-size: 1rem; }
-  }
-  @media(max-width:360px){
-    .product-grid { grid-template-columns: 1fr; }
-  }
+  .back-link:hover { color: #1C3A2E; }
+  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
 </style>
 </head>
 <body>
+<div class="page">
 
-<nav>
-  <a href="https://odettevondubs.github.io" class="nav-brand">Odette von Dubs</a>
-  <a href="https://odettevondubs.github.io" class="nav-back">← Zurück</a>
-</nav>
+  <a class="back-link" href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
 
-<!-- HERO -->
-<section class="hero">
-  <p class="hero-eyebrow fade-up" style="animation-delay:0.1s">Natürliche Babypflege</p>
-  <h1 class="hero-title fade-up" style="animation-delay:0.2s">Sanfte Pflege<br><em>für die Kleinsten</em></h1>
-  <p class="hero-desc fade-up" style="animation-delay:0.35s">Meine liebsten Naturprodukte für die tägliche Babypflege — ausgewählt mit viel Bedacht, getestet mit meinem Kleinen.</p>
-</section>
-
-<div class="section-wrap">
-
-  <!-- ══════════════════════════════════════
-       BRAND: WELEDA
-  ══════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <p class="section-eye">Brand</p>
-      <h2 class="section-title">Weleda</h2>
-    </div>
-
-    <p class="subsection-label">Reinigung & Shampoo</p>
-    <div class="product-grid">
-
-      <!-- Weleda Calendula Waschlotion -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fweleda-calendula-waschlotion-shampoo-200-duschgel-02084691" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- calendula flower top left -->
-            <g opacity="0.35" transform="translate(38,42)">
-              <circle cx="0" cy="0" r="7" fill="#c8b98a"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(0)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(45)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(90)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(135)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(180)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(225)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(270)"/>
-              <ellipse cx="0" cy="-14" rx="4" ry="7" fill="#c8b98a" transform="rotate(315)"/>
-            </g>
-            <!-- bottle -->
-            <rect x="82" y="48" width="56" height="130" rx="16" fill="#1C3A2E"/>
-            <rect x="82" y="48" width="56" height="22" rx="10" fill="#254d3d"/>
-            <rect x="94" y="30" width="32" height="22" rx="5" fill="#1C3A2E"/>
-            <!-- label area -->
-            <rect x="89" y="80" width="42" height="58" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.55">Calendula</text>
-            <text x="110" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.4">Waschlotion</text>
-            <!-- small calendula on bottle -->
-            <circle cx="110" cy="150" r="10" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="154" text-anchor="middle" font-size="10" fill="#F5EDD8" opacity="0.2">✿</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Waschlotion · Shampoo · 200ml</p>
-          <h3 class="card-name">Calendula Waschlotion</h3>
-          <div class="card-footer">
-            <span class="card-shop">Weleda · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <p class="subsection-label">Creme & Lotion</p>
-    <div class="product-grid">
-
-      <!-- Weleda Calendula Gesichtscreme -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fweleda-calendula-gesichtscreme-50-creme-04416973" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <g opacity="0.3" transform="translate(170,50)">
-              <circle cx="0" cy="0" r="6" fill="#c8b98a"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(0)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(60)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(120)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(180)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(240)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(300)"/>
-            </g>
-            <!-- pot / Tiegel -->
-            <ellipse cx="110" cy="145" rx="58" ry="18" fill="#1C3A2E" opacity="0.18"/>
-            <rect x="58" y="95" width="104" height="52" rx="12" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="95" rx="52" ry="15" fill="#254d3d"/>
-            <ellipse cx="110" cy="80" rx="36" ry="11" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="80" rx="26" ry="7" fill="#254d3d"/>
-            <!-- label -->
-            <rect x="68" y="108" width="84" height="28" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Calendula</text>
-            <text x="110" y="131" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.35">Gesichtscreme</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Gesichtscreme · 50ml</p>
-          <h3 class="card-name">Calendula Gesichtscreme</h3>
-          <div class="card-footer">
-            <span class="card-shop">Weleda · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Weleda Calendula Pflegelotion -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fweleda-baby-pflegelotion-lait-corps-hydratant-bio-calendula-200-milch-19728282" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <g opacity="0.28" transform="translate(42,170)">
-              <circle cx="0" cy="0" r="6" fill="#c8b98a"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(0)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(72)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(144)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(216)"/>
-              <ellipse cx="0" cy="-12" rx="3.5" ry="6" fill="#c8b98a" transform="rotate(288)"/>
-            </g>
-            <!-- tall bottle / Flasche -->
-            <rect x="80" y="38" width="60" height="142" rx="18" fill="#1C3A2E"/>
-            <rect x="80" y="38" width="60" height="22" rx="10" fill="#254d3d"/>
-            <rect x="92" y="22" width="36" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="88" y="68" width="44" height="60" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Calendula</text>
-            <text x="110" y="109" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.38">Pflegelotion</text>
-            <text x="110" y="119" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.28">Bio · 200ml</text>
-            <circle cx="110" cy="152" r="12" fill="#F5EDD8" opacity="0.08"/>
-            <text x="110" y="156" text-anchor="middle" font-size="11" fill="#F5EDD8" opacity="0.18">✿</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Körperlotion · Bio · 200ml</p>
-          <h3 class="card-name">Calendula Pflegelotion</h3>
-          <div class="card-footer">
-            <span class="card-shop">Weleda · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <p class="subsection-label">Öle</p>
-    <div class="product-grid">
-
-      <!-- Weleda Bäuchlein Massageöl -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fweleda-baby-baeuchlein-massageoel-50-oel-16019697" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- curved lines suggesting warmth / massage -->
-            <path d="M48 90 Q38 110 48 130" fill="none" stroke="#c8b98a" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
-            <path d="M58 82 Q44 110 58 138" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
-            <path d="M172 90 Q182 110 172 130" fill="none" stroke="#c8b98a" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
-            <path d="M162 82 Q176 110 162 138" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
-            <!-- slim oil bottle -->
-            <rect x="88" y="50" width="44" height="120" rx="14" fill="#1C3A2E"/>
-            <rect x="88" y="50" width="44" height="18" rx="8" fill="#254d3d"/>
-            <rect x="98" y="34" width="24" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="104" y="26" width="12" height="12" rx="3" fill="#254d3d"/>
-            <!-- label -->
-            <rect x="94" y="78" width="32" height="48" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8" opacity="0.5">Bäuchlein</text>
-            <text x="110" y="111" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.38">Massageöl</text>
-            <!-- oil drop -->
-            <path d="M110 148 Q105 158 110 166 Q115 158 110 148Z" fill="#F5EDD8" opacity="0.15"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Massageöl · Bauch · 50ml</p>
-          <h3 class="card-name">Bäuchlein Massageöl</h3>
-          <div class="card-footer">
-            <span class="card-shop">Weleda · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-    </div>
+  <div class="header">
+    <div class="avatar"><span>O</span></div>
+    <h1>Natürliche Babypflege</h1>
+    <p>Sanfte Naturprodukte für die tägliche Pflege 🌿<br>Getestet & empfohlen von Odette</p>
   </div>
+  <div class="divider"></div>
 
-  <div class="section-divider"></div>
+  <p class="section-title">Meine Kategorien</p>
 
-  <!-- ══════════════════════════════════════
-       BRAND: BAHNHOF APOTHEKE KEMPTEN
-  ══════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <p class="section-eye">Brand</p>
-      <h2 class="section-title">Bahnhof Apotheke Kempten</h2>
+  <a class="category" href="https://odettevondubs.github.io/babypflege-reinigung.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">🛁</span>
+        <div><div class="cat-title">Reinigung & Bad</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
     </div>
+  </a>
 
-    <p class="subsection-label">Windelbereich & Balsam</p>
-    <div class="product-grid">
-
-      <!-- Windelbalsam 70g -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fwindelbalsam-70-balsam-06940968" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <ellipse cx="110" cy="158" rx="58" ry="18" fill="#1C3A2E" opacity="0.15"/>
-            <rect x="58" y="92" width="104" height="68" rx="14" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="92" rx="52" ry="15" fill="#254d3d"/>
-            <ellipse cx="110" cy="77" rx="34" ry="10" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="77" rx="24" ry="7" fill="#254d3d"/>
-            <rect x="68" y="106" width="84" height="36" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#F5EDD8" opacity="0.5">Windelbalsam</text>
-            <text x="110" y="135" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#F5EDD8" opacity="0.3">70g</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Wundschutzcreme · 70g</p>
-          <h3 class="card-name">Windelbalsam 70g</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Windelbalsam 150g -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fwindelbalsam-150-balsam-13718288" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <ellipse cx="110" cy="162" rx="68" ry="20" fill="#1C3A2E" opacity="0.15"/>
-            <rect x="46" y="86" width="128" height="78" rx="16" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="86" rx="64" ry="18" fill="#254d3d"/>
-            <ellipse cx="110" cy="68" rx="40" ry="12" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="68" rx="28" ry="8" fill="#254d3d"/>
-            <rect x="58" y="102" width="104" height="40" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#F5EDD8" opacity="0.5">Windelbalsam</text>
-            <text x="110" y="133" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#F5EDD8" opacity="0.3">150g · Großpackung</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Wundschutzcreme · 150g</p>
-          <h3 class="card-name">Windelbalsam 150g</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Baby Pflegecreme -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fbaby-pflegecreme-70-creme-06940709" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <ellipse cx="110" cy="155" rx="55" ry="17" fill="#1C3A2E" opacity="0.15"/>
-            <rect x="60" y="95" width="100" height="62" rx="12" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="95" rx="50" ry="14" fill="#254d3d"/>
-            <ellipse cx="110" cy="81" rx="32" ry="10" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="81" rx="22" ry="7" fill="#254d3d"/>
-            <rect x="68" y="108" width="84" height="36" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Baby</text>
-            <text x="110" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Pflegecreme</text>
-            <text x="110" y="145" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.28">70g</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Pflegecreme · 70g</p>
-          <h3 class="card-name">Baby Pflegecreme</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Engelwurzbalsam -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fengelwurzbalsam-9-balsam-01911318" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- herb leaves -->
-            <path d="M50 80 Q60 60 70 80 Q60 90 50 80Z" fill="#c8b98a" opacity="0.3"/>
-            <path d="M44 95 Q56 72 68 95 Q56 105 44 95Z" fill="#c8b98a" opacity="0.22"/>
-            <path d="M150 75 Q162 55 174 75 Q162 85 150 75Z" fill="#c8b98a" opacity="0.3"/>
-            <path d="M155 92 Q167 70 180 92 Q167 102 155 92Z" fill="#c8b98a" opacity="0.22"/>
-            <!-- pot -->
-            <ellipse cx="110" cy="158" rx="55" ry="17" fill="#1C3A2E" opacity="0.15"/>
-            <rect x="60" y="95" width="100" height="65" rx="12" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="95" rx="50" ry="14" fill="#254d3d"/>
-            <ellipse cx="110" cy="81" rx="32" ry="10" fill="#1C3A2E"/>
-            <ellipse cx="110" cy="81" rx="22" ry="7" fill="#254d3d"/>
-            <rect x="68" y="108" width="84" height="38" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Engelwurz</text>
-            <text x="110" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Balsam</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Beruhigungsbalsam · 9g</p>
-          <h3 class="card-name">Engelwurzbalsam</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
+  <a class="category" href="https://odettevondubs.github.io/babypflege-creme.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">🌸</span>
+        <div><div class="cat-title">Creme & Lotion</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
     </div>
+  </a>
 
-    <p class="subsection-label">Reinigung & Bad</p>
-    <div class="product-grid">
-
-      <!-- Babybad -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fbabybad-100-bad-00170860" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- bubbles -->
-            <circle cx="60" cy="60" r="8" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.3"/>
-            <circle cx="78" cy="44" r="5" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.25"/>
-            <circle cx="158" cy="52" r="7" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.3"/>
-            <circle cx="172" cy="70" r="4" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.22"/>
-            <!-- bottle -->
-            <rect x="80" y="46" width="60" height="132" rx="18" fill="#1C3A2E"/>
-            <rect x="80" y="46" width="60" height="22" rx="10" fill="#254d3d"/>
-            <rect x="92" y="28" width="36" height="22" rx="6" fill="#1C3A2E"/>
-            <rect x="88" y="76" width="44" height="52" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#F5EDD8" opacity="0.5">Babybad</text>
-            <text x="110" y="115" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.3">100ml</text>
-            <!-- bubbles on bottle bottom -->
-            <circle cx="96" cy="152" r="5" fill="#F5EDD8" opacity="0.12"/>
-            <circle cx="110" cy="158" r="4" fill="#F5EDD8" opacity="0.1"/>
-            <circle cx="124" cy="152" r="5" fill="#F5EDD8" opacity="0.12"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Badezusatz · 100ml</p>
-          <h3 class="card-name">Babybad</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Dusch-Shampoo -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fdusch-shampoo-baby-kind-500-duschgel-13717219" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- large pump bottle 500ml -->
-            <rect x="72" y="38" width="76" height="148" rx="20" fill="#1C3A2E"/>
-            <rect x="72" y="38" width="76" height="26" rx="12" fill="#254d3d"/>
-            <rect x="88" y="20" width="44" height="22" rx="6" fill="#1C3A2E"/>
-            <rect x="96" y="13" width="28" height="12" rx="3" fill="#254d3d"/>
-            <!-- pump nozzle -->
-            <rect x="106" y="13" width="8" height="16" rx="2" fill="#1C3A2E"/>
-            <rect x="100" y="9" width="20" height="7" rx="2" fill="#254d3d"/>
-            <rect x="84" y="72" width="52" height="62" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Dusch-</text>
-            <text x="110" y="111" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Shampoo</text>
-            <text x="110" y="122" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#F5EDD8" opacity="0.3">Baby & Kind · 500ml</text>
-            <circle cx="110" cy="158" r="13" fill="#F5EDD8" opacity="0.08"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Duschgel · Shampoo · 500ml</p>
-          <h3 class="card-name">Dusch-Shampoo Baby & Kind</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
+  <a class="category" href="https://odettevondubs.github.io/babypflege-windelbereich.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">🩹</span>
+        <div><div class="cat-title">Windelbereich</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
     </div>
+  </a>
 
-    <p class="subsection-label">Öle</p>
-    <div class="product-grid">
-
-      <!-- Fenchel-Kümmel-Öl -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Ffenchel-kuemmel-oel-kinder-10-oel-00192318" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- fennel plant left -->
-            <line x1="52" y1="180" x2="52" y2="100" stroke="#c8b98a" stroke-width="1.5" opacity="0.4"/>
-            <path d="M52 120 Q40 110 36 100" fill="none" stroke="#c8b98a" stroke-width="1.2" opacity="0.35"/>
-            <path d="M52 135 Q64 122 68 112" fill="none" stroke="#c8b98a" stroke-width="1.2" opacity="0.35"/>
-            <path d="M52 108 Q46 96 48 86" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.3"/>
-            <circle cx="48" cy="86" r="4" fill="#c8b98a" opacity="0.25"/>
-            <circle cx="36" cy="100" r="3" fill="#c8b98a" opacity="0.22"/>
-            <circle cx="68" cy="112" r="3" fill="#c8b98a" opacity="0.22"/>
-            <!-- small bottle -->
-            <rect x="88" y="56" width="44" height="118" rx="14" fill="#1C3A2E"/>
-            <rect x="88" y="56" width="44" height="18" rx="8" fill="#254d3d"/>
-            <rect x="98" y="40" width="24" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="104" y="32" width="12" height="12" rx="3" fill="#254d3d"/>
-            <rect x="94" y="82" width="32" height="46" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8" opacity="0.5">Fenchel</text>
-            <text x="110" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8" opacity="0.5">Kümmel</text>
-            <text x="110" y="122" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.28">Öl · 10ml</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Bauchmassage · Öl · 10ml</p>
-          <h3 class="card-name">Fenchel-Kümmel-Öl</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Babyöl empfindliche Haut -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fbabyoel-empfindliche-haut-100-oel-01749556" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- oil drops floating -->
-            <path d="M60 80 Q56 90 60 98 Q64 90 60 80Z" fill="#c8b98a" opacity="0.35"/>
-            <path d="M52 105 Q49 113 52 120 Q55 113 52 105Z" fill="#c8b98a" opacity="0.25"/>
-            <path d="M168 72 Q164 82 168 90 Q172 82 168 72Z" fill="#c8b98a" opacity="0.35"/>
-            <!-- bottle -->
-            <rect x="82" y="44" width="56" height="134" rx="18" fill="#1C3A2E"/>
-            <rect x="82" y="44" width="56" height="22" rx="10" fill="#254d3d"/>
-            <rect x="94" y="28" width="32" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="100" y="20" width="20" height="12" rx="3" fill="#254d3d"/>
-            <rect x="88" y="74" width="44" height="56" rx="4" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Babyöl</text>
-            <text x="110" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.4">empfindl.</text>
-            <text x="110" y="121" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#F5EDD8" opacity="0.4">Haut</text>
-            <text x="110" y="131" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.25">100ml</text>
-            <path d="M110 154 Q104 166 110 176 Q116 166 110 154Z" fill="#F5EDD8" opacity="0.14"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Körperöl · empfindl. Haut · 100ml</p>
-          <h3 class="card-name">Babyöl empfindliche Haut</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Mandelöl -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fmandeloel-50-oel-07312748" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- almond shape right -->
-            <path d="M162 68 Q178 88 162 108 Q150 88 162 68Z" fill="#c8b98a" opacity="0.3"/>
-            <path d="M166 72 Q178 88 166 104" fill="none" stroke="#c8b98a" stroke-width="1" opacity="0.2"/>
-            <path d="M156 68 Q144 88 156 108 Q162 88 156 68Z" fill="#c8b98a" opacity="0.2"/>
-            <!-- slim bottle -->
-            <rect x="88" y="50" width="44" height="126" rx="14" fill="#1C3A2E"/>
-            <rect x="88" y="50" width="44" height="18" rx="8" fill="#254d3d"/>
-            <rect x="98" y="34" width="24" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="104" y="26" width="12" height="12" rx="3" fill="#254d3d"/>
-            <rect x="94" y="76" width="32" height="50" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">Mandel</text>
-            <text x="110" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#F5EDD8" opacity="0.5">öl</text>
-            <text x="110" y="122" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.28">50ml</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Körperöl · Mandelöl · 50ml</p>
-          <h3 class="card-name">Mandelöl</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Schlafmütze Roll-on -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fschlafmuetze-roll-on-10-oel-11303471" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- moon and stars -->
-            <path d="M155 48 Q165 58 155 68 Q148 58 155 48Z" fill="#c8b98a" opacity="0.35" transform="rotate(-20,155,58)"/>
-            <circle cx="172" cy="52" r="2.5" fill="#c8b98a" opacity="0.35"/>
-            <circle cx="164" cy="40" r="1.8" fill="#c8b98a" opacity="0.28"/>
-            <circle cx="178" cy="66" r="1.5" fill="#c8b98a" opacity="0.25"/>
-            <path d="M50 55 Q60 65 50 75 Q43 65 50 55Z" fill="#c8b98a" opacity="0.28" transform="rotate(15,50,65)"/>
-            <!-- roll-on bottle -->
-            <rect x="90" y="50" width="40" height="116" rx="13" fill="#1C3A2E"/>
-            <rect x="90" y="50" width="40" height="16" rx="7" fill="#254d3d"/>
-            <!-- roll-on ball top -->
-            <ellipse cx="110" cy="44" rx="14" ry="9" fill="#254d3d"/>
-            <circle cx="110" cy="40" r="9" fill="#1C3A2E"/>
-            <circle cx="110" cy="38" r="6" fill="#254d3d"/>
-            <rect x="96" y="74" width="28" height="42" rx="3" fill="#F5EDD8" opacity="0.1"/>
-            <text x="110" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8" opacity="0.5">Schlaf</text>
-            <text x="110" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#F5EDD8" opacity="0.5">mütze</text>
-            <text x="110" y="114" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#F5EDD8" opacity="0.28">Roll-on · 10ml</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Schlaffördernd · Roll-on · 10ml</p>
-          <h3 class="card-name">Schlafmütze Roll-on</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
+  <a class="category" href="https://odettevondubs.github.io/babypflege-oele.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">🫧</span>
+        <div><div class="cat-title">Körperöle & Massage</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
     </div>
+  </a>
 
-    <p class="subsection-label">Set & Bundles</p>
-    <div class="product-grid">
-
-      <!-- Babypflege Set -->
-      <a class="product-card" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fbabypflege-set-1-sparset-81935008" target="_blank" rel="sponsored">
-        <div class="card-img">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#e4d9c0"/>
-            <!-- three bottles together -->
-            <!-- left small bottle -->
-            <rect x="46" y="88" width="36" height="90" rx="10" fill="#1C3A2E"/>
-            <rect x="46" y="88" width="36" height="14" rx="6" fill="#254d3d"/>
-            <rect x="54" y="72" width="20" height="18" rx="4" fill="#1C3A2E"/>
-            <!-- center tall bottle -->
-            <rect x="92" y="66" width="36" height="112" rx="12" fill="#1C3A2E"/>
-            <rect x="92" y="66" width="36" height="18" rx="8" fill="#254d3d"/>
-            <rect x="100" y="48" width="20" height="20" rx="5" fill="#1C3A2E"/>
-            <rect x="104" y="40" width="12" height="12" rx="3" fill="#254d3d"/>
-            <!-- right pot -->
-            <rect x="138" y="95" width="36" height="83" rx="10" fill="#1C3A2E"/>
-            <ellipse cx="156" cy="95" rx="18" ry="8" fill="#254d3d"/>
-            <ellipse cx="156" cy="87" rx="12" ry="5" fill="#1C3A2E"/>
-            <!-- sparset label -->
-            <rect x="54" y="165" width="112" height="16" rx="3" fill="#1C3A2E" opacity="0.12"/>
-            <text x="110" y="176" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#1C3A2E" opacity="0.38" letter-spacing="1.5">S P A R S E T</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <p class="card-cat">Pflegeset · Sparset</p>
-          <h3 class="card-name">Babypflege-Set</h3>
-          <div class="card-footer">
-            <span class="card-shop">Bahnhof Apotheke · Aliva</span>
-            <span class="card-arrow"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
-          </div>
-        </div>
-      </a>
-
+  <a class="category" href="https://odettevondubs.github.io/babypflege-schlaf.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">😴</span>
+        <div><div class="cat-title">Schlaf & Beruhigung</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
     </div>
+  </a>
+
+  <a class="category" href="https://odettevondubs.github.io/babypflege-sets.html">
+    <div class="category-header">
+      <div class="cat-left"><span class="cat-emoji">🎀</span>
+        <div><div class="cat-title">Sets & Bundles</div><div class="cat-count">Meine Empfehlungen →</div></div>
+      </div><span class="chevron">↗</span>
+    </div>
+  </a>
+
+  <div class="divider"></div>
+  <div class="footer">
+    <p>*Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
   </div>
-
 </div>
-
-<!-- DISCLOSURE -->
-<div class="disclosure">
-  <p>Werbung – Affiliate-Links. Bei einem Kauf erhalte ich eine kleine Provision,<br>für dich entstehen keine Mehrkosten. Danke für deine Unterstützung! 🌿</p>
-</div>
-
-<footer>
-  <a href="https://odettevondubs.github.io">← Zurück zur Übersicht</a>
-  <span>Odette von Dubs</span>
-</footer>
-
 </body>
 </html>
