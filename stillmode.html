@@ -4,20 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stillmode – Odette von Dubs</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 2rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #4a6b5a; text-decoration: none; margin-bottom: 1.2rem; }
-  .back-link:hover { color: #1C3A2E; }
-  .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1C3A2E; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-  .avatar span { color: #F5EDD8; font-size: 26px; font-weight: 600; }
-  .header h1 { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: #4a6b5a; line-height: 1.5; }
-  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 1.5rem 0; opacity: 0.2; }
+  body { font-family: 'Jost', -apple-system, sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; }
 
-  /* --- Accordion card --- */
+  /* ── HERO HEADER ── */
+  .hero { background: #1C3A2E; padding: 1.2rem 1.4rem 3rem; text-align: center; position: relative; }
+  .hero-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+  .hero-name { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; color: #F5EDD8; letter-spacing: 0.03em; }
+  .back-link { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; color: #F5EDD8; text-decoration: none; letter-spacing: 0.03em; opacity: 0.85; }
+  .back-link:hover { opacity: 1; }
+  .hero-tag { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #a8c4b4; margin-bottom: 1rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 10vw, 4.2rem); line-height: 1.1; color: #F5EDD8; margin-bottom: 1.2rem; }
+  .hero-title em { font-style: italic; font-weight: 400; }
+  .hero-desc { font-family: 'Jost', sans-serif; font-size: 13.5px; font-weight: 300; color: #c8dbd2; line-height: 1.6; max-width: 280px; margin: 0 auto; }
+
+  /* ── CONTENT ── */
+  .content { padding: 2rem 1rem 2rem; max-width: 480px; margin: 0 auto; }
   .category { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
   .category-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; cursor: pointer; user-select: none; transition: background 0.15s; }
   .category-header:hover { background: #f9f5ee; }
@@ -29,14 +33,7 @@
   .chevron.open { transform: rotate(180deg); }
   .products { display: none; border-top: 1px solid rgba(28,58,46,0.1); background: #fafaf8; }
   .products.open { display: block; }
-
-  /* --- List layout (default) --- */
-  .product-link {
-    display: flex; align-items: center; gap: 12px;
-    padding: 10px 16px;
-    border-bottom: 1px solid rgba(28,58,46,0.07);
-    text-decoration: none; transition: background 0.15s;
-  }
+  .product-link { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid rgba(28,58,46,0.07); text-decoration: none; transition: background 0.15s; }
   .product-link:last-child { border-bottom: none; }
   .product-link:hover { background: #f5f0e8; }
   .prod-img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #e8e0d0; }
@@ -45,210 +42,244 @@
   .prod-name { font-size: 13px; color: #1C3A2E; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .prod-brand { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
   .ext { font-size: 13px; color: #6b8c7a; flex-shrink: 0; margin-left: 4px; }
-
+  .coming-soon { padding: 16px; text-align: center; font-size: 13px; color: #6b8c7a; font-style: italic; }
   .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
   .footer a { color: #1C3A2E; }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="header">
-    <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
-    <div class="avatar"><span>O</span></div>
-    <h1>Stillmode 🤱</h1>
-    <p>Bequem stillen & trotzdem schön angezogen<br>Meine liebsten Stücke für den Alltag</p>
+  <div class="hero">
+    <div class="hero-nav">
+      <span class="hero-name">Odette von Dubs</span>
+      <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
+    </div>
+    <div class="hero-tag">Bequem · Schön · Funktional</div>
+    <h1 class="hero-title">Still-<br><em>mode</em></h1>
+    <p class="hero-desc">Bequem stillen & trotzdem schön angezogen – meine liebsten Stücke für den Alltag.</p>
   </div>
 
-  <div class="divider"></div>
+  <div class="content">
 
-  <!-- CARD 1: STILL-TOPS & SHIRTS -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">👕</span>
-        <div>
-          <div class="cat-title">Still-Tops & Shirts</div>
-          <div class="cat-count">Für unterwegs & zuhause</div>
+    <!-- CARD 1: STILL-TOPS & SHIRTS -->
+    <div class="category" onclick="toggle(this)">
+      <div class="category-header">
+        <div class="cat-left">
+          <span class="cat-emoji">👕</span>
+          <div>
+            <div class="cat-title">Still-Tops & Shirts</div>
+            <div class="cat-count">2 Produkte</div>
+          </div>
         </div>
+        <span class="chevron">▾</span>
       </div>
-      <span class="chevron">▾</span>
-    </div>
-    <div class="products">
-      <a class="product-link" href="LINK_1" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👕</div>
-        <div class="prod-info">
-          <div class="prod-name">Still-Shirt Produkt 1</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="LINK_2" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👕</div>
-        <div class="prod-info">
-          <div class="prod-name">Still-Shirt Produkt 2</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-    </div>
-  </div>
+      <div class="products">
 
-  <!-- CARD 2: STILL-KLEIDER -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">👗</span>
-        <div>
-          <div class="cat-title">Still-Kleider</div>
-          <div class="cat-count">Für besondere Anlässe</div>
-        </div>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-umstands-und-still-t-shirt-sanson-rippqualitaet-ringel-natur-schwarz-8319111%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/a11b987151c84c1895eb5b52a3a98f5a.jpg?quality=75&width=200&height=200" alt="Noppies Sanson Ringel natur/schwarz">
+          <div class="prod-info">
+            <div class="prod-name">Still-Shirt Sanson Ringel natur/schwarz</div>
+            <div class="prod-brand">Noppies · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-umstands-und-still-t-shirt-sanson-rippqualitaet-oliv-7841345%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/4c435849ecb78448e429f1ea0ed1a3b8.jpg?quality=75&width=200&height=200" alt="Noppies Sanson Oliv">
+          <div class="prod-info">
+            <div class="prod-name">Still-Shirt Sanson Rippqualität Oliv</div>
+            <div class="prod-brand">Noppies · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
       </div>
-      <span class="chevron">▾</span>
     </div>
-    <div class="products">
-      <a class="product-link" href="LINK_3" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👗</div>
-        <div class="prod-info">
-          <div class="prod-name">Stillkleid Produkt 1</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="LINK_4" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👗</div>
-        <div class="prod-info">
-          <div class="prod-name">Stillkleid Produkt 2</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-    </div>
-  </div>
 
-  <!-- CARD 3: STILL-BHS & NACHTHEMDEN -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">🌿</span>
-        <div>
-          <div class="cat-title">Still-BHs & Nachthemden</div>
-          <div class="cat-count">Komfort rund um die Uhr</div>
+    <!-- CARD 2: STILL-KLEIDER -->
+    <div class="category" onclick="toggle(this)">
+      <div class="category-header">
+        <div class="cat-left">
+          <span class="cat-emoji">👗</span>
+          <div>
+            <div class="cat-title">Still-Kleider</div>
+            <div class="cat-count">6 Produkte</div>
+          </div>
         </div>
+        <span class="chevron">▾</span>
       </div>
-      <span class="chevron">▾</span>
-    </div>
-    <div class="products">
+      <div class="products">
 
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmedela-umstands-und-still-bh-keep-cool-beige-8375240%2F" target="_blank" rel="noopener">
-        <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/163c885620565cf6d15841313f08a07b.jpg?quality=75&width=200&height=200" alt="Medela Keep Cool BH Beige">
-        <div class="prod-info">
-          <div class="prod-name">Still-BH Keep Cool Beige</div>
-          <div class="prod-brand">Medela · Baby Walz</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-maternity-still-kleid-kaja-night-4181190%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/227a242b815530b82bc3db83dee81983.jpg?quality=75&width=200&height=200" alt="Noppies Still-Kleid Kaja Night">
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid Kaja Night</div>
+            <div class="prod-brand">Noppies Maternity · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
 
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmedela-umstands-und-still-bh-keep-cool-weiss-7494661%2F" target="_blank" rel="noopener">
-        <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/e035e778c61920edc23912dbdb52f2ad.jpg?quality=75&width=200&height=200" alt="Medela Keep Cool BH Weiß">
-        <div class="prod-info">
-          <div class="prod-name">Still-BH Keep Cool Weiß</div>
-          <div class="prod-brand">Medela · Baby Walz</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-maternity-still-kleid-fureso-minimal-dot-4196268%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/2ac122684d41fcf185c18126819ccaf2.jpg?quality=75&width=200&height=200" alt="Noppies Still-Kleid Fureso Minimal Dot">
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid Fureso Minimal Dot</div>
+            <div class="prod-brand">Noppies Maternity · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
 
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-und-still-nachthemd-dunkelrot-8275238%2F" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">🌙</div>
-        <div class="prod-info">
-          <div class="prod-name">Still-Nachthemd Dunkelrot</div>
-          <div class="prod-brand">Mamalicious · Baby Walz</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-maternity-still-kleid-pilar-allover-leopard-4196289%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/61ae4b1df78ce2fd6d3c1147b1578b1d.jpg?quality=75&width=200&height=200" alt="Noppies Still-Kleid Pilar Allover Leopard">
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid Pilar Allover Leopard</div>
+            <div class="prod-brand">Noppies Maternity · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
 
-      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-und-still-nachthemd-mira-blau-7866933%2F" target="_blank" rel="noopener">
-        <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/33a649fc399fb5a467d58bc9b8a38d77.jpg?quality=75&width=200&height=200" alt="Mamalicious Nachthemd Mira Blau">
-        <div class="prod-info">
-          <div class="prod-name">Still-Nachthemd Mira Blau</div>
-          <div class="prod-brand">Mamalicious · Baby Walz</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-maternity-still-kleid-molde-graphic-print-4196303%2F" target="_blank" rel="noopener">
+          <div class="prod-img-placeholder">👗</div>
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid Molde Graphic Print</div>
+            <div class="prod-brand">Noppies Maternity · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
 
-    </div>
-  </div>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fnoppies-maternity-still-kleid-infinity-4197993%2F" target="_blank" rel="noopener">
+          <div class="prod-img-placeholder">👗</div>
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid Infinity</div>
+            <div class="prod-brand">Noppies Maternity · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
 
-  <!-- CARD 4: HOSEN & RÖCKE -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">👖</span>
-        <div>
-          <div class="cat-title">Hosen & Röcke</div>
-          <div class="cat-count">Bequem & stylisch nach der Geburt</div>
-        </div>
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-und-still-kleid-ringel-rippqualitaet-june-schwarz-weiss-8253684%2F" target="_blank" rel="noopener">
+          <div class="prod-img-placeholder">👗</div>
+          <div class="prod-info">
+            <div class="prod-name">Still-Kleid June schwarz/weiß</div>
+            <div class="prod-brand">Mamalicious · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
       </div>
-      <span class="chevron">▾</span>
     </div>
-    <div class="products">
-      <a class="product-link" href="LINK_9" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👖</div>
-        <div class="prod-info">
-          <div class="prod-name">Hose / Rock Produkt 1</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="LINK_10" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">👖</div>
-        <div class="prod-info">
-          <div class="prod-name">Hose / Rock Produkt 2</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
-    </div>
-  </div>
 
-  <!-- CARD 5: STILL-ZUBEHÖR -->
-  <div class="category" onclick="toggle(this)">
-    <div class="category-header">
-      <div class="cat-left">
-        <span class="cat-emoji">🍃</span>
-        <div>
-          <div class="cat-title">Still-Zubehör</div>
-          <div class="cat-count">Stilleinlagen, Stillkissen & mehr</div>
+    <!-- CARD 3: STILL-BHS & NACHTHEMDEN -->
+    <div class="category" onclick="toggle(this)">
+      <div class="category-header">
+        <div class="cat-left">
+          <span class="cat-emoji">🌿</span>
+          <div>
+            <div class="cat-title">Still-BHs & Nachthemden</div>
+            <div class="cat-count">4 Produkte</div>
+          </div>
         </div>
+        <span class="chevron">▾</span>
       </div>
-      <span class="chevron">▾</span>
+      <div class="products">
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmedela-umstands-und-still-bh-ultra-keep-cool-gefuetterte-cups-weiss-7494700%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/44a05cc2176e75d9f72e72aa17c3114a.jpg?quality=75&width=200&height=200" alt="Medela Ultra Keep Cool BH Weiß">
+          <div class="prod-info">
+            <div class="prod-name">Still-BH Ultra Keep Cool Weiß</div>
+            <div class="prod-brand">Medela · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmedela-umstands-und-still-bh-keep-cool-beige-8375240%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/163c885620565cf6d15841313f08a07b.jpg?quality=75&width=200&height=200" alt="Medela Keep Cool BH Beige">
+          <div class="prod-info">
+            <div class="prod-name">Still-BH Keep Cool Beige</div>
+            <div class="prod-brand">Medela · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-und-still-nachthemd-dunkelrot-8275238%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/e3b564b34efae5dc45a2c23dba3e44f0.jpg?quality=75&width=200&height=200" alt="Mamalicious Nachthemd Dunkelrot">
+          <div class="prod-info">
+            <div class="prod-name">Still-Nachthemd Dunkelrot</div>
+            <div class="prod-brand">Mamalicious · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-und-still-nachthemd-mira-blau-7866933%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/33a649fc399fb5a467d58bc9b8a38d77.jpg?quality=75&width=200&height=200" alt="Mamalicious Nachthemd Mira Blau">
+          <div class="prod-info">
+            <div class="prod-name">Still-Nachthemd Mira Blau</div>
+            <div class="prod-brand">Mamalicious · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+      </div>
     </div>
-    <div class="products">
-      <a class="product-link" href="LINK_7" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">🍃</div>
-        <div class="prod-info">
-          <div class="prod-name">Still-Zubehör Produkt 1</div>
-          <div class="prod-brand">Marke · Shop</div>
+
+    <!-- CARD 4: HOSEN & RÖCKE -->
+    <div class="category" onclick="toggle(this)">
+      <div class="category-header">
+        <div class="cat-left">
+          <span class="cat-emoji">👖</span>
+          <div>
+            <div class="cat-title">Hosen & Leggings</div>
+            <div class="cat-count">2 Produkte</div>
+          </div>
         </div>
-        <span class="ext">↗</span>
-      </a>
-      <a class="product-link" href="LINK_8" target="_blank" rel="noopener">
-        <div class="prod-img-placeholder">🍃</div>
-        <div class="prod-info">
-          <div class="prod-name">Still-Zubehör Produkt 2</div>
-          <div class="prod-brand">Marke · Shop</div>
-        </div>
-        <span class="ext">↗</span>
-      </a>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="products">
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-hose-schwarz-7930593%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/1f6b6a550f75509062f4666abddd43f4.jpg?quality=75&width=200&height=200" alt="Mamalicious Umstands-Hose schwarz">
+          <div class="prod-info">
+            <div class="prod-name">Umstands-Hose schwarz</div>
+            <div class="prod-brand">Mamalicious · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmamalicious-umstands-leggings-tia-6013325%2F" target="_blank" rel="noopener">
+          <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/7708a0646fc97835d475b54f13bbfd6c.jpg?quality=75&width=200&height=200" alt="Mamalicious Leggings Tia">
+          <div class="prod-info">
+            <div class="prod-name">Umstands-Leggings Tia</div>
+            <div class="prod-brand">Mamalicious · Baby Walz</div>
+          </div>
+          <span class="ext">↗</span>
+        </a>
+
+      </div>
     </div>
+
+    <!-- CARD 5: STILL-ZUBEHÖR -->
+    <div class="category" onclick="toggle(this)">
+      <div class="category-header">
+        <div class="cat-left">
+          <span class="cat-emoji">🍃</span>
+          <div>
+            <div class="cat-title">Still-Zubehör</div>
+            <div class="cat-count">Stilleinlagen, Stillkissen & mehr</div>
+          </div>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="products">
+        <div class="coming-soon">Bald verfügbar – neue Produkte kommen bald! 🌿</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Alle Links sind Affiliate-Links (Werbung).<br>
+      Ich empfehle nur Produkte, die ich selbst kenne und schätze.<br><br>
+      <a href="https://pinterest.com" target="_blank">📌 Pinterest</a>
+    </div>
+
   </div>
 
-  <div class="footer">
-    Alle Links sind Affiliate-Links (Werbung).<br>
-    Ich empfehle nur Produkte, die ich selbst kenne und schätze.<br><br>
-    <a href="https://pinterest.com" target="_blank">📌 Pinterest</a>
-  </div>
-</div>
 <script>
 function toggle(el) {
   const products = el.querySelector('.products');
