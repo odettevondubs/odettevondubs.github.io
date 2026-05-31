@@ -7,19 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Jost', -apple-system, sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; }
+  body { font-family: 'Jost', -apple-system, sans-serif; background: #1C3A2E; color: #1C3A2E; min-height: 100vh; }
 
   .layout {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 280px minmax(0, 680px);
     min-height: 100vh;
-    max-width: 960px;
-    margin: 0 auto;
   }
 
   /* ── LEFT PANEL ── */
   .left {
     background: #1C3A2E;
+    min-width: 280px;
     padding: 2.5rem 1.8rem 2rem;
     display: flex;
     flex-direction: column;
