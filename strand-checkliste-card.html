@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erster Strandurlaub mit Baby – Odette von Dubs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', -apple-system, sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; }
+  .hero { background: #1C3A2E; padding: 3rem 1.5rem 3.5rem; text-align: center; position: relative; }
+  .hero-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+  .brand { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(245,237,216,0.7); letter-spacing: 0.04em; }
+  .back-link { font-size: 13px; color: rgba(245,237,216,0.7); text-decoration: none; letter-spacing: 0.04em; }
+  .back-link:hover { color: #F5EDD8; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.15em; color: rgba(245,237,216,0.55); text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 8vw, 3.2rem); font-weight: 400; color: #F5EDD8; line-height: 1.15; margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: italic; }
+  .hero p { font-size: 14px; color: rgba(245,237,216,0.75); line-height: 1.7; max-width: 320px; margin: 0 auto; }
+  .page { max-width: 480px; margin: 0 auto; padding: 2rem 1rem; }
+  .divider { height: 2px; background: #1C3A2E; border-radius: 2px; margin: 0 0 1.5rem; opacity: 0.15; }
+  .category { background: #fff; border: 1px solid rgba(28,58,46,0.15); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+  .category-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .category-header:hover { background: #f9f5ee; }
+  .cat-left { display: flex; align-items: center; gap: 12px; }
+  .cat-emoji { font-size: 20px; width: 28px; text-align: center; }
+  .cat-title { font-size: 14px; font-weight: 600; color: #1C3A2E; }
+  .cat-count { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
+  .chevron { font-size: 18px; color: #6b8c7a; transition: transform 0.2s; line-height: 1; }
+  .chevron.open { transform: rotate(180deg); }
+  .products { display: none; border-top: 1px solid rgba(28,58,46,0.1); background: #fafaf8; }
+  .products.open { display: block; }
+  .product-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(28,58,46,0.07);
+    text-decoration: none; transition: background 0.15s;
+  }
+  .product-link:last-child { border-bottom: none; }
+  .product-link:hover { background: #f5f0e8; }
+  .prod-img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #e8e0d0; }
+  .prod-img-placeholder {
+    width: 52px; height: 52px; border-radius: 8px; flex-shrink: 0;
+    background: #e8e0d0; display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .prod-info { flex: 1; min-width: 0; }
+  .prod-name { font-size: 13px; color: #1C3A2E; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .prod-brand { font-size: 11px; color: #6b8c7a; margin-top: 2px; }
+  .ext { font-size: 13px; color: #6b8c7a; flex-shrink: 0; margin-left: 4px; }
+  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #6b8c7a; line-height: 1.6; }
+  .footer a { color: #1C3A2E; }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-nav">
+      <span class="brand">Odette von Dubs</span>
+      <a class="back-link" href="https://odettevondubs.github.io">← Zurück</a>
+    </div>
+    <p class="hero-eyebrow">Strand &amp; Sommer · Baby</p>
+    <h1>Erster Strandurlaub<br><em>mit Baby</em></h1>
+    <p>Was ich wirklich mitgenommen habe – meine liebsten Produkte für einen entspannten Strandtag.</p>
+  </div>
+
+<div class="page">
+  <div class="divider"></div>
+
+  <!-- CARD 1: SONNENSCHUTZ -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">🧴</span>
+        <div>
+          <div class="cat-title">Sonnenschutz</div>
+          <div class="cat-count">Mineralisch & sanft für Babyhaut</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products open">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=14015&awinaffid=2708356&ued=https%3A%2F%2Fwww.aliva.de%2Fp%2Fultrasun-baby-spf-50-50-gel-19893756" target="_blank" rel="noopener">
+        <div class="prod-img-placeholder">☀️</div>
+        <div class="prod-info">
+          <div class="prod-name">Ultrasun Baby SPF 50+ Gel</div>
+          <div class="prod-brand">Ultrasun · Aliva Apotheke</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 2: KOPFSCHUTZ -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">👒</span>
+        <div>
+          <div class="cat-title">Sonnenhut</div>
+          <div class="cat-count">Nackenschutz & Ohren UV 50+</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products open">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fmaximo-musselin-schirmmuetze-mit-nackenschutz-und-ohren-beige-7891318%2F" target="_blank" rel="noopener">
+        <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/b07a978e6cf7e4c25f5cef3f70f359d0.jpg?quality=75&width=600&height=600" alt="Maximo Musselin-Schirmmütze beige">
+        <div class="prod-info">
+          <div class="prod-name">Musselin-Schirmmütze UV 50</div>
+          <div class="prod-brand">maximo · Baby Walz</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 3: SANDSPIELZEUG -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">🏖️</span>
+        <div>
+          <div class="cat-title">Sandspielzeug</div>
+          <div class="cat-count">Stundenlanger Buddelspaß</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products open">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=12387&awinaffid=2708356&ued=https%3A%2F%2Fwww.baby-walz.de%2Fp%2Fhape-sandspielzeug-strandset-5in1-8395977%2F" target="_blank" rel="noopener">
+        <img class="prod-img" src="https://walz-live.cdn.aboutyou.cloud/images/4376775470e267ab7a3972105c831734.jpg?quality=75&width=600&height=600" alt="Hape Sandspielzeug Strandset 5in1">
+        <div class="prod-info">
+          <div class="prod-name">Sandspielzeug Strandset 5in1</div>
+          <div class="prod-brand">Hape · Baby Walz</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 4: KLEIDUNG -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">👕</span>
+        <div>
+          <div class="cat-title">Strandoutfit</div>
+          <div class="cat-count">100% Bio-Baumwolle</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products open">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fsailor-knots-boxy-t-shirt" target="_blank" rel="noopener">
+        <div class="prod-img-placeholder">⚓</div>
+        <div class="prod-info">
+          <div class="prod-name">Sailor Knots Boxy T-Shirt</div>
+          <div class="prod-brand">Organic Zoo</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdeck-chair-stripes-pants" target="_blank" rel="noopener">
+        <div class="prod-img-placeholder">🌊</div>
+        <div class="prod-info">
+          <div class="prod-name">Deck Chair Stripes Pants</div>
+          <div class="prod-brand">Organic Zoo</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 5: STRANDTASCHE -->
+  <div class="category" onclick="toggle(this)">
+    <div class="category-header">
+      <div class="cat-left">
+        <span class="cat-emoji">👜</span>
+        <div>
+          <div class="cat-title">Strandtasche</div>
+          <div class="cat-count">Aus Bio-Baumwolle</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="products open">
+      <a class="product-link" href="https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F467031-einkaufstasche-strandtasche-tragetasche-aus-bio-baumwolle-omom%3Fvariant_id%3D4425906%26asqid%3Df66807cc51d73a6d94c7837800d6d23c%26vendor_id%3D1435" target="_blank" rel="noopener">
+        <div class="prod-img-placeholder">🌿</div>
+        <div class="prod-info">
+          <div class="prod-name">Strandtasche Bio-Baumwolle</div>
+          <div class="prod-brand">omom · Avocado Store</div>
+        </div>
+        <span class="ext">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Alle Links sind Affiliate-Links (Werbung).<br>
+    Ich empfehle nur Produkte, die ich selbst kenne und schätze.<br><br>
+    <a href="https://odettevondubs.github.io">🌿 odettevondubs.github.io</a>
+  </div>
+</div>
+<script>
+function toggle(el) {
+  const products = el.querySelector('.products');
+  const chevron = el.querySelector('.chevron');
+  const isOpen = products.classList.contains('open');
+  products.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
