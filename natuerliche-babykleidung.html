@@ -101,7 +101,6 @@
     margin: 0 auto;
   }
 
-  /* Livello 1 — Materiale */
   .mat-group {
     background: var(--white);
     border-radius: 16px;
@@ -152,7 +151,6 @@
   }
   .mat-body.open { display: block; }
 
-  /* Livello 2 — Categoria */
   .cat-group { border-bottom: 1px solid #f0ebe0; }
   .cat-group:last-child { border-bottom: none; }
 
@@ -194,7 +192,6 @@
   .cat-body { display: none; }
   .cat-body.open { display: block; }
 
-  /* Prodotti */
   .product-link {
     display: flex;
     align-items: center;
@@ -300,13 +297,18 @@ const data = [
         { name: "Baby Wickelbody Bio-Baumwolle", brand: "Sense Organics · Avocado Store", img: "https://www.avocadostore.de/cdn-cgi/image/width=200,format=auto/https://images.avocadostore.de/products/449215/image-thumb__449215__product_gallery_large/449215.jpg", url: "https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F449215-baby-wickelbody-mit-alloverdruck-aus-biobaumwolle-sense-organics-und-friends-in-cooperation-with-gary-mash%3Fvariant_id%3D4432998%26asqid%3Dc18aa5dd6c04535c36fb100934c0b320" }
       ]},
       { cat: "Strampler", products: [
-        { name: "Baby-Strampler gewebt", brand: "Frija Omina · Avocado Store", img: "https://www.avocadostore.de/cdn-cgi/image/width=200,format=auto/https://images.avocadostore.de/products/404031/image-thumb__404031__product_gallery_large/404031.jpg", url: "https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F404031-baby-strampler-gewebt-frija-omina%3Fvariant_id%3D3615261%26asqid%3D332ccddf53cf5399a01738cbcbe98bcb" }
+        { name: "Baby-Strampler gewebt", brand: "Frija Omina · Avocado Store", img: "https://www.avocadostore.de/cdn-cgi/image/width=200,format=auto/https://images.avocadostore.de/products/404031/image-thumb__404031__product_gallery_large/404031.jpg", url: "https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F404031-baby-strampler-gewebt-frija-omina%3Fvariant_id%3D3615261%26asqid%3D332ccddf53cf5399a01738cbcbe98bcb" },
+        { name: "Copper Stripes Beach Romper", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/copper-stripes-beach-romper-front.jpg?v=1772459458&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fcopper-stripes-beach-romper" }
       ]},
       { cat: "Oberteil", products: [
-        { name: "Deck Chair Stripes Sweatshirt", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/deck-chair-stripes-sweatshirt-toddler-no-button.jpg?v=1773152040&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdeck-chair-stripes-sweatshirt" }
+        { name: "Deck Chair Stripes Sweatshirt", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/deck-chair-stripes-sweatshirt-toddler-no-button.jpg?v=1773152040&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdeck-chair-stripes-sweatshirt" },
+        { name: "Seascape Sweatshirt (ungefärbt)", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/seascape-sweatshirt-undyed-kids-front.jpg?v=1757518844&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fseascape-sweatshirt-undyed" },
+        { name: "Grow & Gather Boxy T-Shirt", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/grow-gather-boxy-t-shirt-toddler-no-button.jpg?v=1773143282&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fgrow-gather-boxy-t-shirt" }
       ]},
       { cat: "Hose", products: [
-        { name: "Deck Chair Stripes Pants", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/deck-chair-stripes-pants-front.jpg?v=1776415479&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdeck-chair-stripes-pants" }
+        { name: "Deck Chair Stripes Pants", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/deck-chair-stripes-pants-front.jpg?v=1776415479&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdeck-chair-stripes-pants" },
+        { name: "Seascape Wide Leg Pants (ungefärbt)", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/seascape-sweatshirt-undyed-model-standing.jpg?v=1772644347&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fseascape-wide-leg-pants-undyed" },
+        { name: "Dill Gingham Frill Culottes", brand: "Organic Zoo", img: "https://organic-zoo.com/cdn/shop/files/dill-gingham-frill-culottes-front.jpg?v=1772528005&width=400", url: "https://www.awin1.com/cread.php?awinmid=26100&awinaffid=2708356&ued=https%3A%2F%2Forganic-zoo.com%2Fproducts%2Fdill-gingham-frill-culottes" }
       ]},
       { cat: "Kleid", products: [
         { name: "Kleid Bio-Baumwolle", brand: "People Wear Organic · Avocado Store", img: "https://www.avocadostore.de/cdn-cgi/image/width=200,format=auto/https://images.avocadostore.de/products/447506/image-thumb__447506__product_gallery_large/447506.jpg", url: "https://www.awin1.com/cread.php?awinmid=19075&awinaffid=2708356&ued=https%3A%2F%2Fwww.avocadostore.de%2Fproducts%2F447506-kleid-ohne-arm-blau-weiss-gestreift-aus-bio-baumwolle-people-wear-organic%3Fvariant_id%3D4136903%26asqid%3D947a3b22a5a69636493b877192c9f78d" }
