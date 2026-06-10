@@ -21,7 +21,7 @@
     min-height: 100vh;
   }
 
-  /* ─── LEFT – verde ─── */
+  /* ─── LEFT ─── */
   .left {
     background: #1C3A2E;
     padding: 3rem 2rem 2.5rem;
@@ -41,11 +41,7 @@
     font-weight: 400;
     letter-spacing: -0.01em;
   }
-  .brand em {
-    font-style: italic;
-    font-weight: 300;
-    color: #c8ddd3;
-  }
+  .brand em { font-style: italic; font-weight: 300; color: #c8ddd3; }
 
   .tagline {
     margin-top: 1.4rem;
@@ -57,11 +53,7 @@
     line-height: 1.9;
   }
 
-  .divider {
-    margin-top: 2rem;
-    height: 1px;
-    background: rgba(245,237,216,0.1);
-  }
+  .divider { margin-top: 2rem; height: 1px; background: rgba(245,237,216,0.1); }
 
   .intro {
     margin-top: 1.8rem;
@@ -81,7 +73,7 @@
   }
   .left-footer a { color: #3f5e4f; text-decoration: none; }
 
-  /* ─── RIGHT – beige ─── */
+  /* ─── RIGHT ─── */
   .right {
     background: #F5EDD8;
     padding: 2.8rem 2.5rem 3rem 2.8rem;
@@ -93,16 +85,15 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #8fa897;
-    margin-bottom: 1rem;
-    margin-top: 0.2rem;
+    margin-bottom: 0.75rem;
   }
 
-  /* ─── Cards ─── */
+  /* ─── Cards compatte ─── */
   .category {
     background: #fff8ed;
     border: 1px solid rgba(28,58,46,0.13);
-    border-radius: 11px;
-    margin-bottom: 7px;
+    border-radius: 9px;
+    margin-bottom: 5px;
     overflow: hidden;
     text-decoration: none;
     display: block;
@@ -119,28 +110,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 13px 15px;
+    padding: 9px 13px;
     user-select: none;
   }
-  .cat-left { display: flex; align-items: center; gap: 11px; }
-  .cat-emoji { font-size: 17px; width: 24px; text-align: center; }
-  .cat-title { font-size: 13.5px; font-weight: 500; color: #1C3A2E; }
-  .cat-sub { font-size: 11px; color: #7a9a86; margin-top: 1px; font-weight: 300; }
-  .arrow { font-size: 15px; color: #9ab8a6; }
+  .cat-left { display: flex; align-items: center; gap: 9px; }
+  .cat-emoji { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+  .cat-title { font-size: 13px; font-weight: 500; color: #1C3A2E; }
+  .arrow { font-size: 14px; color: #9ab8a6; transition: transform 0.2s; display: inline-block; }
 
   /* ─── Accordion ─── */
   .accordion { cursor: pointer; }
   .accordion:hover { background: #eee4ce; border-color: rgba(28,58,46,0.28); }
-  .subcats { display: none; padding: 0 7px 7px 7px; }
+  .subcats { display: none; padding: 0 6px 6px 6px; }
   .accordion.open .subcats { display: block; }
   .accordion.open > .category-header .arrow { transform: rotate(90deg); }
-  .arrow { transition: transform 0.2s; display: inline-block; }
 
   .subcat-link {
     background: #ede4cf;
     border: 1px solid rgba(28,58,46,0.1);
-    border-radius: 8px;
-    margin-bottom: 5px;
+    border-radius: 7px;
+    margin-bottom: 4px;
     overflow: hidden;
     text-decoration: none;
     display: block;
@@ -149,13 +138,13 @@
   }
   .subcat-link:last-child { margin-bottom: 0; }
   .subcat-link:hover { background: #e0d5bc; transform: translateX(2px); }
-  .subcat-link .category-header { padding: 10px 13px; }
-  .subcat-link .cat-title { font-size: 13px; }
+  .subcat-link .category-header { padding: 8px 12px; }
+  .subcat-link .cat-title { font-size: 12.5px; }
 
   /* ─── Footer ─── */
   .footer {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
     border-top: 1px solid rgba(28,58,46,0.1);
     font-size: 11px;
     color: #8fa897;
@@ -166,11 +155,7 @@
   /* ─── Mobile ─── */
   @media (max-width: 660px) {
     .layout { grid-template-columns: 1fr; }
-    .left {
-      position: static;
-      height: auto;
-      padding: 2.2rem 1.6rem 2rem;
-    }
+    .left { position: static; height: auto; padding: 2.2rem 1.6rem 2rem; }
     .left-spacer { display: none; }
     .left-footer { margin-top: 1.5rem; }
     .right { padding: 1.8rem 1.2rem 2.5rem; }
@@ -180,7 +165,7 @@
 <body>
 <div class="layout">
 
-  <!-- ░░ LEFT ░░ -->
+  <!-- LEFT -->
   <div class="left">
     <div class="brand">Odette<br><em>von Dubs</em></div>
     <div class="tagline">Natürlich &amp; nachhaltig<br>mit Baby</div>
@@ -190,108 +175,108 @@
     <p class="left-footer">*Werbung – Affiliate-Links.<br>Bei einem Kauf erhalte ich eine kleine<br>Provision, für dich entstehen keine<br>Mehrkosten. Danke! 🌿</p>
   </div>
 
-  <!-- ░░ RIGHT ░░ -->
+  <!-- RIGHT -->
   <div class="right">
 
     <div class="section-label">Alle Kategorien</div>
 
     <a class="category" href="https://odettevondubs.github.io/kinderwagen.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🛒</span><div><div class="cat-title">Kinderwagen &amp; Buggys</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🛒</span><span class="cat-title">Kinderwagen &amp; Buggys</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <a class="category" href="https://odettevondubs.github.io/babytragen.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🤱</span><div><div class="cat-title">Babytragen</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🤱</span><span class="cat-title">Babytragen</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <a class="category" href="https://odettevondubs.github.io/natuerliche-babykleidung.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🌱</span><div><div class="cat-title">Natürliche Babykleidung</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🌱</span><span class="cat-title">Natürliche Babykleidung</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <div class="category accordion" id="montessori-accordion">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🧸</span><div><div class="cat-title">Montessori Baby</div><div class="cat-sub">Meine Empfehlungen</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🧸</span><span class="cat-title">Montessori Baby</span></div>
         <span class="arrow">›</span>
       </div>
       <div class="subcats">
-        <a class="subcat-link" href="https://odettevondubs.github.io/motorik.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🤲</span><div><div class="cat-title">Motorik &amp; Greifen</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/puzzle.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🧩</span><div><div class="cat-title">Puzzle &amp; Kreativ</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/spielbogen.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌈</span><div><div class="cat-title">Spielbogen &amp; Früherziehung</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/kuscheln.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🐣</span><div><div class="cat-title">Kuscheln &amp; Schmusen</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/laufen.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🚲</span><div><div class="cat-title">Laufen lernen</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/bewegung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌳</span><div><div class="cat-title">Bewegung &amp; Spaß</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/sommer-wasser.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">💦</span><div><div class="cat-title">Sommer &amp; Wasser</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/motorik.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🤲</span><span class="cat-title">Motorik &amp; Greifen</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/puzzle.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🧩</span><span class="cat-title">Puzzle &amp; Kreativ</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/spielbogen.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌈</span><span class="cat-title">Spielbogen &amp; Früherziehung</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/kuscheln.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🐣</span><span class="cat-title">Kuscheln &amp; Schmusen</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/laufen.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🚲</span><span class="cat-title">Laufen lernen</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/bewegung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌳</span><span class="cat-title">Bewegung &amp; Spaß</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/sommer-wasser.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">💦</span><span class="cat-title">Sommer &amp; Wasser</span></div><span class="arrow">↗</span></div></a>
       </div>
     </div>
 
     <a class="category" href="https://odettevondubs.github.io/baby-geschenke.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🎁</span><div><div class="cat-title">Baby Geschenke</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🎁</span><span class="cat-title">Baby Geschenke</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <a class="category" href="https://odettevondubs.github.io/babyerstausstattung.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">👶</span><div><div class="cat-title">Babyerstausstattung</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">👶</span><span class="cat-title">Babyerstausstattung</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <a class="category" href="https://odettevondubs.github.io/baby-ernaehrung.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🍽️</span><div><div class="cat-title">Baby Ernährung</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🍽️</span><span class="cat-title">Baby Ernährung</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <a class="category" href="https://odettevondubs.github.io/babyschlaf.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🌙</span><div><div class="cat-title">Sanfter Babyschlaf</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🌙</span><span class="cat-title">Sanfter Babyschlaf</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <div class="category accordion" id="babypflege-accordion">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🌿</span><div><div class="cat-title">Natürliche Babypflege</div><div class="cat-sub">Meine Empfehlungen</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🌿</span><span class="cat-title">Natürliche Babypflege</span></div>
         <span class="arrow">›</span>
       </div>
       <div class="subcats">
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-reinigung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🛁</span><div><div class="cat-title">Reinigung &amp; Bad</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-creme.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌸</span><div><div class="cat-title">Creme &amp; Lotion</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-windelbereich.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🩹</span><div><div class="cat-title">Windelbereich</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-oele.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🫧</span><div><div class="cat-title">Körperöle &amp; Massage</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-schlaf.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">😴</span><div><div class="cat-title">Schlaf &amp; Beruhigung</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-sets.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🎀</span><div><div class="cat-title">Sets &amp; Bundles</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-reinigung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🛁</span><span class="cat-title">Reinigung &amp; Bad</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-creme.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌸</span><span class="cat-title">Creme &amp; Lotion</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-windelbereich.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🩹</span><span class="cat-title">Windelbereich</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-oele.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🫧</span><span class="cat-title">Körperöle &amp; Massage</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-schlaf.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">😴</span><span class="cat-title">Schlaf &amp; Beruhigung</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babypflege-sets.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🎀</span><span class="cat-title">Sets &amp; Bundles</span></div><span class="arrow">↗</span></div></a>
       </div>
     </div>
 
     <a class="category" href="https://odettevondubs.github.io/stillmode.html">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">🤍</span><div><div class="cat-title">Stillmode</div><div class="cat-sub">Meine Empfehlungen →</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">🤍</span><span class="cat-title">Stillmode</span></div>
         <span class="arrow">↗</span>
       </div>
     </a>
 
     <div class="category accordion" id="reisen-accordion">
       <div class="category-header">
-        <div class="cat-left"><span class="cat-emoji">✈️</span><div><div class="cat-title">Reisen mit Baby</div><div class="cat-sub">Meine Empfehlungen</div></div></div>
+        <div class="cat-left"><span class="cat-emoji">✈️</span><span class="cat-title">Reisen mit Baby</span></div>
         <span class="arrow">›</span>
       </div>
       <div class="subcats">
-        <a class="subcat-link" href="https://odettevondubs.github.io/strand-checkliste-card.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🏖️</span><div><div class="cat-title">Erster Strandurlaub mit Baby</div><div class="cat-sub">Checkliste →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/sommer-strand-baby.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌊</span><div><div class="cat-title">Strand &amp; Sommer mit Baby</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/strand-ausstattung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">☀️</span><div><div class="cat-title">Strand-Ausstattung mit Baby</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
-        <a class="subcat-link" href="https://odettevondubs.github.io/urlaub-norden-baby.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🧊</span><div><div class="cat-title">Urlaub im Norden mit Baby</div><div class="cat-sub">Meine Empfehlungen →</div></div></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/strand-checkliste-card.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🏖️</span><span class="cat-title">Erster Strandurlaub mit Baby</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/sommer-strand-baby.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌊</span><span class="cat-title">Strand &amp; Sommer mit Baby</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/strand-ausstattung.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">☀️</span><span class="cat-title">Strand-Ausstattung mit Baby</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/urlaub-norden-baby.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🧊</span><span class="cat-title">Urlaub im Norden mit Baby</span></div><span class="arrow">↗</span></div></a>
       </div>
     </div>
 
