@@ -7,152 +7,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Jost', -apple-system, sans-serif;
-    background: #F5EDD8;
-    color: #1C3A2E;
-    min-height: 100vh;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    min-height: 100vh;
-  }
-
-  /* ─── LEFT ─── */
-  .left {
-    background: #1C3A2E;
-    padding: 3rem 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
-    line-height: 1.1;
-    color: #F5EDD8;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-  }
+  body { font-family: 'Jost', -apple-system, sans-serif; background: #F5EDD8; color: #1C3A2E; min-height: 100vh; }
+  .layout { display: grid; grid-template-columns: 300px 1fr; min-height: 100vh; }
+  .left { background: #1C3A2E; padding: 3rem 2rem 2.5rem; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .brand { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: 1.1; color: #F5EDD8; font-weight: 400; letter-spacing: -0.01em; }
   .brand em { font-style: italic; font-weight: 300; color: #c8ddd3; }
-
-  .tagline {
-    margin-top: 1.4rem;
-    font-size: 10.5px;
-    font-weight: 300;
-    color: #7aaa91;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1.9;
-  }
-
+  .tagline { margin-top: 1.4rem; font-size: 10.5px; font-weight: 300; color: #7aaa91; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.9; }
   .divider { margin-top: 2rem; height: 1px; background: rgba(245,237,216,0.1); }
-
-  .intro {
-    margin-top: 1.8rem;
-    font-size: 12.5px;
-    font-weight: 300;
-    color: #8fb89e;
-    line-height: 1.75;
-  }
-
+  .intro { margin-top: 1.8rem; font-size: 12.5px; font-weight: 300; color: #8fb89e; line-height: 1.75; }
   .left-spacer { flex: 1; }
-
-  .left-footer {
-    font-size: 10px;
-    color: #3f5e4f;
-    line-height: 1.7;
-    font-weight: 300;
-  }
+  .left-footer { font-size: 10px; color: #3f5e4f; line-height: 1.7; font-weight: 300; }
   .left-footer a { color: #3f5e4f; text-decoration: none; }
-
-  /* ─── RIGHT ─── */
-  .right {
-    background: #F5EDD8;
-    padding: 2.8rem 2.5rem 3rem 2.8rem;
-  }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #8fa897;
-    margin-bottom: 0.75rem;
-  }
-
-  /* ─── Cards compatte ─── */
-  .category {
-    background: #fff8ed;
-    border: 1px solid rgba(28,58,46,0.13);
-    border-radius: 9px;
-    margin-bottom: 5px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    color: #1C3A2E;
-    transition: background 0.15s, border-color 0.15s, transform 0.1s;
-  }
-  a.category:hover {
-    background: #eee4ce;
-    border-color: rgba(28,58,46,0.28);
-    transform: translateX(2px);
-  }
-
-  .category-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 9px 13px;
-    user-select: none;
-  }
+  .right { background: #F5EDD8; padding: 2.8rem 2.5rem 3rem 2.8rem; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #8fa897; margin-bottom: 0.75rem; }
+  .category { background: #fff8ed; border: 1px solid rgba(28,58,46,0.13); border-radius: 9px; margin-bottom: 5px; overflow: hidden; text-decoration: none; display: block; color: #1C3A2E; transition: background 0.15s, border-color 0.15s, transform 0.1s; }
+  a.category:hover { background: #eee4ce; border-color: rgba(28,58,46,0.28); transform: translateX(2px); }
+  .category-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 13px; user-select: none; }
   .cat-left { display: flex; align-items: center; gap: 9px; }
   .cat-emoji { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
   .cat-title { font-size: 13px; font-weight: 500; color: #1C3A2E; }
   .arrow { font-size: 14px; color: #9ab8a6; transition: transform 0.2s; display: inline-block; }
-
-  /* ─── Accordion ─── */
   .accordion { cursor: pointer; }
   .accordion:hover { background: #eee4ce; border-color: rgba(28,58,46,0.28); }
   .subcats { display: none; padding: 0 6px 6px 6px; }
   .accordion.open .subcats { display: block; }
   .accordion.open > .category-header .arrow { transform: rotate(90deg); }
-
-  .subcat-link {
-    background: #ede4cf;
-    border: 1px solid rgba(28,58,46,0.1);
-    border-radius: 7px;
-    margin-bottom: 4px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    color: #1C3A2E;
-    transition: background 0.15s, transform 0.1s;
-  }
+  .subcat-link { background: #ede4cf; border: 1px solid rgba(28,58,46,0.1); border-radius: 7px; margin-bottom: 4px; overflow: hidden; text-decoration: none; display: block; color: #1C3A2E; transition: background 0.15s, transform 0.1s; }
   .subcat-link:last-child { margin-bottom: 0; }
   .subcat-link:hover { background: #e0d5bc; transform: translateX(2px); }
   .subcat-link .category-header { padding: 8px 12px; }
   .subcat-link .cat-title { font-size: 12.5px; }
-
-  /* ─── Footer ─── */
-  .footer {
-    margin-top: 1.5rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(28,58,46,0.1);
-    font-size: 11px;
-    color: #8fa897;
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* ─── Mobile ─── */
+  .footer { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(28,58,46,0.1); font-size: 11px; color: #8fa897; line-height: 1.7; font-weight: 300; }
   @media (max-width: 660px) {
     .layout { grid-template-columns: 1fr; }
     .left { position: static; height: auto; padding: 2.2rem 1.6rem 2rem; }
@@ -187,12 +72,18 @@
       </div>
     </a>
 
-    <a class="category" href="https://odettevondubs.github.io/babytragen.html">
+    <!-- BABYTRAGEN accordion -->
+    <div class="category accordion" id="babytragen-accordion">
       <div class="category-header">
         <div class="cat-left"><span class="cat-emoji">🤱</span><span class="cat-title">Babytragen</span></div>
-        <span class="arrow">↗</span>
+        <span class="arrow">›</span>
       </div>
-    </a>
+      <div class="subcats">
+        <a class="subcat-link" href="https://odettevondubs.github.io/babytragen-wippe.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🌸</span><span class="cat-title">Babywippe</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babytragen-weich.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🤱</span><span class="cat-title">Weiche Tragen &amp; Hüfttragen</span></div><span class="arrow">↗</span></div></a>
+        <a class="subcat-link" href="https://odettevondubs.github.io/babytragen-strukturiert.html"><div class="category-header"><div class="cat-left"><span class="cat-emoji">🏔️</span><span class="cat-title">Strukturierte Tragen &amp; Wandern</span></div><span class="arrow">↗</span></div></a>
+      </div>
+    </div>
 
     <a class="category" href="https://odettevondubs.github.io/natuerliche-babykleidung.html">
       <div class="category-header">
@@ -289,7 +180,7 @@
 </div>
 
 <script>
-  ['montessori-accordion','babypflege-accordion','reisen-accordion'].forEach(function(id) {
+  ['babytragen-accordion','montessori-accordion','babypflege-accordion','reisen-accordion'].forEach(function(id) {
     document.getElementById(id).addEventListener('click', function(e) {
       if (e.target.closest('a')) return;
       this.classList.toggle('open');
